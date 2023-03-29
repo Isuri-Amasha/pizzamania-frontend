@@ -203,21 +203,26 @@ export class OrderList extends Component {
             
             
                 
-                <table >
+                <table class="table table-bordered">
                 <thead >
                     <tr>
-                        <th className = "tbhead">Employee ID</th>
-                        <th className = "tbhead">Employee Name</th>
-                        <th className = "tbhead">Contact Number</th>
-                        <th className = "tbhead">Email</th>
-                        <th className = "tbhead">Address</th>
-                        <th className = "tbhead">Position</th>
+                        <th className = "tbhead">Customer</th>
+                        <th className = "tbhead">Item 1</th>
+                        <th className = "tbhead">Quantity 1</th>
+                        <th className = "tbhead">Item 2</th>
+                        <th className = "tbhead">Quantity 2</th>
+                        <th className = "tbhead">Item 3</th>
+                        <th className = "tbhead">Quantity 3</th>
+                        <th className = "tbhead">Order For</th>
+                        <th className = "tbhead">Delivery Address</th>
+                        <th className = "tbhead">Amount</th>
+                        <th className = "tbhead">Order Status</th>
                         
                         
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.searchEmployee == "" ? this.employeeList() : this.searchEmployeeList() }
+                    { this.state.searchOrder == "" ? this.orderList() : this.searchOrderList() }
                 </tbody>
             </table>
            

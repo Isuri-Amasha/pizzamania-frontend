@@ -9,6 +9,7 @@ import {EditEmployee} from "./components/employee-edit.component";
 import {CustomerList} from './components/customer-list.component'
 import {CreateCustomer} from './components/customer-add.component'
 import {EditCustomer} from './components/customer-edit.component'
+import {OrderList} from './components/order-list.component'
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
     <Route exact path = "/customer" element = {<CustomerList/>}/>
     <Route exact path = "/creatcustomer" element = {<CreateCustomer/>}/>
     <Route exact path = "/editCustomer/:id" element = {<EditCustomer/>}/>
+
+    <Route exact path = "/order" element = {<OrderList/>}/>
     </Routes>
     </Router>
 

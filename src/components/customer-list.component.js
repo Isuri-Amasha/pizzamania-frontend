@@ -192,7 +192,7 @@ export class CustomerList extends Component {
             
             
                 
-                <table >
+                <table class="table table-bordered">
                 <thead >
                     <tr>
                         

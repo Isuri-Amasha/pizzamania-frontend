@@ -193,7 +193,7 @@ export class EmployeeList extends Component {
             
             
                 
-                <table >
+                <table class="table table-bordered">
                 <thead >
                     <tr>
                         <th className = "tbhead">Employee ID</th>

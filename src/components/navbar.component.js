@@ -36,7 +36,7 @@ function navbar() {
           <Nav className="me-auto">
             <Nav.Link href="/employee">Employee</Nav.Link>
             <Nav.Link href="/customer">Customer</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link href="/order">Order</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
