@@ -2,80 +2,79 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const Employee = props => (
+const Customer = props => (
     <tr>
         {/* <td>{props.employee._id}</td> */}
-        <td>{props.employee.empID}</td>
-        <td>{props.employee.fullName}</td>
-        <td>{props.employee.contactNo}</td>
-        <td>{props.employee.email}</td>
-        <td>{props.employee.address}</td>
-        <td>{props.employee.position}</td>
+        <td>{props.customer.fullName}</td>
+        <td>{props.customer.email}</td>
+        <td>{props.customer.contactNo}</td>
+        <td>{props.customer.address}</td>
+       
        
         <td>
-            <button ><Link to = {"/editEmployee/"+props.employee._id } >Edit</Link></button>
-            <button  onClick ={() => {props.deleteEmployee(props.employee._id)}}>Delete</button>
+            <button ><Link to = {"/editCustomer/"+props.customer._id } >Edit</Link></button>
+            <button  onClick ={() => {props.deleteCustomer(props.customer._id)}}>Delete</button>
         </td>
     </tr>
 )
 
-export class EmployeeList extends Component {
+export class CustomerList extends Component {
 
     constructor(props){
         super(props);
 
-        this.deleteEmployee = this.deleteEmployee.bind(this);
+        this.deleteCustomer = this.deleteCustomer.bind(this);
 
-        this.state = {employee : [],
-        searchEmployee : ""};
+        this.state = {customer : [],
+            searchCustomer : ""};
     }
 
 
     componentDidMount() {
-        axios.get('http://localhost:5000/employee/')
+        axios.get('http://localhost:5000/customer/')
         .then(response => {
-            this.setState({ employee : response.data })
+            this.setState({ customer : response.data })
         })
         .catch((error) => {
             console.log(error);
         })
         }
 
-        deleteEmployee(id){
-            axios.delete('http://localhost:5000/employee/' +id)
+        deleteCustomer(id){
+            axios.delete('http://localhost:5000/customer/' +id)
             .then(res => console.log(res.data));
             this.setState({
-                employee : this.state.employee.filter(el => el._id !== id)
+                customer : this.state.customer.filter(el => el._id !== id)
             })
         }
 
-        employeeList(){
-            return this.state.employee.map(currentemployee => {
-                return <Employee employee = {currentemployee} deleteEmployee = {this.deleteEmployee} key = {currentemployee._id}/>;
+        customerList(){
+            return this.state.customer.map(currentcustomer => {
+                return <Customer customer = {currentcustomer} deleteCustomer = {this.deleteCustomer} key = {currentcustomer._id}/>;
             })
         }
 
-        searchEmployeeList(){
+        searchCustomerList(){
 
-            return this.state.employee.map((currentemployee) => {
+            return this.state.customer.map((currentcustomer) => {
                 if (
-                    this.state.searchEmployee ==
-                    currentemployee.empID
+                    this.state.searchCustomer ==
+                    currentcustomer.fullName
                 ){
                     return (
                         <tr>
-                        <td style={{ width: "10%" }}>{currentemployee.empID}</td>
-                        <td style={{ width: "10%" }}>{currentemployee.fullName}</td>
-                        <td style={{ width: "10%" }}>{currentemployee.contactNo}</td>
-                        <td style={{ width: "10%" }}>{currentemployee.email}</td>
-                        <td style={{ width: "10%" }}>{currentemployee.address}</td>
-                        <td style={{ width: "10%" }}>{currentemployee.position}</td>
+                       
+                        <td style={{ width: "10%" }}>{currentcustomer.fullName}</td>
+                        <td style={{ width: "10%" }}>{currentcustomer.email}</td>
+                        <td style={{ width: "10%" }}>{currentcustomer.contactNo}</td>
+                        <td style={{ width: "10%" }}>{currentcustomer.address}</td>
+                        
                         
                         <td style={{ width: "20%" }}>
                             {
                             <button >
                                 <Link
-                                to={"/editEmployee/" + currentemployee._id}
+                                to={"/editCustomer/" + currentcustomer._id}
                                 
                                 >
                                 Edit
@@ -90,17 +89,17 @@ export class EmployeeList extends Component {
                                   //Delete the selected record
                                 axios
                                     .delete(
-                                    "http://localhost:5000/employee/" + currentemployee._id
+                                    "http://localhost:5000/customer/" + currentcustomer._id
                                     )
                                     .then(() => {
                                     alert("Delete Success");
                                       //Get data again after delete
                                     axios
-                                        .get("http://localhost:5000/employee")
+                                        .get("http://localhost:5000/customer")
                                         .then((res) => {
                                         console.log(res.data);
                                         this.setState({
-                                            employee: res.data,
+                                            customer: res.data,
                                         });
                                         })
                                         .catch((err) => console.log(err));
@@ -169,8 +168,8 @@ export class EmployeeList extends Component {
             
                 <table >
                     <tr>
-                        <th><h3>Employee Details</h3></th>
-                        <td><button ><Link to = {"/creatEmployee" }>Add Employee</Link></button>
+                        <th><h3>Customer Details</h3></th>
+                        <td><button ><Link to = {"/creatCustomer" }>Add Customer</Link></button>
                         <button>
                        
                         <Link to = {"/" }>Download Report Here</Link></button></td>
@@ -180,11 +179,11 @@ export class EmployeeList extends Component {
                     <input style={{ width: "250px", marginTop:"10px"}}
                     class="form-control"
                     type="text"
-                    placeholder="Search by Employee ID"
+                    placeholder="Search by Customet Name"
                     aria-label="Search"
                     onChange={(e) => {
                         this.setState({
-                        searchEmployee: e.target.value
+                        searchCustomer: e.target.value
                         });
                     }}
                     />
@@ -196,18 +195,18 @@ export class EmployeeList extends Component {
                 <table >
                 <thead >
                     <tr>
-                        <th className = "tbhead">Employee ID</th>
-                        <th className = "tbhead">Employee Name</th>
-                        <th className = "tbhead">Contact Number</th>
+                        
+                        <th className = "tbhead">Customer Name</th>
                         <th className = "tbhead">Email</th>
+                        <th className = "tbhead">Contact Number</th>
                         <th className = "tbhead">Address</th>
-                        <th className = "tbhead">Position</th>
+                        
                         
                         
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.searchEmployee == "" ? this.employeeList() : this.searchEmployeeList() }
+                    { this.state.searchCustomer == "" ? this.customerList() : this.searchCustomerList() }
                 </tbody>
             </table>
            
