@@ -7,6 +7,7 @@ export class EditEmployee extends Component {
     constructor(props){
         super(props);
 
+        
         this.onChangeempID = this.onChangeempID.bind(this);
         this.onChangefullName = this.onChangefullName.bind(this);
         this.onChangecontactNo = this.onChangecontactNo.bind(this);

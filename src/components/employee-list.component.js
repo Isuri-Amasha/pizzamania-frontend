@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Employee = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
         {/* <td>{props.employee._id}</td> */}
@@ -207,7 +208,7 @@ export class EmployeeList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table className=''>
                                     <tr>
-                                        <th className='pt-5'>
+                                        <th className=''>
                                             <h3>Employee Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>

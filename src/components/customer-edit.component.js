@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 //import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
+
 
 export class EditCustomer extends Component {
 

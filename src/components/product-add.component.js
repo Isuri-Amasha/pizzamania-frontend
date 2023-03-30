@@ -4,7 +4,7 @@ import * as Swal from "sweetalert2";
 
 
 
-export class CreateEmployee extends Component {
+export class CreateProduct extends Component {
 
     
     constructor(props){
@@ -12,12 +12,15 @@ export class CreateEmployee extends Component {
 
         
        
-        this.onChangeempID = this.onChangeempID.bind(this);
-        this.onChangefullName = this.onChangefullName.bind(this);
-        this.onChangecontactNo = this.onChangecontactNo.bind(this);
-        this.onChangeemail = this.onChangeemail.bind(this);
-        this.onChangeaddress = this.onChangeaddress.bind(this);
-        this.onChangeposition = this.onChangeposition.bind(this);
+        this.onChangeproductID = this.onChangeproductID.bind(this);
+        this.onChangeproductName = this.onChangeproductName.bind(this);
+        this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
+        this.onChangeproductSize = this.onChangeproductSize.bind(this);
+        this.onChangeprice = this.onChangeprice.bind(this);
+        this.onChangediscount = this.onChangediscount.bind(this);
+        this.onChangeavailability = this.onChangeavailability.bind(this);
+
+        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
         
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -25,52 +28,60 @@ export class CreateEmployee extends Component {
        
 
         this.state = {
-            empID : '',
-            fullName : '',
-            contactNo : '',
-            email : '',
-            address : '',
-            position : ''
+            productID : '',
+            productName : '',
+            productCategory : '',
+            productSize : '',
+            price : '',
+            discount : '',
+            availability:''
             
         }
     }
 
-    onChangeempID(e){
+    onChangeproductID(e){
         this.setState({
-            empID : e.target.value
+            productID : e.target.value
         });
     }
 
-    onChangefullName(e){
+    onChangeproductName(e){
         this.setState({
-            fullName : e.target.value
+            productName : e.target.value
         });
     }
 
-    onChangecontactNo(e){
+    onChangeproductCategory(e){
         this.setState({
-            contactNo : e.target.value
+            productCategory : e.target.value
         });
     }
 
-    onChangeemail(e){
+    onChangeproductSize(e){
         this.setState({
-            email : e.target.value
+            productSize : e.target.value
         });
     }
 
-    onChangeaddress(e){
+    onChangeprice(e){
         this.setState({
-            address : e.target.value
+            price : e.target.value
         });
     }
 
-    onChangeposition(e){
+    onChangediscount(e){
         this.setState({
-        position : e.target.value
+        discount : e.target.value
         });
     }
 
+    onChangeavailability(e){
+        this.setState({
+        availability : e.target.value
+        });
+    }
+
+   
    
 
     // demoClicked(){
@@ -92,16 +103,17 @@ export class CreateEmployee extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        const employee = {
-            empID : this.state.empID,
-            fullName : this.state.fullName,
-            contactNo : this.state.contactNo,
-            email : this.state.email,
-            address : this.state.address,
-            position : this.state.position
+        const product = {
+            productID : this.state.productID,
+            productName : this.state.productName,
+            productCategory : this.state.productCategory,
+            productSize : this.state.productSize,
+            price : this.state.price,
+            discount : this.state.discount,
+            availability : this.state.availability
         }
 
-        console.log(employee);
+        console.log(product);
 
         // if(this.state.empID.length < 0){
         //     this.setState({empIDError : "Employee ID should be longer than 0 characters."})
@@ -115,7 +127,7 @@ export class CreateEmployee extends Component {
        
         // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
         // {
-            axios.post('http://localhost:5000/employee/', employee)
+            axios.post('http://localhost:5000/product/', product)
         // .then(res => console.log("success")).catch(err=>console.log(err));
 
         .then(res => {
@@ -127,7 +139,7 @@ export class CreateEmployee extends Component {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
-                    text: 'Classroom has been added!!',
+                    text: 'Product has been added!!',
                     background: '#fff',
                     confirmButtonColor: '#333533',
                     iconColor: '#60e004'
@@ -152,12 +164,14 @@ export class CreateEmployee extends Component {
 
     clearData = () => {
         this.setState({
-            empID: '',
-            fullName: '',
-            contactNo: '',
-            email: '',
-            address: '',
-            position : ''
+            productID : '',
+            productName : '',
+            productCategory : '',
+            productSize : '',
+            price : '',
+            discount : '',
+            availability : ''
+            // orderStatus : ''
         })
     }
 
@@ -173,86 +187,96 @@ export class CreateEmployee extends Component {
             
                 <div>
                 
-            <h3 >Add Employee</h3>
+            <h3 >Add Product</h3>
         
                 <form onSubmit = {this.onSubmit}>
                     <div className = "form-group">
-                        <label>Employee ID : </label>
+                        <label>Product ID : </label>
                         <input type = "text"
                         required
                         className = "form-control"
-                        value = {this.state.empID}
-                        onChange = {this.onChangeempID}
+                        value = {this.state.productID}
+                        onChange = {this.onChangeproductID}
                         />
-                        <p className = "validateMsg">{this.state.empIDError}</p>
+                       
                     </div>
 
                     <div className = "form-group">
-                        <label>Full Name : </label>
+                        <label>Product Name : </label>
                         <input type = "text"
                         required
                         className = "form-control"
-                        value = {this.state.fullName}
-                        onChange = {this.onChangefullName}
+                        value = {this.state.productName}
+                        onChange = {this.onChangeproductName}
                         />
-                        <p className = "validateMsg">{this.state.nameError}</p>
+                       
                     </div>
 
                     <div className = "form-group">
-                        <label>Contact Number : </label>
+                        <label>Product Category : </label>
                         <input type = "text"
                         required
                         className = "form-control"
-                        value = {this.state.contactNo}
-                        onChange = {this.onChangecontactNo}
+                        value = {this.state.productCategory}
+                        onChange = {this.onChangeproductCategory}
                         />
-                        <p className = "validateMsg">{this.state.contactNoError}</p>
+                        
                     </div>
-                    {/* <div className = "form-group">
-                        <label>DOB : </label>
-                        <div>
-                            <DatePicker
-                            selected = {this.state.dob}
-                            onChange = {this.onChangedob}
-                            />
-                        </div>
-                    </div> */}
+
                     <div className = "form-group">
-                        <label>Eamil : </label>
+                        <label>Product Size : </label>
                         <input type = "text"
-                        required
+                        
                         className = "form-control"
-                        value = {this.state.email}
-                        onChange = {this.onChangeemail}
+                        value = {this.state.productSize}
+                        onChange = {this.onChangeproductSize}
                         />
+                       
                     </div>
+
                     <div className = "form-group">
-                        <label>Address : </label>
+                        <label>Price : </label>
                         <input type = "text"
-                        required
+                        
                         className = "form-control"
-                        value = {this.state.address}
-                        onChange = {this.onChangeaddress}
+                        value = {this.state.price}
+                        onChange = {this.onChangeprice}
                         />
+                        
                     </div>
+
                     <div className = "form-group">
-                        <label>Position : </label>
+                        <label>Discount : </label>
                         <input type = "text"
-                        required
+                        
                         className = "form-control"
-                        value = {this.state.position}
-                        onChange = {this.onChangeposition}
+                        value = {this.state.discount}
+                        onChange = {this.onChangediscount}
                         />
+                       
+                    </div>
+
+                    <div className = "form-group">
+                        <label>Availability : </label>
+                        <input type = "text"
+                        
+                        className = "form-control"
+                        value = {this.state.availability}
+                        onChange = {this.onChangeavailability}
+                        />
+                        
                     </div>
 
 
 
                     <div className = "form-group">
-                        <input type = "submit" value = "Add Employee" />
+                        <input type = "submit" value = "Add Product" />
                     </div>
                 </form>
 
-               
+                {/* <div className = "form-group">
+                    <button onClick={() => this.demoClicked()}>Demo</button>
+                    </div> */}
 
 
 </div>

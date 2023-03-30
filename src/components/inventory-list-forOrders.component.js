@@ -2,91 +2,79 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const Order = props => (
+const Inventory = props => (
     <tr>
         {/* <td>{props.employee._id}</td> */}
-        
-        <td>{props.order.customer}</td>
-        <td>{props.order.item1}</td>
-        <td>{props.order.quantity1}</td>
-        <td>{props.order.item2}</td>
-        <td>{props.order.quantity2}</td>
-        <td>{props.order.item3}</td>
-        <td>{props.order.quantity3}</td>
-        <td>{props.order.orderFor}</td>
-        <td>{props.order.deliveryAddress}</td>
-        <td>{props.order.amount}</td>
-        <td>{props.order.orderStatus}</td>
+        <td>{props.inventory.productID}</td>
+        <td>{props.inventory.productName}</td>
+        <td>{props.inventory.productCategory}</td>
+        <td>{props.inventory.quantity}</td>
+       
        
         <td>
-            <button ><Link to = {"/editOrder/"+props.order._id } >Edit</Link></button>
-            <button  onClick ={() => {props.deleteOrder(props.order._id)}}>Delete</button>
+        <button ><Link to = {"/orderInventory/"+props.inventory._id } >Order</Link></button>
+            {/* <button  onClick ={() => {props.orderInventory(props.inventory._id)}}>Order</button> */}
         </td>
     </tr>
 )
 
-export class OrderList extends Component {
+export class InventoryListForOrder extends Component {
 
     constructor(props){
         super(props);
 
-        this.deleteOrder = this.deleteOrder.bind(this);
+        this.orderInventory = this.orderInventory.bind(this);
 
-        this.state = {order : [],
-        searchOrder : ""};
+        this.state = {inventory : [],
+            searchInventory : ""};
     }
 
 
     componentDidMount() {
-        axios.get('http://localhost:5000/order/')
+        axios.get('http://localhost:5000/inventory/')
         .then(response => {
-            this.setState({ order : response.data })
+            this.setState({ inventory : response.data })
         })
         .catch((error) => {
             console.log(error);
         })
         }
 
-        deleteOrder(id){
-            axios.delete('http://localhost:5000/order/' +id)
-            .then(res => console.log(res.data));
+        orderInventory(id){
+            // axios.delete('http://localhost:5000/inventory/' +id)
+            // .then(res => console.log(res.data));
             this.setState({
-                order : this.state.order.filter(el => el._id !== id)
+                id : id
             })
         }
 
-        orderList(){
-            return this.state.order.map(currentorder => {
-                return <Order order = {currentorder} deleteOrder = {this.deleteOrder} key = {currentorder._id}/>;
+        inventoryList(){
+            return this.state.inventory.map(currentinventory => {
+                return <Inventory inventory = {currentinventory} orderInventory = {this.orderInventory} key = {currentinventory._id}/>;
             })
         }
 
-        searchOrderList(){
+        searchInventoryList(){
 
-            return this.state.order.map((currentorder) => {
+            return this.state.inventory.map((currentinventory) => {
                 if (
-                    this.state.searchOrder ==
-                    currentorder.customer
+                    this.state.searchInventory ==
+                    currentinventory.productID
                 ){
                     return (
                         <tr>
-                        <td style={{ width: "10%" }}>{currentorder.customer}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item1}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity1}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item2}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity2}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item3}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity3}</td>
-                        <td style={{ width: "10%" }}>{currentorder.orderFor}</td>
-                        <td style={{ width: "10%" }}>{currentorder.deliveryAddress}</td>
-                        <td style={{ width: "10%" }}>{currentorder.amount}</td>
-                        <td style={{ width: "10%" }}>{currentorder.orderStatus}</td>
+                       
+                        <td style={{ width: "10%" }}>{currentinventory.productID}</td>
+                        <td style={{ width: "10%" }}>{currentinventory.productName}</td>
+                        <td style={{ width: "10%" }}>{currentinventory.productCategory}</td>
+                        <td style={{ width: "10%" }}>{currentinventory.quantity}</td>
+                        
                         
                         <td style={{ width: "20%" }}>
                             {
                             <button >
                                 <Link
-                                to={"/editOrder/" + currentorder._id}
+                                to={"/editInventory/" + currentinventory._id}
                                 
                                 >
                                 Edit
@@ -101,17 +89,17 @@ export class OrderList extends Component {
                                   //Delete the selected record
                                 axios
                                     .delete(
-                                    "http://localhost:5000/order/" + currentorder._id
+                                    "http://localhost:5000/inventory/" + currentinventory._id
                                     )
                                     .then(() => {
                                     alert("Delete Success");
                                       //Get data again after delete
                                     axios
-                                        .get("http://localhost:5000/order")
+                                        .get("http://localhost:5000/inventory")
                                         .then((res) => {
                                         console.log(res.data);
                                         this.setState({
-                                            order: res.data,
+                                            inventory: res.data,
                                         });
                                         })
                                         .catch((err) => console.log(err));
@@ -180,22 +168,19 @@ export class OrderList extends Component {
             
                 <table >
                     <tr>
-                        <th><h3>Order Details</h3></th>
-                        <td><button ><Link to = {"/creatOrder" }>Add Order</Link></button>
-                        <button>
-                       
-                        <Link to = {"/" }>Download Report Here</Link></button></td>
+                        <th><h3>Inventory Details</h3></th>
+                        
                     </tr>
 
                     <div >
                     <input style={{ width: "250px", marginTop:"10px"}}
                     class="form-control"
                     type="text"
-                    placeholder="Search by Customer"
+                    placeholder="Search by Product ID"
                     aria-label="Search"
                     onChange={(e) => {
                         this.setState({
-                        searchOrder: e.target.value
+                        searchInventory: e.target.value
                         });
                     }}
                     />
@@ -207,23 +192,18 @@ export class OrderList extends Component {
                 <table class="table table-bordered">
                 <thead >
                     <tr>
-                        <th className = "tbhead">Customer</th>
-                        <th className = "tbhead">Item 1</th>
-                        <th className = "tbhead">Quantity 1</th>
-                        <th className = "tbhead">Item 2</th>
-                        <th className = "tbhead">Quantity 2</th>
-                        <th className = "tbhead">Item 3</th>
-                        <th className = "tbhead">Quantity 3</th>
-                        <th className = "tbhead">Order For</th>
-                        <th className = "tbhead">Delivery Address</th>
-                        <th className = "tbhead">Amount</th>
-                        <th className = "tbhead">Order Status</th>
+                        
+                        <th className = "tbhead">Product ID</th>
+                        <th className = "tbhead">Product Name</th>
+                        <th className = "tbhead">productCategory</th>
+                        <th className = "tbhead">Quantity</th>
+                        
                         
                         
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.searchOrder == "" ? this.orderList() : this.searchOrderList() }
+                    { this.state.searchInventory == "" ? this.inventoryList() : this.searchInventoryList() }
                 </tbody>
             </table>
            
