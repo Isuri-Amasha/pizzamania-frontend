@@ -37,6 +37,15 @@ function navbar() {
             <Nav.Link href="/employee">Employee</Nav.Link>
             <Nav.Link href="/customer">Customer</Nav.Link>
             <Nav.Link href="/order">Order</Nav.Link>
+            <Nav.Link href="/kitchenOrder">Kitchen Orders</Nav.Link>
+            <Nav.Link href="/inventory">Inventory</Nav.Link>
+            <Nav.Link href="/product">Product</Nav.Link>
+            <Nav.Link href="/inventoryorder">Inventory Order</Nav.Link>
+            <Nav.Link href="/delivery">Delivery</Nav.Link>
+            <Nav.Link href="/completedDelivery">Completed Delivery</Nav.Link>
+            <Nav.Link href="/ongoingDelivery">Ongoing Delivery</Nav.Link>
+            <Nav.Link href="/readyDelivery">Ready Delivery</Nav.Link>
+            <Nav.Link href="/inventorylistfororder">Inventory For Orders</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

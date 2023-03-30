@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
+
 const Employee = props => (
     <tr>
         {/* <td>{props.employee._id}</td> */}

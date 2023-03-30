@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Customer = props => (
     <tr>
-        {/* <td>{props.employee._id}</td> */}
+       
         <td>{props.customer.fullName}</td>
         <td>{props.customer.email}</td>
         <td>{props.customer.contactNo}</td>

@@ -2,91 +2,97 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
-const Order = props => (
+const Delivery = props => (
     <tr>
         {/* <td>{props.employee._id}</td> */}
-        
-        <td>{props.order.customer}</td>
-        <td>{props.order.item1}</td>
-        <td>{props.order.quantity1}</td>
-        <td>{props.order.item2}</td>
-        <td>{props.order.quantity2}</td>
-        <td>{props.order.item3}</td>
-        <td>{props.order.quantity3}</td>
-        <td>{props.order.orderFor}</td>
-        <td>{props.order.deliveryAddress}</td>
-        <td>{props.order.amount}</td>
-        <td>{props.order.orderStatus}</td>
+        <td>{props.delivery.orderId}</td>
+        <td>{props.delivery.customer}</td>
+        <td>{props.delivery.deliveryAddress}</td>
+        <td>{props.delivery.amount}</td>
+        <td>{props.delivery.orderStatus}</td>
+        <td>{props.delivery.assignedEmp}</td>
        
-        <td>
-            <button ><Link to = {"/editOrder/"+props.order._id } >Edit</Link></button>
-            <button  onClick ={() => {props.deleteOrder(props.order._id)}}>Delete</button>
-        </td>
+       
     </tr>
 )
 
-export class OrderList extends Component {
+export class CompletedDeliveryList extends Component {
 
     constructor(props){
         super(props);
 
-        this.deleteOrder = this.deleteOrder.bind(this);
+        
+        
 
-        this.state = {order : [],
-        searchOrder : ""};
+        this.state = {delivery : [],
+        searchDelivery : "Order Completed",
+    };
     }
 
 
     componentDidMount() {
-        axios.get('http://localhost:5000/order/')
+        axios.get('http://localhost:5000/delivery/')
         .then(response => {
-            this.setState({ order : response.data })
+            this.setState({ delivery : response.data })
         })
         .catch((error) => {
             console.log(error);
         })
         }
 
-        deleteOrder(id){
-            axios.delete('http://localhost:5000/order/' +id)
-            .then(res => console.log(res.data));
-            this.setState({
-                order : this.state.order.filter(el => el._id !== id)
+        
+
+        deliveryList(){
+            return this.state.delivery.map(currentdelivery => {
+                return <Delivery delivery = {currentdelivery} />;
             })
         }
 
-        orderList(){
-            return this.state.order.map(currentorder => {
-                return <Order order = {currentorder} deleteOrder = {this.deleteOrder} key = {currentorder._id}/>;
-            })
-        }
+        searchDeliveryList(){
 
-        searchOrderList(){
-
-            return this.state.order.map((currentorder) => {
+            return this.state.delivery.map((currentdelivery) => {
                 if (
-                    this.state.searchOrder ==
-                    currentorder.customer
+                    this.state.searchDelivery ==
+                    currentdelivery.orderStatus
                 ){
                     return (
                         <tr>
-                        <td style={{ width: "10%" }}>{currentorder.customer}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item1}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity1}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item2}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity2}</td>
-                        <td style={{ width: "10%" }}>{currentorder.item3}</td>
-                        <td style={{ width: "10%" }}>{currentorder.quantity3}</td>
-                        <td style={{ width: "10%" }}>{currentorder.orderFor}</td>
-                        <td style={{ width: "10%" }}>{currentorder.deliveryAddress}</td>
-                        <td style={{ width: "10%" }}>{currentorder.amount}</td>
-                        <td style={{ width: "10%" }}>{currentorder.orderStatus}</td>
-                        
-                        <td style={{ width: "20%" }}>
+                        <td style={{ width: "10%" }}>{currentdelivery.orderId}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.customer}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.deliveryAddress}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.amount}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.orderStatus}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.assignedEmp}</td>
+
+                        </tr>
+                    );
+                }
+            });
+        }
+
+        
+        filterDeliveryReady(){
+
+
+            return this.state.delivery.map((currentdelivery) => {
+                if (
+                    this.state.filterReady ===
+                    currentdelivery.orderStatus
+                ){
+                    return (
+                        <tr>
+                        <td style={{ width: "10%" }}>{currentdelivery.orderId}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.customer}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.deliveryAddress}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.amount}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.orderStatus}</td>
+                        <td style={{ width: "10%" }}>{currentdelivery.assignedEmp}</td>
+
+                        {/* <td style={{ width: "20%" }}>
                             {
                             <button >
                                 <Link
-                                to={"/editOrder/" + currentorder._id}
+                                to={"/editDelivery/" + currentdelivery._id}
                                 
                                 >
                                 Edit
@@ -101,17 +107,17 @@ export class OrderList extends Component {
                                   //Delete the selected record
                                 axios
                                     .delete(
-                                    "http://localhost:5000/order/" + currentorder._id
+                                    "http://localhost:5000/delivery/" + currentdelivery._id
                                     )
                                     .then(() => {
                                     alert("Delete Success");
                                       //Get data again after delete
                                     axios
-                                        .get("http://localhost:5000/order")
+                                        .get("http://localhost:5000/delivery")
                                         .then((res) => {
                                         console.log(res.data);
                                         this.setState({
-                                            order: res.data,
+                                            delivery: res.data,
                                         });
                                         })
                                         .catch((err) => console.log(err));
@@ -124,13 +130,15 @@ export class OrderList extends Component {
                                 Delete
                             </button>
                             }
-                        </td>
+                        </td> */}
                         </tr>
                     );
                 }
+                else{
+                    window.location = '/customer';
+                }
             });
         }
-
 
         // exportEmployee = () => {
         //     console.log( "Export PDF" )
@@ -180,50 +188,62 @@ export class OrderList extends Component {
             
                 <table >
                     <tr>
-                        <th><h3>Order Details</h3></th>
-                        <td><button ><Link to = {"/creatOrder" }>Add Order</Link></button>
+                        <th><h3>Delivery Details</h3></th>
+                        <td>
                         <button>
                        
                         <Link to = {"/" }>Download Report Here</Link></button></td>
                     </tr>
 
-                    <div >
+                    {/* <div >
                     <input style={{ width: "250px", marginTop:"10px"}}
                     class="form-control"
                     type="text"
-                    placeholder="Search by Customer"
+                    placeholder="Search by Delivery details by Order ID"
                     aria-label="Search"
                     onChange={(e) => {
                         this.setState({
-                        searchOrder: e.target.value
+                        searchDelivery: e.target.value
                         });
                     }}
                     />
-            </div>
+            </div> */}
                 </table>
+                <tr>
+                        <th><input style={{ width: "250px", marginTop:"10px"}}
+                    class="form-control"
+                    type="text"
+                    placeholder="Search by Delivery details by Order ID"
+                    aria-label="Search"
+                    onChange={(e) => {
+                        this.setState({
+                        searchDelivery: e.target.value
+                        });
+                    }}
+                    /></th>
+                       
+                    </tr>
+                
             
             
                 
                 <table class="table table-bordered">
                 <thead >
                     <tr>
+                    <th className = "tbhead">Order Id</th>
                         <th className = "tbhead">Customer</th>
-                        <th className = "tbhead">Item 1</th>
-                        <th className = "tbhead">Quantity 1</th>
-                        <th className = "tbhead">Item 2</th>
-                        <th className = "tbhead">Quantity 2</th>
-                        <th className = "tbhead">Item 3</th>
-                        <th className = "tbhead">Quantity 3</th>
-                        <th className = "tbhead">Order For</th>
+                       
+                       
                         <th className = "tbhead">Delivery Address</th>
                         <th className = "tbhead">Amount</th>
                         <th className = "tbhead">Order Status</th>
+                        <th className = "tbhead">Assigned Employee</th>
                         
                         
                     </tr>
                 </thead>
                 <tbody>
-                    { this.state.searchOrder == "" ? this.orderList() : this.searchOrderList() }
+                    { this.state.searchDelivery == "" ?  this.deliveryList() : this.searchDeliveryList()  }
                 </tbody>
             </table>
            

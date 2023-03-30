@@ -19,18 +19,24 @@ const Order = props => (
         <td>{props.order.orderStatus}</td>
        
         <td>
-            <button ><Link to = {"/editOrder/"+props.order._id } >Edit</Link></button>
-            <button  onClick ={() => {props.deleteOrder(props.order._id)}}>Delete</button>
+            
+            <button  onClick ={() => {props.updateOrderStatus(props.order._id)}}>Order Accepted</button> 
+            </td>
+            <td>
+            <button onClick ={() => {props.readyForDelivery(props.order._id)}}>Ready For Delivery</button>
+            
         </td>
     </tr>
 )
 
-export class OrderList extends Component {
+export class KitchenOrderList extends Component {
 
     constructor(props){
         super(props);
 
-        this.deleteOrder = this.deleteOrder.bind(this);
+        this.updateOrderStatus = this.updateOrderStatus.bind(this);
+        this.readyForDelivery = this.readyForDelivery.bind(this);
+       
 
         this.state = {order : [],
         searchOrder : ""};
@@ -47,17 +53,31 @@ export class OrderList extends Component {
         })
         }
 
-        deleteOrder(id){
-            axios.delete('http://localhost:5000/order/' +id)
+        updateOrderStatus(id){
+            const order = {
+                orderStatus : 'Order Processing'
+            }
+
+            axios.put('http://localhost:5000/order/status/' +id,order)
             .then(res => console.log(res.data));
-            this.setState({
-                order : this.state.order.filter(el => el._id !== id)
-            })
+            window.location = '/kitchenOrder';
         }
+
+        readyForDelivery(id){
+            const order = {
+                orderStatus : 'Delivery Ready'
+            }
+
+            axios.put('http://localhost:5000/order/status/' +id,order)
+            .then(res => console.log(res.data));
+            window.location = '/kitchenOrder';
+        }
+       
 
         orderList(){
             return this.state.order.map(currentorder => {
-                return <Order order = {currentorder} deleteOrder = {this.deleteOrder} key = {currentorder._id}/>;
+                return <Order order = {currentorder} updateOrderStatus = {this.updateOrderStatus} readyForDelivery = {this.readyForDelivery} key = {currentorder._id}/>
+                // return <Order order = {currentorder} readyForDelivery = {this.readyForDelivery} key = {currentorder._id}/>;
             })
         }
 
@@ -83,28 +103,18 @@ export class OrderList extends Component {
                         <td style={{ width: "10%" }}>{currentorder.orderStatus}</td>
                         
                         <td style={{ width: "20%" }}>
-                            {
-                            <button >
-                                <Link
-                                to={"/editOrder/" + currentorder._id}
-                                
-                                >
-                                Edit
-                                </Link>
-                            </button>
-                            }
-                            {"  "}
+                            
                             {
                             <button
                                 
                                 onClick={() => {
                                   //Delete the selected record
                                 axios
-                                    .delete(
-                                    "http://localhost:5000/order/" + currentorder._id
+                                    .put(
+                                    "http://localhost:5000/order/status" + currentorder._id
                                     )
                                     .then(() => {
-                                    alert("Delete Success");
+                                    alert("Order Status Update Success");
                                       //Get data again after delete
                                     axios
                                         .get("http://localhost:5000/order")
@@ -121,9 +131,10 @@ export class OrderList extends Component {
                                     });
                                 }}
                             >
-                                Delete
+                                Order Accepted
                             </button>
                             }
+                            
                         </td>
                         </tr>
                     );
@@ -218,6 +229,8 @@ export class OrderList extends Component {
                         <th className = "tbhead">Delivery Address</th>
                         <th className = "tbhead">Amount</th>
                         <th className = "tbhead">Order Status</th>
+                        <th className = "tbhead">Kitchen Accepted</th>
+                        <th className = "tbhead">Kitchen Completed</th>
                         
                         
                     </tr>

@@ -171,9 +171,7 @@ export class CreateCustomer extends Component {
                         <input type = "submit" value = "Add Employee"  />
                     </div>
 
-                    {/* <div className = "form-group">
-                    <button className = "demo"onClick={() => this.demoClicked()}>Demo</button>
-                    </div> */}
+                  
 
                 </form>
 
