@@ -59,8 +59,6 @@ export class CreateEmployee extends Component {
         });
     }
 
-
-
     // demoClicked(){
     //     this.setState({
     //         fullName : "Gihan Perera",
@@ -132,8 +130,7 @@ export class CreateEmployee extends Component {
                     })
                 }
             })
-        // window.location = '/';
-        // }
+        window.location = '/employee';
     }
 
     clearData = () => {
@@ -155,7 +152,7 @@ export class CreateEmployee extends Component {
                         <div className='items-center overflow-hidden'>
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
-                                    <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
+                                    <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit }>
                                         <div class="">
                                             <p className='text-4xl font-semibold text-black uppercase'>Add Employee</p>
                                             <div className="grid grid-cols-2 gap-4 form-group">
@@ -214,7 +211,7 @@ export class CreateEmployee extends Component {
 
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
-                                                <input type="text"
+                                                <textarea type="text"
                                                     required
                                                     className="form-control"
                                                     value={this.state.address}
@@ -237,10 +234,10 @@ export class CreateEmployee extends Component {
                                                     <option>Employee Manager</option>
                                                     <option>Finantial Manager</option>
                                                     <option>Product Manager</option>
-                                                </select><p></p>
+                                                </select><p/>
                                             </div>
                                             <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Employee" />
+                                                <input  className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Employee" />
                                             </div>
                                         </div>
                                     </form>
