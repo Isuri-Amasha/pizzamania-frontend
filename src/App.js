@@ -63,7 +63,7 @@ function App() {
     <Route exact path = "/creatcustomer" element = {<CreateCustomer/>}/>
     <Route exact path = "/editCustomer/:id" element = {<EditCustomer/>}/>
 
-    <Route exact path = "/order" element = {<OrderList/>}/>
+    <Route exact path = "/order" element = {<OrderList/>}/> {/* Done */}
     <Route exact path = "/creatOrder" element = {<CreateOrder/>}/>
     <Route exact path = "/editOrder/:id" element = {<EditOrder/>}/>
 
