@@ -196,14 +196,14 @@ export class CustomerList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table >
                                     <tr>
-                                        <th>
+                                        <th className='drop-shadow-md'>
                                             <h3>Customer Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                     <Link className='font-semibold text-white no-underline' to={"/creatCustomer"}>
-                                                        Add Customer
+                                                        Create Customer
                                                     </Link></button>
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                     <Link className='text-white no-underline' to={"/"}>

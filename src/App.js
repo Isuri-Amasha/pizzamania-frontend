@@ -58,7 +58,7 @@ function App() {
     <Route exact path = "/editEmployee/:id" element = {<EditEmployee/>}/>{/* Done */}
 
     <Route exact path = "/customer" element = {<CustomerList/>}/> {/* Done */}
-    <Route exact path = "/creatcustomer" element = {<CreateCustomer/>}/>
+    <Route exact path = "/creatcustomer" element = {<CreateCustomer/>}/> {/* Done */}
     <Route exact path = "/editCustomer/:id" element = {<EditCustomer/>}/>
 
     <Route exact path = "/order" element = {<OrderList/>}/> {/* Done */}
