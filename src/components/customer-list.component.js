@@ -8,7 +8,7 @@ const Customer = props => (
         <td className='px-6 py-4'>{props.customer.email}</td>
         <td className='px-6 py-4'>{props.customer.contactNo}</td>
         <td className='px-6 py-4'>{props.customer.address}</td>
-        <td>
+        <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>

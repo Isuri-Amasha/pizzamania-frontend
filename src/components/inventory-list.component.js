@@ -9,7 +9,7 @@ const Inventory = props => (
         <td className='px-6 py-4'>{props.inventory.productName}</td>
         <td className='px-6 py-4'>{props.inventory.productCategory}</td>
         <td className='px-6 py-4'>{props.inventory.quantity}</td>
-        <td class="">
+        <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>
@@ -43,7 +43,6 @@ const Inventory = props => (
                 </div>
             </div>
         </td>
-
     </tr>
 )
 
@@ -213,14 +212,14 @@ export class InventoryList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table className=''>
                                     <tr>
-                                        <th className=''>
+                                        <th className='drop-shadow-md'>
                                             <h3>Inventory Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                     <Link className='font-semibold text-white no-underline' to={"/creatInventory"}>
-                                                        Add Employee
+                                                        Add Inventory
                                                     </Link></button>
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                     <Link className='text-white no-underline' to={"/"}>

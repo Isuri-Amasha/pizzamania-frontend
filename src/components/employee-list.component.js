@@ -12,7 +12,7 @@ const Employee = props => (
         <td className='px-6 py-4'>{props.employee.email}</td>
         <td className='px-6 py-4'>{props.employee.address}</td>
         <td className='px-6 py-4'>{props.employee.position}</td>
-        <td>
+        <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>
@@ -103,7 +103,6 @@ export class EmployeeList extends Component {
                         <td className='px-6 py-4'>{currentemployee.position}</td>
                         <td className='flex justify-center px-6 py-4 '>
                             {
-
                                 <div class="">
                                     <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' >
                                         <Link className='text-white no-underline' to={"/editEmployee/" + currentemployee._id}>
@@ -217,7 +216,7 @@ export class EmployeeList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table className=''>
                                     <tr>
-                                        <th className=''>
+                                        <th className='drop-shadow-md'>
                                             <h3>Employee Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>
@@ -266,7 +265,6 @@ export class EmployeeList extends Component {
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
                     </div>
                 </div>
