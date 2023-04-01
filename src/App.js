@@ -54,12 +54,12 @@ function App() {
 {/* <EmployeeList/> */}
 
     <Routes>
-    
-    <Route exact path = "/employee" element = {<EmployeeList/>}/>
-    <Route exact path = "/creatEmployee" element = {<CreateEmployee/>}/>
-    <Route exact path = "/editEmployee/:id" element = {<EditEmployee/>}/>
+      
+    <Route exact path = "/employee" element = {<EmployeeList/>}/>{/* Done */}
+    <Route exact path = "/creatEmployee" element = {<CreateEmployee/>}/>{/* Done */}
+    <Route exact path = "/editEmployee/:id" element = {<EditEmployee/>}/>{/* Done */}
 
-    <Route exact path = "/customer" element = {<CustomerList/>}/>
+    <Route exact path = "/customer" element = {<CustomerList/>}/> {/* Done */}
     <Route exact path = "/creatcustomer" element = {<CreateCustomer/>}/>
     <Route exact path = "/editCustomer/:id" element = {<EditCustomer/>}/>
 
@@ -67,7 +67,7 @@ function App() {
     <Route exact path = "/creatOrder" element = {<CreateOrder/>}/>
     <Route exact path = "/editOrder/:id" element = {<EditOrder/>}/>
 
-    <Route exact path = "/inventory" element = {<InventoryList/>}/>
+    <Route exact path = "/inventory" element = {<InventoryList/>}/> {/* Done */}
     <Route exact path = "/creatInventory" element = {<CreateInventory/>}/>
     <Route exact path = "/editInventory/:id" element = {<EditInventory/>}/>
 

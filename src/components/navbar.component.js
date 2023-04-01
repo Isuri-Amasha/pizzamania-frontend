@@ -12,7 +12,7 @@ function navbar() {
           <a href="/customer" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Customer</a>
           <a href="/order" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Orders</a>
           <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Kitchen</a>
-          <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory</a>
+          <a href="/inventory" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory</a>
           <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Delivery</a>
           <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Schedules</a>
           <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Feedbacks</a>
