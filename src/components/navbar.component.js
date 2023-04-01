@@ -1,4 +1,3 @@
-import EmployeeList from './employee-list.component';
 
 function navbar() {
   return (
