@@ -44,8 +44,6 @@ function App() {
     // <Route exact path = "/editEmployee/:id" component = {EditEmployee}/>
     // </Routes>
     // </div>
-    
-   
     // </Router>
     // </div>
     <div>
@@ -82,7 +80,7 @@ function App() {
     <Route exact path = "/ongoingDelivery" element = {<OngoingDeliveryList/>}/>
     <Route exact path = "/readyDelivery" element = {<ReadyDeliveryList/>}/>
 
-    <Route exact path = "/kitchenOrder" element = {<KitchenOrderList/>}/>
+    <Route exact path = "/kitchenOrder" element = {<KitchenOrderList/>}/> {/* Done */}
 
     <Route exact path = "/inventorylistfororder" element = {<InventoryListForOrder/>}/>
     <Route exact path = "/orderInventory/${id}" element = {<InventoryOrderAddd/>} key = {InventoryList._id}/>
