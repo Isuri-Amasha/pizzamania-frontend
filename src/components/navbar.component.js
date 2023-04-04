@@ -10,12 +10,17 @@ function navbar() {
           <a href="/employee" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Employees</a>
           <a href="/customer" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Customer</a>
           <a href="/order" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Orders</a>
-          <a href="/kitchenOrder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Kitchen</a>
+          <a href="/kitchenOrder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Kitchen Orders</a>
           <a href="/inventory" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory</a>
-          <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Delivery</a>
-          <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Schedules</a>
-          <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Feedbacks</a>
-          <a href="/three" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Payments</a>
+          <a href="/product" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Product</a>
+          <a href="/inventoryorder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory Order</a>
+          <a href="/delivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Delivery</a>
+          <a href="/completedDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Completed Delivery</a>
+          <a href="/ongoingDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Ongoing Delivery</a>
+          <a href="/readyDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Ready Delivery</a>
+          <a href="/inventorylistfororder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory For Orders</a>
+          <a href="/feedback" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Feedback</a>
+
         </div>
         <div className="grid grid-cols-2 gap-1">
           <div class="flex flex-col sm:flex-row sm:text-left sm:justify-between">
