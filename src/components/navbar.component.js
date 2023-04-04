@@ -46,6 +46,7 @@ function navbar() {
             <Nav.Link href="/ongoingDelivery">Ongoing Delivery</Nav.Link>
             <Nav.Link href="/readyDelivery">Ready Delivery</Nav.Link>
             <Nav.Link href="/inventorylistfororder">Inventory For Orders</Nav.Link>
+            <Nav.Link href="/feedback">Feedback</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

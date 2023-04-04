@@ -28,6 +28,8 @@ import {ReadyDeliveryList} from './components/ready-delivery.component'
 
 import {InventoryOrderAddd} from './components/inventoryOrder-addd.component'
 
+import {Feedback, FeedbackList} from './components/feedback-list.component'
+
 function App() {
   return (
     // <div className="App">
@@ -86,6 +88,8 @@ function App() {
 
     <Route exact path = "/inventorylistfororder" element = {<InventoryListForOrder/>}/>
     <Route exact path = "/orderInventory/${id}" element = {<InventoryOrderAddd/>} key = {InventoryList._id}/>
+
+    <Route exact path = "/feedback" element = {<FeedbackList/>}/>
     </Routes>
     </Router>
 
