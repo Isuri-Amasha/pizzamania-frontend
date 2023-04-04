@@ -15,7 +15,12 @@ const Order = props => (
         <td className='px-2 py-2'>{props.order.orderFor}</td>
         <td className='px-2 py-2'>{props.order.deliveryAddress}</td>
         <td className='px-2 py-2'>{props.order.amount}</td>
-        <td className='px-2 py-2'>{props.order.orderStatus}</td>
+        <td className='px-2 py-2'>
+            <span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
+                {props.order.orderStatus}
+            </span>
+        </td>
         <td className='px-6 py-4'>
             <div class="justify-center">
                 <button className='items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>
@@ -38,7 +43,7 @@ const Order = props => (
         </td>
         <td className='px-6 py-4'>
             <div class="justify-center">
-                <button className='inline-flex px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => { props.readyForDelivery(props.order._id) }}>
+                <button className='inline-flex px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-green-500 rounded-md hover:bg-red-200' onClick={() => { props.readyForDelivery(props.order._id) }}>
                     <div class="flex gap-1 hover:text-black">
                         <div class="">
                             <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">

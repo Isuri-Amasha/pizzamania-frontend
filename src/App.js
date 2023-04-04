@@ -75,7 +75,7 @@ function App() {
     <Route exact path = "/creatProduct" element = {<CreateProduct/>}/>
 
     <Route exact path = "/inventoryorder" element = {<InventoryOrderList/>}/>
-    <Route exact path = "/creatInventoryOrder" element = {<CreateInventoryOrder/>}/>
+    <Route exact path = "/creatInventoryOrder" element = {<CreateInventoryOrder/>}/>  {/* dont edit this */}
 
     <Route exact path = "/delivery" element = {<DeliveryList/>}/>
     <Route exact path = "/completedDelivery" element = {<CompletedDeliveryList/>}/>
