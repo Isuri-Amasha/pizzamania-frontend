@@ -130,7 +130,7 @@ export class CreateEmployee extends Component {
                     })
                 }
             })
-        window.location = '/employee';
+        // window.location = '/employee';
     }
 
     clearData = () => {
