@@ -225,7 +225,7 @@ export class DeliveryList extends Component {
                 );
             }
             else {
-                window.location = '/customer';
+                window.location = '/delivery';
             }
         });
     }
@@ -286,62 +286,66 @@ export class DeliveryList extends Component {
                                             <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                 Ready For Delivery
                                             </button>
-                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.filterDeliveryReady() }}>
-                                                <Link className='text-white no-underline' to={"/"}>Download Report Here
+                                            <button
+                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                                                onClick={() => { this.filterDeliveryReady() }}
+                                            >
+                                                <Link className='text-white no-underline' to={"/"}>
+                                                    Download Report Here
                                                 </Link>
                                             </button>
                                         </div>
                                         <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                            <Link className='font-semibold text-white no-underline' to={"/creatDelivery"}>
-                                                Add Delivery Details
-                                            </Link>
-                                        </button>
-                                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                            <Link className='text-white no-underline' to={"/"}>
-                                                Download Report Here
-                                            </Link>
-                                        </button>
-                                    </div>
-                                    <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
-                                        <input
-                                            className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-                                            type="text"
-                                            placeholder="Search by Delivery details by Order ID"
-                                            aria-label="Search"
-                                            onChange={(e) => {
-                                                this.setState({
-                                                    searchDelivery: e.target.value
-                                                });
-                                            }}
-                                        />
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                <Link className='font-semibold text-white no-underline' to={"/creatDelivery"}>
+                                                    Add Delivery Details
+                                                </Link>
+                                            </button>
+                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                <Link className='text-white no-underline' to={"/"}>
+                                                    Download Report Here
+                                                </Link>
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
+                                            <input
+                                                className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+                                                type="text"
+                                                placeholder="Search by Delivery details by Order ID"
+                                                aria-label="Search"
+                                                onChange={(e) => {
+                                                    this.setState({
+                                                        searchDelivery: e.target.value
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
                         </div>
-                        <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
-                            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
-                                <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                                    <tr>
-                                        <th className="p-2 border-black tbhead ">Order Id</th>
-                                        <th className="p-2 tbhead">Customer</th>
-                                        <th className="p-2 tbhead">Delivery Address</th>
-                                        <th className="p-2 tbhead">Amount</th>
-                                        <th className="p-2 tbhead">Order Status</th>
-                                        <th className="p-2 tbhead">Assigned Employee</th>
-                                        <th className="p-2 text-center tbhead">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    {this.state.searchDelivery == "" ? this.deliveryList() : this.searchDeliveryList()}
-                                </tbody>
-                            </table>
+                            <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
+                                <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
+                                    <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                                        <tr>
+                                            <th className="p-2 border-black tbhead ">Order Id</th>
+                                            <th className="p-2 tbhead">Customer</th>
+                                            <th className="p-2 tbhead">Delivery Address</th>
+                                            <th className="p-2 tbhead">Amount</th>
+                                            <th className="p-2 tbhead">Order Status</th>
+                                            <th className="p-2 tbhead">Assigned Employee</th>
+                                            <th className="p-2 text-center tbhead">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody >
+                                        {this.state.searchDelivery == "" ? this.deliveryList() : this.searchDeliveryList()}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div >
         )
     }
