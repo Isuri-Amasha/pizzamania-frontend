@@ -12,10 +12,7 @@ const Delivery = props => (
         <td className='px-6 py-4'>{props.delivery.orderStatus}</td>
         <td className='px-6 py-4'>{props.delivery.assignedEmp}</td>
         <td className='px-6 py-4'>
-            <button ><Link to={"/editDelivery/" + props.delivery._id} >Edit</Link></button>
-            <button onClick={() => { props.deleteDelivery(props.delivery._id) }}>Delete</button>
-
-            {/* <div class="flex justify-center">
+            <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>
                         <Link className='text-white no-underline' to={"/editDelivery/" + props.delivery._id}>
@@ -45,8 +42,8 @@ const Delivery = props => (
                             </div>
                         </div>
                     </button>
-                </div> */}
-            {/* </div> */}
+                </div>
+            </div>
         </td>
     </tr>
 )
@@ -167,8 +164,6 @@ export class DeliveryList extends Component {
     }
 
     filterDeliveryReady() {
-
-
         return this.state.delivery.map((currentdelivery) => {
             if (
                 this.state.filterReady ===
@@ -277,78 +272,77 @@ export class DeliveryList extends Component {
 
     render() {
         return (
-            <div >
+            <div className="flex flex-col px-5 pt-2">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div className='items-center overflow-hidden'>                <div class="grid grid-cols-1 gap-4 content-start">
+                            <table className=''>
+                                <tr>
+                                    <th className='drop-shadow-md'>
+                                        <h3>Delivery Details</h3>
+                                    </th>
+                                    <td className='flex justify-end gap-2'>
+                                        <div class="divide-y flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
+                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                Ready For Delivery
+                                            </button>
+                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.filterDeliveryReady() }}>
+                                                <Link className='text-white no-underline' to={"/"}>Download Report Here
+                                                </Link>
+                                            </button>
+                                        </div>
+                                        <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
+                                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            <Link className='font-semibold text-white no-underline' to={"/creatDelivery"}>
+                                                Add Delivery Details
+                                            </Link>
+                                        </button>
+                                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                            <Link className='text-white no-underline' to={"/"}>
+                                                Download Report Here
+                                            </Link>
+                                        </button>
+                                    </div>
+                                    <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
+                                        <input
+                                            className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+                                            type="text"
+                                            placeholder="Search by Delivery details by Order ID"
+                                            aria-label="Search"
+                                            onChange={(e) => {
+                                                this.setState({
+                                                    searchDelivery: e.target.value
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-
-
-                <table >
-                    <tr>
-                        <th><h3>Delivery Details</h3></th>
-                        <td><button ><Link to={"/creatDelivery"}>Add Delivery Details</Link></button>
-                            <button>
-
-                                <Link to={"/"}>Download Report Here</Link></button></td>
-                    </tr>
-
-                    {/* <div >
-                    <input style={{ width: "250px", marginTop:"10px"}}
-                    class="form-control"
-                    type="text"
-                    placeholder="Search by Delivery details by Order ID"
-                    aria-label="Search"
-                    onChange={(e) => {
-                        this.setState({
-                        searchDelivery: e.target.value
-                        });
-                    }}
-                    />
-            </div> */}
-                </table>
-                <tr>
-                    <th><input style={{ width: "250px", marginTop: "10px" }}
-                        class="form-control"
-                        type="text"
-                        placeholder="Search by Delivery details by Order ID"
-                        aria-label="Search"
-                        onChange={(e) => {
-                            this.setState({
-                                searchDelivery: e.target.value
-                            });
-                        }}
-                    /></th>
-                    <td><button >Ready For Delivery</button>
-                        <button onClick={() => { this.filterDeliveryReady() }}>
-
-                            <Link to={"/"}>Download Report Here</Link></button></td>
-                </tr>
-                <table>
-
-                </table>
-
-
-
-                <table class="table table-bordered">
-                    <thead >
-                        <tr>
-                            <th className="tbhead">Order Id</th>
-                            <th className="tbhead">Customer</th>
-
-
-                            <th className="tbhead">Delivery Address</th>
-                            <th className="tbhead">Amount</th>
-                            <th className="tbhead">Order Status</th>
-                            <th className="tbhead">Assigned Employee</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.state.searchDelivery == "" ? this.deliveryList() : this.searchDeliveryList()}
-                    </tbody>
-                </table>
-
-
+                        </div>
+                        <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
+                            <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
+                                <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                                    <tr>
+                                        <th className="p-2 border-black tbhead ">Order Id</th>
+                                        <th className="p-2 tbhead">Customer</th>
+                                        <th className="p-2 tbhead">Delivery Address</th>
+                                        <th className="p-2 tbhead">Amount</th>
+                                        <th className="p-2 tbhead">Order Status</th>
+                                        <th className="p-2 tbhead">Assigned Employee</th>
+                                        <th className="p-2 text-center tbhead">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    {this.state.searchDelivery == "" ? this.deliveryList() : this.searchDeliveryList()}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
+            </div >
         )
     }
 }
