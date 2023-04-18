@@ -1,0 +1,259 @@
+import React, { Component } from 'react';
+import axios from 'axios';
+import * as Swal from "sweetalert2";
+import AuthenticationService from './AuthenticationService';
+import {withRouter} from 'react-router-dom';
+
+// import { CardContent } from '@material-ui/core';
+// import { Card } from '@material-ui/core';
+//import './home.css'
+
+export class UserLogin extends Component {
+    constructor(props) {
+        super(props);
+        this.onChangeNIC = this.onChangeNIC.bind(this);
+      
+        this.onChangepassword = this.onChangepassword.bind(this);
+       
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = {
+            NIC: '',
+           user : [],
+            password: '',
+          
+        }
+    }
+componentDidMount(){
+    axios.get('http://localhost:5000/user/')
+    .then(response => {
+        this.setState({ user: response.data })
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+}
+    onChangeNIC(e) {
+        this.setState({
+            NIC: e.target.value
+        });
+    }
+
+    
+
+    onChangepassword(e) {
+        this.setState({
+            password: e.target.value
+        });
+    }
+
+    getUserList(){
+        axios.get('http://localhost:5000/user/')
+            .then(response => {
+                this.setState({ user: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+
+    UserList() {
+
+        
+
+        return this.state.user.map((currentuser) => {
+            if (this.state.NIC == currentuser.NIC && this.state.password == currentuser.password) {
+                
+                const userRole = currentuser.userRole;
+                console.log(userRole)
+
+                AuthenticationService.successfulLogin(currentuser.NIC, currentuser.userRole)
+                console.log(currentuser.NIC, currentuser.userRole)
+                // browserHistory.push("/nav");
+                window.location = "/nav"
+
+            }
+
+        });
+    }
+
+    
+
+    onSubmit(e) {
+        e.preventDefault();
+
+        if (this.state.NIC.length < 10 || this.state.NIC.length > 12){
+
+            this.setState({nicError : "Please enter a valid NIC"})
+        }else {
+
+            // this.UserList();
+
+            this.state.user.map((currentuser) => {
+                if (this.state.NIC == currentuser.NIC && this.state.password == currentuser.password) {
+                    
+                    const userRole = currentuser.userRole;
+                    console.log(userRole)
+                    AuthenticationService.successfulLogin(currentuser.NIC, currentuser.userRole)
+                    console.log(currentuser.NIC, currentuser.userRole)
+                    // browserHistory.push("/nav");
+                   
+                    if(currentuser.userRole == "Employee Manager"){
+                        window.location = "/nav"
+                        window.location = "/employee"
+                    }
+                    else if(currentuser.userRole== "Customer Manager"){
+                        window.location = "/customer"
+                    }else if(currentuser.userRole== "Inventory Manager"){
+                        window.location = "/inventory"
+                    }else if(currentuser.userRole== "Head Chef"){
+                        window.location = "/kitchen"
+                    }else if(currentuser.userRole== "Waiter Staff"){
+                        window.location = "/order"
+                    }else if(currentuser.userRole== "Product Manager"){
+                        window.location = "/product"
+                    }else if(currentuser.userRole== "Delivery Manager"){
+                        window.location = "/delivery"
+                    }
+                    
+                }else if (this.state.NIC != currentuser.NIC || this.state.password != currentuser.password){
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Invalid Credentials',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#60e004'
+                    })
+                }
+               
+    
+            });
+
+            // const user = {
+            //     NIC: this.state.NIC,
+                
+            //     password: this.state.password
+            // }
+    
+            // console.log(user);
+
+            // this.getUserList();
+            // this.UserList();
+
+            // this.state.user.map((currentuser) => {
+            //     if (this.state.NIC == currentuser.NIC && this.state.password == currentuser.password) {
+                    
+            //         const userRole = currentuser.userRole;
+            //         console.log(userRole)
+    
+            //     }else{
+            //         console.log('No valid user')
+            //     }
+    
+            // });
+
+            
+    
+            // axios.post('http://localhost:5000/user/', user)
+            //     // .then(res => console.log("success")).catch(err=>console.log(err));
+            //     .then(res => {
+    
+            //         console.log(res);
+    
+            //         if (res.status === 200) {
+            //             this.clearData();
+            //             Swal.fire({
+            //                 icon: 'success',
+            //                 title: 'Successful',
+            //                 text: 'User has been registered!!',
+            //                 background: '#fff',
+            //                 confirmButtonColor: '#333533',
+            //                 iconColor: '#60e004'
+            //             })
+    
+            //         } else {
+            //             Swal.fire({
+            //                 icon: 'error',
+            //                 title: 'Error',
+            //                 text: 'Error in adding!',
+            //                 background: '#fff',
+            //                 confirmButtonColor: '#333533',
+            //                 iconColor: '#e00404'
+            //             })
+            //         }
+            //     })
+
+        }
+
+       
+        
+        // }
+    }
+
+    clearData = () => {
+        this.setState({
+            NIC: '',
+           
+            password: '',
+           
+        })
+    }
+
+    render() {
+        return (
+            <div className="flex flex-col px-5 pt-2 ">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div className='items-center overflow-hidden'>
+                            <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
+                                
+                                <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
+                                    
+                                    <div class="">
+                                        <p className='text-4xl font-semibold text-black uppercase'>
+                                            Sign In
+                                        </p>
+                                        
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>NIC </label>
+                                            <input type="text"
+                                                required
+                                                className="form-control "
+                                                value={this.state.NIC}
+                                                onChange={this.onChangeNIC}
+                                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nicError}</p>
+                                        </div>
+
+
+                                            
+                                            <div className="form-group">
+                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Password </label>
+                                                <input type="password"
+                                                    required
+                                                    className="form-control"
+                                                    value={this.state.password}
+                                                    onChange={this.onChangepassword}
+                                                /><p />
+                                        
+                                       
+
+                                       </div>
+
+                                        <div className="text-center align-middle form-group">
+                                            <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Sign In" />
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
