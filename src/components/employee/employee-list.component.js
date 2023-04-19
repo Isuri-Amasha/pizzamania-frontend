@@ -188,36 +188,7 @@ export class EmployeeList extends Component {
                                     <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-200'
                                         onClick={() => {
                                             //Delete the selected record
-                                            axios.delete('http://localhost:5000/employee/' + currentemployee._id).then(response => {
-                                                console.log(response.status)
-                                                // this.refreshTable();
-
-                                                if (response.status == 200) {
-                                                    Swal.fire({
-                                                        icon: 'success',
-                                                        title: 'Successful',
-                                                        text: "Employee has been deleted!!",
-                                                        background: '#fff',
-                                                        confirmButtonColor: '#0a5bf2',
-                                                        iconColor: '#60e004'
-                                                    })
-
-
-                                                }
-
-                                                else {
-                                                    Swal.fire({
-                                                        icon: 'Unsuccess',
-                                                        title: 'Unsuccessfull',
-                                                        text: "Employee has not been deleted!!",
-                                                        background: '#fff',
-                                                        confirmButtonColor: '#eb220c',
-                                                        iconColor: '#60e004'
-                                                    })
-                                                }
-
-                                                this.refreshList();
-                                            })
+                                         this.deleteEmployee(currentemployee._id)
                                         }}>
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">

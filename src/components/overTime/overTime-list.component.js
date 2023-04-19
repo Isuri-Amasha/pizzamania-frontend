@@ -62,15 +62,6 @@ export class OTList extends Component {
     constructor(props) {
         super(props);
 
-        var today = new Date(),
-
-        time = today.getHours() + ':' + today.getMinutes()  ;
-
-        const loggedUserId = AuthenticationService.loggedUserId();
-
-        // this.onChangesearchSchedule = this.onChangesearchSchedule.bind(this);
-
-
         this.deleteOT = this.deleteOT.bind(this);
         this.gotoUpdateOT = this.gotoUpdateOT.bind(this);
 
@@ -78,20 +69,9 @@ export class OTList extends Component {
             ot: [],
             searchOT: '',
             show:false,
-            currentTime:time
+            
         };
     }
-
-    // onChangesearchSchedule(date) {
-
-       
-    //     this.setState({
-    //         searchSchedule:date
-    //     });
-    //     console.log("Selected Date is" +this.searchScheduleList)
-    // }
-
-    
 
     refreshList(){
 
@@ -127,13 +107,6 @@ export class OTList extends Component {
         this.refreshList();
     }
 
-    // deleteEmployee(id) {
-    //     axios.delete('http://localhost:5000/employee/' + id)
-    //         .then(res => console.log(res.data));
-    //     this.setState({
-    //         employee: this.state.employee.filter(el => el._id !== id)
-    //     })
-    // }
 
     deleteOT(id) {
         
@@ -171,36 +144,6 @@ export class OTList extends Component {
 
 }
 
-
-clockIn(id){
-
-    
-
-    const schedule = {
-        clockIn:this.state.currentTime,
-        status: 'Clocked In'
-    }
-
-    console.log("Schedul ID is"+this.state.id);
-
-    axios.put('http://localhost:5000/workingSchedule/clockIn/' + id, schedule)
-        .then(res => console.log(res.data));
-    window.location = '/schedule';
-}
-
-clockOut(id){
-
-    const schedule = {
-        clockOut:this.state.currentTime,
-        status: 'Clocked Out'
-    }
-
-    console.log("Schedul ID is"+this.state.id);
-
-    axios.put('http://localhost:5000/workingSchedule/clockOut/' + id, schedule)
-        .then(res => console.log(res.data));
-    window.location = '/schedule';
-}
 
     otList() {
         return this.state.ot.map(currentot => {
