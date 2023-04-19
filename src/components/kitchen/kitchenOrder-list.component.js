@@ -9,9 +9,8 @@ import ViewOrder from '../order/order-view.component';
 
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+     
         <td className='px-2 py-2'>{props.order._id}</td>
-        {/* <td className='px-2 py-2'>{props.order.customer}</td> */}
         <td className='px-2 py-2'>{props.order.item1}</td>
         <td className='px-2 py-2'>{props.order.quantity1}</td>
         <td className='px-2 py-2'>{props.order.item2}</td>
@@ -19,8 +18,7 @@ const Order = props => (
         <td className='px-2 py-2'>{props.order.item3}</td>
         <td className='px-2 py-2'>{props.order.quantity3}</td>
         <td className='px-2 py-2'>{props.order.orderFor}</td>
-        {/* <td className='px-2 py-2'>{props.order.deliveryAddress}</td>
-        <td className='px-2 py-2'>{props.order.amount}</td> */}
+       
         <td className='px-2 py-2'>
       
             
@@ -167,7 +165,7 @@ export class KitchenOrderList extends Component {
     orderList() {
         return this.state.order.map(currentorder => {
             return <Order order={currentorder} gotoViewOrder={this.gotoViewOrder} updateOrderStatus={this.updateOrderStatus} readyForDelivery={this.readyForDelivery} key={currentorder._id} />
-            // return <Order order = {currentorder} readyForDelivery = {this.readyForDelivery} key = {currentorder._id}/>;
+           
         })
     }
 

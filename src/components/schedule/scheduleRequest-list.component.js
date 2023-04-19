@@ -5,13 +5,12 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
 import "react-datepicker/dist/react-datepicker.css"
-// import EditEmployee  from './employee-edit.component';
 import ScheduleRequestDetails from './scheduleRequest-details.component';
 
 
 const Schedule = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+       
 
         <td className='px-6 py-4'>{props.schedule.scheduleID}</td>
         <td className='px-6 py-4'>{props.schedule.empID}</td>
@@ -21,7 +20,8 @@ const Schedule = props => (
         <td className='px-6 py-4'>{props.schedule.changingDate.substring(0, 10)}</td>
         <td className='px-6 py-4'>{props.schedule.changingsTime}</td>
         <td className='px-6 py-4'>{props.schedule.changingeTime}</td>
-        <td className='px-6 py-4'>{props.schedule.status}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.schedule.status}</span></td>
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
@@ -192,11 +192,8 @@ export class ScheduleRequestList extends Component {
         axios.put('http://localhost:5000/scheduleRequest/status/' + id, schedule)
             .then(res => console.log(res.data));
 
-        //    window.location = './scheduleRequestLsit'
+    
     }
-
-
-
 
 
     scheduleList() {
@@ -366,12 +363,6 @@ export class ScheduleRequestList extends Component {
 
                                                     />
 
-                                                    {/* <DatePicker
-                                                            viewBox="0 0 20 40"
-                                                            required
-                                                            selected={this.state.searchSchedule}
-                                                            onChange={this.onChangesearchSchedule}
-                                                        /> */}
                                                 </div>
                                             </div>
                                         </td>
@@ -417,8 +408,7 @@ export class ScheduleRequestList extends Component {
                                             <th className="p-2 tbhead">More Details</th>
                                             <th className="p-2 tbhead">Approve</th>
                                             <th className="p-2 tbhead">Decline</th>
-                                            {/* <th className="p-2 text-center tbhead">Clock In</th>
-                                            <th className="p-2 text-center tbhead">Clock Out</th> */}
+                                            
                                         </tr>
                                     </thead>
                                     <tbody >

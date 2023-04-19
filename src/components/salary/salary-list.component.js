@@ -10,7 +10,7 @@ import { EditSalary } from './salary-edit.component';
 
 const Salary = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+       
         <td className='px-6 py-4'>{props.salary.empId}</td>
         <td className='px-6 py-4'>{props.salary.empName}</td>
         <td className='px-6 py-4'>{props.salary.basicSalary}</td>
@@ -98,13 +98,6 @@ export class SalaryList extends Component {
         this.refreshList();
     }
 
-    // deleteEmployee(id) {
-    //     axios.delete('http://localhost:5000/employee/' + id)
-    //         .then(res => console.log(res.data));
-    //     this.setState({
-    //         employee: this.state.employee.filter(el => el._id !== id)
-    //     })
-    // }
 
     deleteSalary(id) {
 

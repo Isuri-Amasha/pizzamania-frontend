@@ -207,20 +207,10 @@ export default class EditEmployee extends Component {
                                                     value={this.state.position}
                                                     onChange={this.onChangeposition}
                                                 /><p />
-                                                {/* <option>Waiter Staff</option>
-                                                    <option>Kitchen Head Chef</option>
-                                                    <option>Inventory Manager</option>
-                                                    <option>Driver</option>
-                                                    <option>Delivery Manager</option>
-                                                    <option>Employee Manager</option>
-                                                    <option>Finantial Manager</option>
-                                                    <option>Product Manager</option>
-                                                </select> */}
+                                               
                                                 <p />
                                             </div>
-                                            {/* <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Employee" />
-                                            </div> */}
+                                          
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Employee" />
                                             </div>

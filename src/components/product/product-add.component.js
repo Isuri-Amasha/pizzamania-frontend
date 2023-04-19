@@ -20,8 +20,6 @@ export class CreateProduct extends Component {
         this.onChangediscount = this.onChangediscount.bind(this);
         this.onChangeavailability = this.onChangeavailability.bind(this);
 
-        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
-
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -82,24 +80,6 @@ export class CreateProduct extends Component {
     }
 
 
-
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-
-
-    //     })
-    // }
-
     onSubmit(e) {
         e.preventDefault();
 
@@ -131,10 +111,9 @@ export class CreateProduct extends Component {
             this.setState({ priceError: "Price cannot be lesser than 500" })
         } else {
 
-            // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-            // {
+            
             axios.post('http://localhost:5000/product/', product)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+               
 
                 .then(res => {
 
@@ -163,8 +142,7 @@ export class CreateProduct extends Component {
                     }
                 })
 
-            // window.location = '/';
-            // }
+           
         }
 
     }
@@ -178,7 +156,7 @@ export class CreateProduct extends Component {
             price: '',
             discount: '',
             availability: ''
-            // orderStatus : ''
+           
         })
     }
 

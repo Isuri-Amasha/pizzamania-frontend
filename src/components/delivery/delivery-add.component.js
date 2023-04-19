@@ -13,11 +13,6 @@ export class CreateDelivery extends Component {
         
         this.deleteOrder = this.deleteOrder.bind(this);
         this.onChangedriver = this.onChangedriver.bind(this);
-        // this.onChangeproductName = this.onChangeproductName.bind(this);
-        // this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
-        // this.onChangeavailablequantity = this.onChangeavailablequantity.bind(this);
-        // this.onChangerequestedquantity = this.onChangerequestedquantity.bind(this);
-        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
         
         this.updateOrderStatus = this.updateOrderStatus.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -74,58 +69,10 @@ export class CreateDelivery extends Component {
 
         }
 
-
-    // onChangeorderStatus(e){
-    //     this.setState({
-    //     orderStatus : e.target.value
-    //     });
-    // }
-   
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-    
-            
-    //     })
-    // }
-
     deleteOrder(id){
         axios.delete('http://localhost:5000/order/' + id).then(response => {
             console.log(response.status)
-            // this.refreshTable();
-
-            // if(response.status == 200){
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Successful',
-            //         text: "Order has been deleted!!",
-            //         background: '#fff',
-            //         confirmButtonColor: '#0a5bf2',
-            //         iconColor: '#60e004'
-            //     })
-
-            //     this.refreshList();
-            // }
-            
-            // else {
-            //     Swal.fire({
-            //         icon: 'Unsuccess',
-            //         title: 'Unsuccessfull',
-            //         text: "Order has not been deleted!!",
-            //         background: '#fff',
-            //         confirmButtonColor: '#eb220c',
-            //         iconColor: '#60e004'
-            //     })
-            // }
+         
 
             
         })
@@ -147,8 +94,6 @@ export class CreateDelivery extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        // this.deleteOrder(this.state.id);
-
         this.updateOrderStatus(this.state.id);
 
         const delivery = {
@@ -167,23 +112,9 @@ export class CreateDelivery extends Component {
         }
 
         console.log(delivery);
-
-        // if(this.state.empID.length < 0){
-        //     this.setState({empIDError : "Employee ID should be longer than 0 characters."})
-        // }
-        // if(this.state.fullName.length < 6){
-        //     this.setState({nameError : "Name should be longer than 6 characters."})
-        // }
-        // if(this.state.contactNo.length != 10){
-        //     this.setState({contactNoError : "Contact Number is invalid."})
-        // }
-       
-        // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-
-
-        // {
+        
             axios.post('http://localhost:5000/delivery/', delivery)
-        // .then(res => console.log("success")).catch(err=>console.log(err));
+       
 
         .then(res => {
             
@@ -216,9 +147,6 @@ export class CreateDelivery extends Component {
             }
         })
 
-        // this.refreshList();
-        // window.location = '/';
-        // }
         
     }
 
@@ -410,9 +338,7 @@ export class CreateDelivery extends Component {
                                             </div>
                                         </div>
                                     </form>
-                                    {/* <div className="form-group">
-                                    <button onClick={() => this.demoClicked()}>Demo</button>
-                                </div> */}
+                                   
                                 </div>
                             </div>
                         </div>

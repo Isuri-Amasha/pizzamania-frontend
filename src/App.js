@@ -38,7 +38,6 @@ import { CreateOT } from './components/overTime/overTime-add.component';
 import { OTList } from './components/overTime/overTime-list.component';
 import EditOT from './components/overTime/overTime-edit.component';
 
-import { InventoryOrderAddd } from './components/inventoryOrder-addd.component'
 
 import { FeedbackList } from './components/feedback/feedback-list.component'
 import {CreateFeedback} from './components/feedback/feedback-add.component'
@@ -108,7 +107,7 @@ function App() {
           <Route exact path="/kitchenOrder" element={<KitchenOrderList />} /> {/* Done */}
 
           <Route exact path="/inventorylistfororder" element={<InventoryListForOrder />} /> {/* Done */}
-          <Route exact path="/orderInventory/${id}" element={<InventoryOrderAddd />} key={InventoryList._id} />  {/* need to check*/}
+        
 
           <Route exact path="/feedback" element={<FeedbackList />} />{/* Done */}
           <Route exact path="/creatFeedback" element={<CreateFeedback />} />{/* Done */}

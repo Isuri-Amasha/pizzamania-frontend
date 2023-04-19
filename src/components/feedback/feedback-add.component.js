@@ -36,23 +36,6 @@ export class CreateFeedback extends Component {
         });
     }
 
-    
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-
-
-    //     })
-    // }
 
     onSubmit(e) {
         e.preventDefault();
@@ -75,7 +58,7 @@ export class CreateFeedback extends Component {
             this.setState({empIDError : "Employee ID is too short"})
         }else{
         axios.post('http://localhost:5000/feedback/', feedbacks)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
+            
 
             .then(res => {
 
@@ -103,7 +86,7 @@ export class CreateFeedback extends Component {
                     })
                 }
             })
-        // window.location = '/employee';
+      
         }
     }
 

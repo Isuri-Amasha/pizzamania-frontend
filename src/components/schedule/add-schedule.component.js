@@ -5,9 +5,6 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 import TimePicker from 'react-time-picker';
 import { Button, Form, Table, ButtonGroup, Modal, Row, Col, InputGroup } from "react-bootstrap";
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
 
 export class CreateSchedule extends Component {
 
@@ -94,7 +91,7 @@ export class CreateSchedule extends Component {
         else {
 
             axios.post('http://localhost:5000/workingSchedule/', schedule)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+               
 
                 .then(res => {
 
@@ -123,8 +120,7 @@ export class CreateSchedule extends Component {
                     }
                 }).catch(err => console.log(err))
 
-        // }
-        // window.location = '/';
+       
         }
     }
 

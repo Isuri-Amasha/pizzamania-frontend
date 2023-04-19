@@ -67,10 +67,9 @@ export class CreateOT extends Component {
         }
         else {
 
-        // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-        // {
+        
         axios.post('http://localhost:5000/ot/', OT)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
+           
 
             .then(res => {
 

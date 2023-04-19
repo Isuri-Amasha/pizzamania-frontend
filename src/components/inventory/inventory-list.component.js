@@ -9,7 +9,7 @@ import EditInventory from './inventory-edit.component'
 
 const Inventory = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+       
         <td className='px-6 py-4'>{props.inventory.productID}</td>
         <td className='px-6 py-4'>{props.inventory.productName}</td>
         <td className='px-6 py-4'>{props.inventory.productCategory}</td>

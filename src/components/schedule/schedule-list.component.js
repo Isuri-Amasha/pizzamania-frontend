@@ -14,7 +14,8 @@ const Schedule = props => (
         <td className='px-6 py-4'>{props.schedule.eTime}</td>
         <td className='px-6 py-4'>{props.schedule.clockIn}</td>
         <td className='px-6 py-4'>{props.schedule.clockOut}</td>
-        <td className='px-6 py-4'>{props.schedule.status}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.schedule.status}</span></td>
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
@@ -91,7 +92,8 @@ export class ScheduleList extends Component {
                         <td className='px-6 py-4'>{currentschedule.eTime}</td>
                         <td className='px-6 py-4'>{currentschedule.clockIn}</td>
                         <td className='px-6 py-4'>{currentschedule.clockOut}</td>
-                        <td className='px-6 py-4'>{currentschedule.status}</td>
+                        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{currentschedule.status}</span></td>
                         <td className='px-6 py-4'>
                             {
                                 <div class="flex justify-center">
@@ -178,7 +180,8 @@ export class ScheduleList extends Component {
                         <td className='px-6 py-4'>{currentschedule.eTime}</td>
                         <td className='px-6 py-4'>{currentschedule.clockIn}</td>
                         <td className='px-6 py-4'>{currentschedule.clockOut}</td>
-                        <td className='px-6 py-4'>{currentschedule.status}</td>
+                        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{currentschedule.status}</span></td>
                         <td className='px-6 py-4'>
                             {
                                 <div class="">

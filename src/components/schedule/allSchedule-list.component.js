@@ -7,14 +7,13 @@ import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
-// import EditEmployee  from './employee-edit.component';
 import AuthenticationService from '../user/AuthenticationService';
 import EditSchedule from './schedule-edit.component';
 
 
 const Schedule = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+     
         <td className='px-6 py-4'>{props.schedule._id}</td>
         <td className='px-6 py-4'>{props.schedule.empID}</td>
         <td className='px-6 py-4'>{props.schedule.date.substring(0,10)}</td>
@@ -22,7 +21,8 @@ const Schedule = props => (
         <td className='px-6 py-4'>{props.schedule.eTime}</td>
         <td className='px-6 py-4'>{props.schedule.clockIn}</td>
         <td className='px-6 py-4'>{props.schedule.clockOut}</td>
-        <td className='px-6 py-4'>{props.schedule.status}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.schedule.status}</span></td>
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
@@ -74,7 +74,7 @@ export class AllScheduleList extends Component {
 
         this.clockIn = this.clockIn.bind(this);
         this.clockOut = this.clockOut.bind(this);
-        // this.onChangesearchSchedule = this.onChangesearchSchedule.bind(this);
+       
 
 
         this.deleteSchedule = this.deleteSchedule.bind(this);
@@ -87,15 +87,6 @@ export class AllScheduleList extends Component {
             currentTime:time
         };
     }
-
-    // onChangesearchSchedule(date) {
-
-       
-    //     this.setState({
-    //         searchSchedule:date
-    //     });
-    //     console.log("Selected Date is" +this.searchScheduleList)
-    // }
 
     
 
@@ -133,13 +124,6 @@ export class AllScheduleList extends Component {
         this.refreshList();
     }
 
-    // deleteEmployee(id) {
-    //     axios.delete('http://localhost:5000/employee/' + id)
-    //         .then(res => console.log(res.data));
-    //     this.setState({
-    //         employee: this.state.employee.filter(el => el._id !== id)
-    //     })
-    // }
 
     deleteSchedule(id) {
         
@@ -210,7 +194,7 @@ clockOut(id){
 
     scheduleList() {
         return this.state.schedule.map(currentschedule => {
-            return <Schedule schedule={currentschedule} clockIn={this.clockIn} gotoUpdateSchedule={this.gotoUpdateSchedule} key={currentschedule._id} />;
+            return <Schedule schedule={currentschedule} clockIn={this.clockIn} deleteSchedule = {this.deleteSchedule} gotoUpdateSchedule={this.gotoUpdateSchedule} key={currentschedule._id} />;
         })
     }
 
@@ -348,12 +332,6 @@ clockOut(id){
                                                   
                                                 />
 
-                                                        {/* <DatePicker
-                                                            viewBox="0 0 20 40"
-                                                            required
-                                                            selected={this.state.searchSchedule}
-                                                            onChange={this.onChangesearchSchedule}
-                                                        /> */}
                                             </div>
                                         </td>
                                     </tr>
@@ -372,7 +350,7 @@ clockOut(id){
                                             <th className="p-2 tbhead">Clock Out Time</th>
                                             <th className="p-2 tbhead">Status</th>
                                             <th className="p-2 text-center tbhead">Actions</th>
-                                            {/* <th className="p-2 text-center tbhead">Clock Out</th> */}
+                                            
                                         </tr>
                                     </thead>
                                     <tbody >

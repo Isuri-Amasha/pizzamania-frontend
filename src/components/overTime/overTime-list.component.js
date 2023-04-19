@@ -13,7 +13,6 @@ import EditOT from './overTime-edit.component';
 
 const OT = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
       
         <td className='px-6 py-4'>{props.ot.empID}</td>
         <td className='px-6 py-4'>{props.ot.date.substring(0,10)}</td>
@@ -283,12 +282,6 @@ export class OTList extends Component {
                                                   
                                                 />
 
-                                                        {/* <DatePicker
-                                                            viewBox="0 0 20 40"
-                                                            required
-                                                            selected={this.state.searchSchedule}
-                                                            onChange={this.onChangesearchSchedule}
-                                                        /> */}
                                             </div>
                                         </td>
                                     </tr>

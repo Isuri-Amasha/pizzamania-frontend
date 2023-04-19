@@ -8,7 +8,7 @@ import { Modal } from "react-bootstrap";
 
 const InventoryOrder = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+      
         <td className='px-6 py-4'>{props.inventoryorder._id}</td>
         <td className='px-6 py-4'>{props.inventoryorder.productID}</td>
         <td className='px-6 py-4'>{props.inventoryorder.productName}</td>

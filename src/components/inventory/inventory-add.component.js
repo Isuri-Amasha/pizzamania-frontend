@@ -11,7 +11,6 @@ export class CreateInventory extends Component {
         this.onChangeproductName = this.onChangeproductName.bind(this);
         this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
         this.onChangequantity = this.onChangequantity.bind(this);
-        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -71,7 +70,7 @@ export class CreateInventory extends Component {
             this.setState({quantityError : "Quantity can not be zero."})
         }else{
         axios.post('http://localhost:5000/inventory/', inventory)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
+        
 
             .then(res => {
                 console.log(res);

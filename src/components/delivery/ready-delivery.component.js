@@ -10,7 +10,7 @@ import { ViewReadyDelivery } from './readyDelivery-view.component';
 
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+      
         <td className='px-6 py-4'>{props.order._id}</td>
         <td className='px-6 py-4'>{props.order.customer}</td>
         <td className='px-6 py-4'>{props.order.deliveryAddress}</td>
@@ -203,73 +203,6 @@ export class ReadyDeliveryList extends Component {
     }
 
 
-    // filterDeliveryReady() {
-    //     return this.state.delivery.map((currentdelivery) => {
-    //         if (
-    //             this.state.filterReady ===
-    //             currentdelivery.orderStatus
-    //         ) {
-    //             return (
-    //                 <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-    //                     <td className='px-6 py-4'>{currentdelivery.orderId}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.customer}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.deliveryAddress}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.amount}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.orderStatus}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.assignedEmp}</td>
-
-    //                     {/* <td style={{ width: "20%" }}>
-    //                         {
-    //                         <button >
-    //                             <Link
-    //                             to={"/editDelivery/" + currentdelivery._id}
-                                
-    //                             >
-    //                             Edit
-    //                             </Link>
-    //                         </button>
-    //                         }
-    //                         {"  "}
-    //                         {
-    //                         <button
-                                
-    //                             onClick={() => {
-    //                               //Delete the selected record
-    //                             axios
-    //                                 .delete(
-    //                                 "http://localhost:5000/delivery/" + currentdelivery._id
-    //                                 )
-    //                                 .then(() => {
-    //                                 alert("Delete Success");
-    //                                   //Get data again after delete
-    //                                 axios
-    //                                     .get("http://localhost:5000/delivery")
-    //                                     .then((res) => {
-    //                                     console.log(res.data);
-    //                                     this.setState({
-    //                                         delivery: res.data,
-    //                                     });
-    //                                     })
-    //                                     .catch((err) => console.log(err));
-    //                                 })
-    //                                 .catch((err) => {
-    //                                 alert(err);
-    //                                 });
-    //                             }}
-    //                         >
-    //                             Delete
-    //                         </button>
-    //                         }
-    //                     </td> */}
-    //                 </tr>
-    //             );
-    //         }
-    //         else {
-    //             window.location = '/customer';
-    //         }
-    //     });
-    // }
-
     exportDelivery = () => {
         console.log( "Export PDF" )
 
@@ -314,72 +247,6 @@ export class ReadyDeliveryList extends Component {
         doc.autoTable( content );
         doc.save( "Completed-Delivery-list.pdf" )
     }
-
-    // searchDeliveryListByOrderId() {
-    //     return this.state.order.map((currentorder) => {
-    //         if (
-    //             this.state.searchOrderById ==
-    //             currentorder._id
-    //         ) {
-    //             return (
-    //                 <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-    //                      <td className='px-6 py-4'>{currentorder._id}</td>
-                      
-    //                     <td className='px-6 py-4'>{currentorder.item1}</td>
-    //                     <td className='px-6 py-4'>{currentorder.quantity1}</td>
-    //                     <td className='px-6 py-4'>{currentorder.item2}</td>
-    //                     <td className='px-6 py-4'>{currentorder.quantity2}</td>
-    //                     <td className='px-6 py-4'>{currentorder.item3}</td>
-    //                     <td className='px-6 py-4'>{currentorder.quantity3}</td>
-                        
-    //                     <td className='px-6 py-4'> <span
-    //             class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
-    //             {currentorder.orderStatus}
-    //         </span></td>
-    //                     <td>
-    //                     <div class="">
-    //                                 <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { this.gotoViewOrder(currentorder._id) }}>
-                                       
-    //                                         <div class=" grid grid-cols-2 gap-1">
-    //                                             <div class="">
-    //                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    //                                                     <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-    //                                                 </svg>
-    //                                             </div>
-    //                                             <div class="">
-    //                                                 View
-    //                                             </div>
-    //                                         </div>
-                                       
-    //                                 </button>
-    //                             </div>
-    //                     </td>
-    //                     <td className='flex justify-center px-6 py-4'>
-    //                         {
-    //                             <div class="">
-    //                                 <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoAssignEmp(currentorder._id) }}>
-                                       
-    //                                         <div class=" grid grid-cols-2 gap-1">
-    //                                             <div class="">
-    //                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    //                                                     <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-    //                                                 </svg>
-    //                                             </div>
-    //                                             <div class="">
-    //                                                 Assign Employee
-    //                                             </div>
-    //                                         </div>
-                                       
-    //                                 </button>
-    //                             </div>
-    //                         }
-                           
-    //                     </td>
-    //                 </tr>
-    //             );
-    //         }
-    //     });
-    // }
 
 
     render() {

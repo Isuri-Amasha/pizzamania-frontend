@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
 
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
-
 export class UserRegistration extends Component {
     constructor(props) {
         super(props);
@@ -71,7 +67,7 @@ export class UserRegistration extends Component {
             console.log(user);
 
             axios.post('http://localhost:5000/user/', user)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+                
                 .then(res => {
 
                     console.log(res);
@@ -139,8 +135,7 @@ export class UserRegistration extends Component {
                                                 onChange={this.onChangeNIC}
                                             /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nicError}</p>
                                         </div>
-                                        {/* 
-                                        <div className="grid grid-cols-2 gap-4 form-group"> */}
+                                       
                                         <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>User Role </label>
                                             <select type="text"
@@ -174,7 +169,7 @@ export class UserRegistration extends Component {
                                                     onChange={this.onChangepassword}
                                                 /><p />
                                             </div>
-                                            {/* </div> */}
+                                         
 
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Confirm Password </label>

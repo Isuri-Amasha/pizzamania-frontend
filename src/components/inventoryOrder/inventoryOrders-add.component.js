@@ -17,7 +17,7 @@ export class CreateInventoryOrder extends Component {
         this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
         this.onChangeavailablequantity = this.onChangeavailablequantity.bind(this);
         this.onChangerequestedquantity = this.onChangerequestedquantity.bind(this);
-        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
+
         
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -82,29 +82,6 @@ export class CreateInventoryOrder extends Component {
         }
 
 
-    // onChangeorderStatus(e){
-    //     this.setState({
-    //     orderStatus : e.target.value
-    //     });
-    // }
-   
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-    
-            
-    //     })
-    // }
-
     onSubmit(e){
         e.preventDefault();
 
@@ -134,7 +111,7 @@ export class CreateInventoryOrder extends Component {
             this.setState({rquantityError : "Quantity can not be zero."})
         }else{
             axios.post('http://localhost:5000/inventoryOrders/', inventoryorder)
-        // .then(res => console.log("success")).catch(err=>console.log(err));
+       
 
         .then(res => {
             
@@ -260,9 +237,7 @@ export class CreateInventoryOrder extends Component {
                                             </div>
                                         </div>
                                     </form>
-                                    {/* <div className="form-group">
-                                    <button onClick={() => this.demoClicked()}>Demo</button>
-                                </div> */}
+                                   
                                 </div>
                             </div>
                         </div>

@@ -10,9 +10,8 @@ import EditOrder from './order-edit.component';
 
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+      
         <td className='px-6 py-4'>{props.order._id}</td>
-        {/* <td className='px-6 py-4'>{props.order.customer}</td> */}
         <td className='px-6 py-4'>{props.order.item1}</td>
         <td className='px-6 py-4'>{props.order.quantity1}</td>
         <td className='px-6 py-4'>{props.order.item2}</td>
@@ -155,7 +154,7 @@ export class OrderList extends Component {
         
         axios.delete('http://localhost:5000/order/' + id).then(response => {
             console.log(response.status)
-            // this.refreshTable();
+           
 
             if(response.status == 200){
                 Swal.fire({
@@ -365,7 +364,6 @@ export class OrderList extends Component {
                                     <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                                         <tr>
                                         <th className="p-2 border-black tbhead">Order ID</th>
-                                            {/* <th className="p-2 border-black tbhead">Customer</th> */}
                                             <th className="p-2 tbhead">Item 1</th>
                                             <th className="p-2 tbhead">Quantity 1</th>
                                             <th className="p-2 tbhead">Item 2</th>

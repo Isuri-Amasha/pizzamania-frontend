@@ -171,7 +171,7 @@ export default class EditOrder extends Component {
 
         
         axios.put('http://localhost:5000/order/'+this.state.id, order)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
+           
 
             .then(res => {
 
@@ -329,15 +329,7 @@ export default class EditOrder extends Component {
                                                     onChange={this.onChangedeliveryAddress}
                                                    
                                                 /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
-                                                    {/* <option>Waiter Staff</option>
-                                                    <option>Kitchen Head Chef</option>
-                                                    <option>Inventory Manager</option>
-                                                    <option>Driver</option>
-                                                    <option>Delivery Manager</option>
-                                                    <option>Employee Manager</option>
-                                                    <option>Finantial Manager</option>
-                                                    <option>Product Manager</option>
-                                                </select> */}
+                                                   
                                                
                                             </div>
                                             </div>

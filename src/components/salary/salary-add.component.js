@@ -73,11 +73,9 @@ export class CreateSalary extends Component {
 
         }else {
 
-        // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-        // {
+      
         axios.post('http://localhost:5000/salary/', salary)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
-
+           
             .then(res => {
 
                 console.log(res);
@@ -105,7 +103,7 @@ export class CreateSalary extends Component {
                 }
             })
         }
-        // window.location = '/employee';
+     
     }
 
     clearData = () => {

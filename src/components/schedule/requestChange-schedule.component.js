@@ -21,7 +21,6 @@ export default class RequestChangeSchedule extends Component {
         this.onChangechangingDate = this.onChangechangingDate.bind(this);
         this.onChangechangingsTime = this.onChangechangingsTime.bind(this);
         this.onChangechangingeTime = this.onChangechangingeTime.bind(this);
-        // this.onChangeposition = this.onChangeposition.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -346,37 +345,7 @@ export default class RequestChangeSchedule extends Component {
                                                 
                                             </div>
 
-                                            {/* <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address</label>
-                                                <textarea type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.address}
-                                                    onChange={this.onChangeaddress}
-                                                /><p />
-                                            </div>
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Position</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.position}
-                                                    onChange={this.onChangeposition}
-                                                /><p /> */}
-                                                    {/* <option>Waiter Staff</option>
-                                                    <option>Kitchen Head Chef</option>
-                                                    <option>Inventory Manager</option>
-                                                    <option>Driver</option>
-                                                    <option>Delivery Manager</option>
-                                                    <option>Employee Manager</option>
-                                                    <option>Finantial Manager</option>
-                                                    <option>Product Manager</option>
-                                                </select> */}
-                                                {/* <p />
-                                            </div> */}
-                                            {/* <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Employee" />
-                                            </div> */}
+                                           
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Request Change" />
                                             </div>

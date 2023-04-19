@@ -21,10 +21,6 @@ export default class ScheduleRequestDetails extends Component {
         this.onChangechangingsTime = this.onChangechangingsTime.bind(this);
         this.onChangechangingeTime = this.onChangechangingeTime.bind(this);
 
-     
-        // this.onChangeposition = this.onChangeposition.bind(this);
-
-        // this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             id:props.schId,
@@ -143,9 +139,7 @@ export default class ScheduleRequestDetails extends Component {
     
     scheduledNew(scheduleID){
         const statusA = {
-            // date: this.data.changingDate,
-            // sTime:this.state.changingsTime,
-            // eTime: this.state.changingeTime,
+           
             status : "New Scheduled"
         }
         console.log("Working Schedule Updated")
@@ -165,7 +159,7 @@ export default class ScheduleRequestDetails extends Component {
         axios.put('http://localhost:5000/scheduleRequest/status/' + id, schedule)
             .then(res => console.log(res.data));
         
-        //    window.location = './scheduleRequestLsit'
+      
     }
     
     decline(id,scheduleID) {
@@ -178,66 +172,8 @@ export default class ScheduleRequestDetails extends Component {
         axios.put('http://localhost:5000/scheduleRequest/status/' + id, schedule)
             .then(res => console.log(res.data));
         
-        //    window.location = './scheduleRequestLsit'
     }
 
-   
-
-    
-
-    // onSubmit(e) {
-    //     e.preventDefault();
-
-    //     const schedule = {
-    //         scheduleId: this.state.scheduleID,
-    //         empID: this.state.empID,
-    //         date: this.state.date,
-    //         sTime: this.state.sTime,
-    //         eTime: this.state.eTime,
-    //         status: 'Pending',
-    //         changingEmpID: this.state.changingEmpID,
-    //         changingDate: this.state.changingDate,
-    //         changingsTime: this.state.changingsTime,
-    //         changingeTime: this.state.changingeTime
-           
-
-    //     }
-
-    //     console.log(schedule);
-
-
-    //     axios.post('http://localhost:5000/scheduleRequest/',schedule)
-    //         .then(res => {
-    //             console.log(res);
-
-    //             if (res.status === 200) {
-                   
-    //                 this.props.close();
-
-    //                 Swal.fire({
-    //                     icon: 'success',
-    //                     title: 'Successful',
-    //                     text: 'Schedule Request has been updated!!',
-    //                     background: '#fff',
-    //                     confirmButtonColor: '#333533',
-    //                     iconColor: '#60e004'
-    //                 })
-
-                   
-
-    //             } else {
-    //                 Swal.fire({
-    //                     icon: 'error',
-    //                     title: 'Error',
-    //                     text: 'There was an error updating!',
-    //                     background: '#fff',
-    //                     confirmButtonColor: '#333533',
-    //                     iconColor: '#e00404'
-    //                 })
-    //             }
-    //         })
-
-    // }
 
 
     render() {
@@ -366,45 +302,13 @@ export default class ScheduleRequestDetails extends Component {
                                                 </div>
                                             </div>
 
-                                            {/* <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address</label>
-                                                <textarea type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.address}
-                                                    onChange={this.onChangeaddress}
-                                                /><p />
-                                            </div>
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Position</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.position}
-                                                    onChange={this.onChangeposition}
-                                                /><p /> */}
-                                                    {/* <option>Waiter Staff</option>
-                                                    <option>Kitchen Head Chef</option>
-                                                    <option>Inventory Manager</option>
-                                                    <option>Driver</option>
-                                                    <option>Delivery Manager</option>
-                                                    <option>Employee Manager</option>
-                                                    <option>Finantial Manager</option>
-                                                    <option>Product Manager</option>
-                                                </select> */}
-                                                {/* <p />
-                                            </div> */}
-                                            {/* <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Employee" />
-                                            </div> */}
+                                           
 
                                            
                                             
                                         </form>
 
-                                         {/* <button  onClick={this.approve(id,scheduleID)}>
-                                            Approve
-                                            </button> */}
+                                        
 
 
                                     </div>

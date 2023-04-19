@@ -98,30 +98,6 @@ export class CreateOrder extends Component {
         });
     }
 
-    // onChangeorderStatus(e){
-    //     this.setState({
-    //     orderStatus : e.target.value
-    //     });
-    // }
-
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-
-
-    //     })
-    // }
-
-
 
     onSubmit(e) {
         e.preventDefault();
@@ -145,18 +121,6 @@ export class CreateOrder extends Component {
 
         console.log(order);
 
-        // axios.get('http://localhost:5000/product/')
-        // .then(response => {
-        //     this.setState({ product : response.data })
-
-        //     if(product.productName == this.state.item1){
-        //         return product.price;
-        //     }
-        // })
-        // .catch((error) => {
-        //     console.log(error);
-        // })
-
         if(this.state.customer.length < 6){
             this.setState({cusError : "Customer name is too short."})
         }
@@ -170,8 +134,7 @@ export class CreateOrder extends Component {
         }
         else{
         axios.post('http://localhost:5000/order/', order)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
-
+         
             .then(res => {
 
                 console.log(res);
@@ -215,7 +178,7 @@ export class CreateOrder extends Component {
             orderFor: '',
             deliveryAddress: '',
             amount: '',
-            // orderStatus : ''
+            
         })
     }
 

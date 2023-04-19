@@ -75,22 +75,8 @@ export class EditSalary extends Component {
 
         console.log(salary);
 
-       
-        // if(this.state.empId.length < 10 || this.state.empId.length > 10){
-        //     this.setState({empIDError : "Employee ID should be 10 characters long"})
-        // }
-        // else if(this.state.empName.length < 6){
-        //     this.setState({nameError : "Name should be longer than 6 characters."})
-        // }
-        // else if(this.state.basicSalary == 0){
-        //     this.setState({basicSalaryError : "Basic Salary Can not be zero"})
-
-        // } else if (this.state.otRate == 0) {
-        //     this.setState({ otError: "OT rate Can not be zero" })
-
-        // }else {
         axios.put('http://localhost:5000/salary/'+this.state.id, salary)
-            // .then(res => console.log("success")).catch(err=>console.log(err));
+            
 
             .then(res => {
 
@@ -118,8 +104,7 @@ export class EditSalary extends Component {
                     })
                 }
             })
-        // }
-        // window.location = '/employee';
+   
     }
 
     clearData = () => {
@@ -185,20 +170,6 @@ export class EditSalary extends Component {
                                             </div>
                                         </div>
 
-                                       
-                                            {/* <option>Waiter Staff</option>
-                                                <option>Kitchen Head Chef</option>
-                                                <option>Inventory Manager</option>
-                                                <option>Driver</option>
-                                                <option>Delivery Manager</option>
-                                                <option>Employee Manager</option>
-                                                <option>Finantial Manager</option>
-                                                <option>Product Manager</option>
-                                            </select> */}
-                                            
-                                        {/* <div className="text-center align-middle form-group">
-                                            <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Employee" />
-                                        </div> */}
                                         <div className="text-center align-middle form-group">
                                             <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Salary" />
                                         </div>

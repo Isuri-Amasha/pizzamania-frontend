@@ -4,10 +4,6 @@ import * as Swal from "sweetalert2";
 import AuthenticationService from './AuthenticationService';
 import { withRouter } from 'react-router-dom';
 
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
-
 export class UserLogin extends Component {
     constructor(props) {
         super(props);
@@ -70,7 +66,7 @@ export class UserLogin extends Component {
 
                 AuthenticationService.successfulLogin(currentuser.NIC, currentuser.userRole)
                 console.log(currentuser.NIC, currentuser.userRole)
-                // browserHistory.push("/nav");
+               
                 window.location = "/nav"
 
             }
@@ -99,6 +95,15 @@ export class UserLogin extends Component {
                     console.log(currentuser.NIC, currentuser.userRole)
                     // browserHistory.push("/nav");
 
+                    Swal.fire({
+                        icon: 'successful',
+                        title: 'Successful',
+                        text: 'Successfully Logged In',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#60e004'
+                    })
+
                     if (currentuser.userRole == "Employee Manager") {
                         window.location = "/nav"
                         window.location = "/employee"
@@ -117,82 +122,30 @@ export class UserLogin extends Component {
                         window.location = "/delivery"
                     } else if (currentuser.userRole == "Finance Manager") {
                         window.location = "/salary"
+                    } else if (currentuser.userRole == "Employee Manager") {
+                        window.location = "/employee"
                     }
 
-                } else if (this.state.NIC != currentuser.NIC || this.state.password != currentuser.password) {
+                } 
+                // else {
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Invalid Credentials',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
-                }
+                //     Swal.fire({
+                //         icon: 'error',
+                //         title: 'Error',
+                //         text: 'Invalid Credentials',
+                //         background: '#fff',
+                //         confirmButtonColor: '#333533',
+                //         iconColor: '#60e004'
+                //     })
+                // }
 
 
             });
 
-            // const user = {
-            //     NIC: this.state.NIC,
-
-            //     password: this.state.password
-            // }
-
-            // console.log(user);
-
-            // this.getUserList();
-            // this.UserList();
-
-            // this.state.user.map((currentuser) => {
-            //     if (this.state.NIC == currentuser.NIC && this.state.password == currentuser.password) {
-
-            //         const userRole = currentuser.userRole;
-            //         console.log(userRole)
-
-            //     }else{
-            //         console.log('No valid user')
-            //     }
-
-            // });
-
-
-
-            // axios.post('http://localhost:5000/user/', user)
-            //     // .then(res => console.log("success")).catch(err=>console.log(err));
-            //     .then(res => {
-
-            //         console.log(res);
-
-            //         if (res.status === 200) {
-            //             this.clearData();
-            //             Swal.fire({
-            //                 icon: 'success',
-            //                 title: 'Successful',
-            //                 text: 'User has been registered!!',
-            //                 background: '#fff',
-            //                 confirmButtonColor: '#333533',
-            //                 iconColor: '#60e004'
-            //             })
-
-            //         } else {
-            //             Swal.fire({
-            //                 icon: 'error',
-            //                 title: 'Error',
-            //                 text: 'Error in adding!',
-            //                 background: '#fff',
-            //                 confirmButtonColor: '#333533',
-            //                 iconColor: '#e00404'
-            //             })
-            //         }
-            //     })
+            
 
         }
 
-
-
-        // }
     }
 
     clearData = () => {

@@ -1,11 +1,6 @@
 import React, {Component} from 'react';
-//import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Swal from "sweetalert2";
-
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
 
 export default class EditInventory extends Component {
 

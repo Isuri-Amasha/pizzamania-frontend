@@ -9,7 +9,7 @@ import { CreateInventoryOrder } from '../inventoryOrder/inventoryOrders-add.comp
 
 const Inventory = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+       
         <td className='px-6 py-4'>{props.inventory.productID}</td>
         <td className='px-6 py-4'>{props.inventory.productName}</td>
         <td className='px-6 py-4'>{props.inventory.productCategory}</td>
@@ -31,7 +31,7 @@ const Inventory = props => (
                     
                 </button>
             </div>
-            {/* <button  onClick ={() => {props.orderInventory(props.inventory._id)}}>Order</button> */}
+           
         </td>
     </tr>
 )
@@ -126,46 +126,6 @@ export class InventoryListForOrder extends Component {
             }
         });
     }
-
-
-    // exportEmployee = () => {
-    //     console.log( "Export PDF" )
-
-
-    //     const unit = "pt";
-    //     const size = "A3"; 
-    //     const orientation = "landscape"; 
-    //     const marginLeft = 40;
-    //     const doc = new jsPDF( orientation, unit, size );
-
-    //     const title = "Employee List Report ";
-    //     const headers = [["Full Name","NIC","EMP ID","Date of Birth","Designation","Section","Address","Contact No","Emergancy No"]];
-
-    //     const emp = this.state.employee.map(
-    //         Employee=>[
-    //             Employee.fullName,
-    //             Employee.nic,
-    //             Employee.empID,
-    //             Employee.dob.substring(0,10),
-    //             Employee.designation,
-    //             Employee.section,
-    //             Employee.address,
-    //             Employee.contactNo,
-    //             Employee.emergency,
-    //         ]
-    //     );
-
-    //     let content = {
-    //         startY: 50,
-    //         head: headers,
-    //         body:emp
-    //     };
-    //     doc.setFontSize( 20 );
-    //     doc.text( title, marginLeft, 40 );
-    //     require('jspdf-autotable');
-    //     doc.autoTable( content );
-    //     doc.save( "Employee-list.pdf" )
-    // }
 
 
     render() {

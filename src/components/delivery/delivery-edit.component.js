@@ -10,12 +10,6 @@ export class EditDelivery extends Component {
     constructor(props){
         super(props);
 
-        
-        // this.deleteOrder = this.deleteOrder.bind(this);
-        // this.onChangedriver = this.onChangedriver.bind(this);
-        // this.onChangeproductName = this.onChangeproductName.bind(this);
-        // this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
-        // this.onChangeavailablequantity = this.onChangeavailablequantity.bind(this);
         this.onChangecustomer = this.onChangecustomer.bind(this);
         this.onChangeassignedEmp = this.onChangeassignedEmp.bind(this);
         
@@ -84,65 +78,6 @@ this.refreshList();
                     console.log(error);
                 })
         }
-
-
-    // onChangeorderStatus(e){
-    //     this.setState({
-    //     orderStatus : e.target.value
-    //     });
-    // }
-   
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-    
-            
-    //     })
-    // }
-
-    // deleteOrder(id){
-    //     axios.delete('http://localhost:5000/order/' + id).then(response => {
-    //         console.log(response.status)
-            // this.refreshTable();
-
-            // if(response.status == 200){
-            //     Swal.fire({
-            //         icon: 'success',
-            //         title: 'Successful',
-            //         text: "Order has been deleted!!",
-            //         background: '#fff',
-            //         confirmButtonColor: '#0a5bf2',
-            //         iconColor: '#60e004'
-            //     })
-
-            //     this.refreshList();
-            // }
-            
-            // else {
-            //     Swal.fire({
-            //         icon: 'Unsuccess',
-            //         title: 'Unsuccessfull',
-            //         text: "Order has not been deleted!!",
-            //         background: '#fff',
-            //         confirmButtonColor: '#eb220c',
-            //         iconColor: '#60e004'
-            //     })
-            // }
-
-            
-    //     })
-        
-    // }
-
     onSubmit(e){
         e.preventDefault();
 
@@ -165,22 +100,9 @@ this.refreshList();
 
         console.log(delivery);
 
-        // if(this.state.empID.length < 0){
-        //     this.setState({empIDError : "Employee ID should be longer than 0 characters."})
-        // }
-        // if(this.state.fullName.length < 6){
-        //     this.setState({nameError : "Name should be longer than 6 characters."})
-        // }
-        // if(this.state.contactNo.length != 10){
-        //     this.setState({contactNoError : "Contact Number is invalid."})
-        // }
        
-        // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-
-
-        // {
             axios.put('http://localhost:5000/delivery/'+this.state.deliveryId, delivery)
-        // .then(res => console.log("success")).catch(err=>console.log(err));
+       
 
         .then(res => {
             
@@ -209,28 +131,9 @@ this.refreshList();
             }
         })
 
-        // this.refreshList();
-        // window.location = '/';
-        // }
+        
         
     }
-
-    // clearData = () => {
-    //     this.setState({
-    //         orderId : '',
-    //         customer : '',
-    //         item1 : '',
-    //         quantity1 :'',
-    //         item2 : '',
-    //         quantity2 :'',
-    //         item3 : '',
-    //         quantity3 :'',
-    //         deliveryAddress:'',
-    //         amount:'',
-    //         orderStatus:'',
-    //         assignedEmp:''
-    //     })
-    // }
 
     
 
@@ -420,9 +323,7 @@ this.refreshList();
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Delivery" />
                                             </div>
                                     </form>
-                                    {/* <div className="form-group">
-                                    <button onClick={() => this.demoClicked()}>Demo</button>
-                                </div> */}
+                                   
                                 </div>
                             </div>
                         </div>

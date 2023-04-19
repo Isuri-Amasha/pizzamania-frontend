@@ -20,8 +20,6 @@ export class EditProduct extends Component {
         this.onChangediscount = this.onChangediscount.bind(this);
         this.onChangeavailability = this.onChangeavailability.bind(this);
 
-        // this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
-
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -101,25 +99,6 @@ export class EditProduct extends Component {
         });
     }
 
-
-
-
-    // demoClicked(){
-    //     this.setState({
-    //         fullName : "Gihan Perera",
-    //         nic : "931524475V",
-    //         empID : 32984,
-    //         dob : new Date(),
-    //         designation : "Labour",
-    //         section : "Equipment",
-    //         address : "Gampaha",
-    //         contactNo : 77564213,
-    //         emergency : 76124321,
-
-
-    //     })
-    // }
-
     onSubmit(e) {
         e.preventDefault();
 
@@ -151,7 +130,7 @@ export class EditProduct extends Component {
             this.setState({ priceError: "Price cannot be lesser than 500" })
         } else {
             axios.put('http://localhost:5000/product/' + this.state.id, product)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+               
 
                 .then(res => {
 
@@ -180,8 +159,7 @@ export class EditProduct extends Component {
                     }
                 })
 
-            // window.location = '/';
-            // }
+            
         }
 
     }
@@ -195,7 +173,7 @@ export class EditProduct extends Component {
             price: '',
             discount: '',
             availability: ''
-            // orderStatus : ''
+           
         })
     }
 

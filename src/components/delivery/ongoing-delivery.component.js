@@ -9,7 +9,7 @@ import { ViewDeliveryDetails } from './deliveryDetails-view.component';
 
 const Delivery = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+       
         <td className='px-6 py-4'>{props.delivery.orderId}</td>
         <td className='px-6 py-4'>{props.delivery.customer}</td>
         <td className='px-6 py-4'>{props.delivery.deliveryAddress}</td>
@@ -194,74 +194,6 @@ this.gotoView = this.gotoView.bind(this);
             }
         });
     }
-
-
-    // filterDeliveryReady() {
-    //     return this.state.delivery.map((currentdelivery) => {
-    //         if (
-    //             this.state.filterReady ===
-    //             currentdelivery.orderStatus
-    //         ) {
-    //             return (
-    //                 <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-    //                     <td className='px-6 py-4'>{currentdelivery.orderId}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.customer}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.deliveryAddress}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.amount}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.orderStatus}</td>
-    //                     <td className='px-6 py-4'>{currentdelivery.assignedEmp}</td>
-
-    //                     {/* <td style={{ width: "20%" }}>
-    //                         {
-    //                         <button >
-    //                             <Link
-    //                             to={"/editDelivery/" + currentdelivery._id}
-                                
-    //                             >
-    //                             Edit
-    //                             </Link>
-    //                         </button>
-    //                         }
-    //                         {"  "}
-    //                         {
-    //                         <button
-                                
-    //                             onClick={() => {
-    //                               //Delete the selected record
-    //                             axios
-    //                                 .delete(
-    //                                 "http://localhost:5000/delivery/" + currentdelivery._id
-    //                                 )
-    //                                 .then(() => {
-    //                                 alert("Delete Success");
-    //                                   //Get data again after delete
-    //                                 axios
-    //                                     .get("http://localhost:5000/delivery")
-    //                                     .then((res) => {
-    //                                     console.log(res.data);
-    //                                     this.setState({
-    //                                         delivery: res.data,
-    //                                     });
-    //                                     })
-    //                                     .catch((err) => console.log(err));
-    //                                 })
-    //                                 .catch((err) => {
-    //                                 alert(err);
-    //                                 });
-    //                             }}
-    //                         >
-    //                             Delete
-    //                         </button>
-    //                         }
-    //                     </td> */}
-    //                 </tr>
-    //             );
-    //         }
-    //         else {
-    //             window.location = '/customer';
-    //         }
-    //     });
-    // }
 
     exportDelivery = () => {
         console.log( "Export PDF" )

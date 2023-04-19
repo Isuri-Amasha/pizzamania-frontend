@@ -91,10 +91,10 @@ export default class EditOT extends Component {
             }
             else {
     
-            // else if(this.state.fullName.length >= 10  && this.state.empID.length == 4)
-            // {
+          
+           
             axios.put('http://localhost:5000/ot/'+this.state.id, OT)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+               
     
                 .then(res => {
     
@@ -123,7 +123,7 @@ export default class EditOT extends Component {
                     }
                 })
             }
-            // window.location = '/employee';
+            
         }
     
         clearData = () => {

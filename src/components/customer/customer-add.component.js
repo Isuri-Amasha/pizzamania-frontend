@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
 
-// import { CardContent } from '@material-ui/core';
-// import { Card } from '@material-ui/core';
-//import './home.css'
-
 export class CreateCustomer extends Component {
     constructor(props) {
         super(props);
@@ -72,7 +68,7 @@ export class CreateCustomer extends Component {
         }else {
 
             axios.post('http://localhost:5000/customer/', customers)
-                // .then(res => console.log("success")).catch(err=>console.log(err));
+               
                 .then(res => {
 
                     console.log(res);

@@ -10,7 +10,7 @@ import EditEmployee from './employee-edit.component';
 
 const Employee = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+     
         <td className='px-6 py-4'>{props.employee.empID}</td>
         <td className='px-6 py-4'>{props.employee.fullName}</td>
         <td className='px-6 py-4'>{props.employee.contactNo}</td>
@@ -98,14 +98,6 @@ export class EmployeeList extends Component {
         this.setState({ show: false })
         this.refreshList();
     }
-
-    // deleteEmployee(id) {
-    //     axios.delete('http://localhost:5000/employee/' + id)
-    //         .then(res => console.log(res.data));
-    //     this.setState({
-    //         employee: this.state.employee.filter(el => el._id !== id)
-    //     })
-    // }
 
     deleteEmployee(id) {
 

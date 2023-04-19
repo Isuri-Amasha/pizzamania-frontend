@@ -10,7 +10,7 @@ import { EditDelivery } from './delivery-edit.component';
 
 const Delivery = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
+   
         <td className='px-6 py-4'>{props.delivery._id}</td>
         <td className='px-6 py-4'>{props.delivery.orderId}</td>
         <td className='px-6 py-4'>{props.delivery.customer}</td>
@@ -267,83 +267,6 @@ export class DeliveryList extends Component {
         });
     }
 
-    // updateOrderStatus(id) {
-    //     const order = {
-    //         orderStatus: 'Order Processing'
-    //     }
-
-    //     axios.put('http://localhost:5000/order/status/' + id, order)
-    //         .then(res => console.log(res.data));
-    //     window.location = '/kitchenOrder';
-    // }
-
-    // filterDeliveryReady() {
-    //     return this.state.delivery.map((currentdelivery) => {
-    //         if (
-    //             this.state.filterReady ===
-    //             currentdelivery.orderStatus
-    //         ) {
-    //             return (
-    //                 <tr>
-    //                      <td style={{ width: "10%" }}>{currentdelivery._id}</td>
-    //                     <td style={{ width: "10%" }}>{currentdelivery.orderId}</td>
-    //                     <td style={{ width: "10%" }}>{currentdelivery.customer}</td>
-    //                     <td style={{ width: "10%" }}>{currentdelivery.deliveryAddress}</td>
-    //                     <td style={{ width: "10%" }}>{currentdelivery.amount}</td>
-    //                     <td style={{ width: "10%" }}>{currentdelivery.orderStatus}</td>
-
-
-    //                     {/* <td style={{ width: "20%" }}>
-    //                         {
-    //                         <button >
-    //                             <Link
-    //                             to={"/editDelivery/" + currentdelivery._id}
-
-    //                             >
-    //                             Edit
-    //                             </Link>
-    //                         </button>
-    //                         }
-    //                         {"  "}
-    //                         {
-    //                         <button
-
-    //                             onClick={() => {
-    //                               //Delete the selected record
-    //                             axios
-    //                                 .delete(
-    //                                 "http://localhost:5000/delivery/" + currentdelivery._id
-    //                                 )
-    //                                 .then(() => {
-    //                                 alert("Delete Success");
-    //                                   //Get data again after delete
-    //                                 axios
-    //                                     .get("http://localhost:5000/delivery")
-    //                                     .then((res) => {
-    //                                     console.log(res.data);
-    //                                     this.setState({
-    //                                         delivery: res.data,
-    //                                     });
-    //                                     })
-    //                                     .catch((err) => console.log(err));
-    //                                 })
-    //                                 .catch((err) => {
-    //                                 alert(err);
-    //                                 });
-    //                             }}
-    //                         >
-    //                             Delete
-    //                         </button>
-    //                         }
-    //                     </td> */}
-    //                 </tr>
-    //             );
-    //         }
-    //         else {
-    //             window.location = '/delivery';
-    //         }
-    //     });
-    // }
 
     exportDelivery = () => {
         console.log("Export PDF")
