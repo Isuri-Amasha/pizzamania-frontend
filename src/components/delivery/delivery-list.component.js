@@ -17,43 +17,43 @@ const Delivery = props => (
         <td className='px-6 py-4'>{props.delivery.deliveryAddress}</td>
         <td className='px-6 py-4'>{props.delivery.amount}</td>
         <td className='px-6 py-4'>{props.delivery.orderStatus}</td>
-      
+
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { props.gotoView(props.delivery._id) }}>
-                       
-                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
-                                </div>
-                                <div class="">
-                                    View
-                                </div>
+
+                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                            <div class="">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                </svg>
                             </div>
-                       
+                            <div class="">
+                                View
+                            </div>
+                        </div>
+
                     </button>
                 </div>
-                </div>
-                </td>
-                <td className='px-6 py-4'>
+            </div>
+        </td>
+        <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { props.gotoUpdate(props.delivery._id) }}>
-                       
-                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
-                                </div>
-                                <div class="">
-                                    Edit
-                                </div>
+
+                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                            <div class="">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                </svg>
                             </div>
-                       
+                            <div class="">
+                                Edit
+                            </div>
+                        </div>
+
                     </button>
                 </div>
                 <div class="">
@@ -79,15 +79,15 @@ export class DeliveryList extends Component {
         super(props);
 
         this.deleteDelivery = this.deleteDelivery.bind(this);
-        
+
         this.gotoView = this.gotoView.bind(this);
         this.gotoUpdate = this.gotoUpdate.bind(this);
 
         this.state = {
             delivery: [],
             searchDelivery: "",
-           display:false,
-            show:false
+            display: false,
+            show: false
         };
     }
 
@@ -96,7 +96,7 @@ export class DeliveryList extends Component {
         this.refreshList();
     }
 
-    refreshList(){
+    refreshList() {
         axios.get('http://localhost:5000/delivery/')
             .then(response => {
                 this.setState({ delivery: response.data })
@@ -112,14 +112,14 @@ export class DeliveryList extends Component {
             show: true
 
         })
-        console.log("LIst id is :" +id);
+        console.log("LIst id is :" + id);
     }
 
     //Modal box
     closeModalBoxForView = () => {
         this.setState({ show: false })
         this.refreshList();
-       
+
     }
 
     gotoUpdate = (id) => {
@@ -128,14 +128,14 @@ export class DeliveryList extends Component {
             display: true
 
         })
-        console.log("LIst id is :" +id);
+        console.log("LIst id is :" + id);
     }
 
     //Modal box
     closeModalBoxForUpdate = () => {
         this.setState({ display: false })
         this.refreshList();
-       
+
     }
 
     deleteDelivery(id) {
@@ -143,7 +143,7 @@ export class DeliveryList extends Component {
             console.log(response.status)
             // this.refreshTable();
 
-            if(response.status == 200){
+            if (response.status == 200) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
@@ -155,7 +155,7 @@ export class DeliveryList extends Component {
 
                 this.refreshList();
             }
-            
+
             else {
                 Swal.fire({
                     icon: 'Unsuccess',
@@ -167,13 +167,13 @@ export class DeliveryList extends Component {
                 })
             }
 
-            
+
         })
     }
 
     deliveryList() {
         return this.state.delivery.map(currentdelivery => {
-            return <Delivery delivery={currentdelivery} gotoView = {this.gotoView} gotoUpdate = {this.gotoUpdate} deleteDelivery={this.deleteDelivery} key={currentdelivery._id} />;
+            return <Delivery delivery={currentdelivery} gotoView={this.gotoView} gotoUpdate={this.gotoUpdate} deleteDelivery={this.deleteDelivery} key={currentdelivery._id} />;
         })
     }
 
@@ -181,61 +181,61 @@ export class DeliveryList extends Component {
 
         return this.state.delivery.map((currentdelivery) => {
             if (
-                this.state.searchDelivery ==
+                this.state.searchDelivery ===
                 currentdelivery._id
             ) {
                 return (
                     <tr>
-                         <td className='px-6 py-4'>{currentdelivery._id}</td>
+                        <td className='px-6 py-4'>{currentdelivery._id}</td>
                         <td className='px-6 py-4'>{currentdelivery.orderId}</td>
                         <td className='px-6 py-4'>{currentdelivery.customer}</td>
                         <td className='px-6 py-4'>{currentdelivery.deliveryAddress}</td>
                         <td className='px-6 py-4'>{currentdelivery.amount}</td>
                         <td className='px-6 py-4'>{currentdelivery.orderStatus}</td>
-                      
+
 
                         <td className='px-6 py-4'>
                             {
                                 <div class="flex justify-center">
-                                <div class="">
-                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { this.gotoView(currentdelivery._id) }}>
-                                    
-                                <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
+                                    <div class="">
+                                        <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { this.gotoView(currentdelivery._id) }}>
+
+                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                <div class="">
+                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="">
+                                                    View
+                                                </div>
+                                            </div>
+
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="">
-                                    View
-                                </div>
-                            </div>
-                                    
-                                </button>
-                                </div>
-                               </div> 
                             }
-                            </td>
-                            <td>
+                        </td>
+                        <td>
                             {
-                               <div class="flex justify-center">
-                               <div class="">
-                               <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-blue-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoUpdate(currentdelivery._id) }}>
-                                   
-                               <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                               <div class="">
-                                   <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                       <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                   </svg>
-                               </div>
-                               <div class="">
-                                   Edit
-                               </div>
-                           </div>
-                                   
-                               </button>
-                               </div>
-                              </div>
+                                <div class="flex justify-center">
+                                    <div class="">
+                                        <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-blue-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoUpdate(currentdelivery._id) }}>
+
+                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                <div class="">
+                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                    </svg>
+                                                </div>
+                                                <div class="">
+                                                    Edit
+                                                </div>
+                                            </div>
+
+                                        </button>
+                                    </div>
+                                </div>
                             }
                             {"  "}
                             {
@@ -244,7 +244,7 @@ export class DeliveryList extends Component {
                                         onClick={() => {
                                             //Delete the selected record
                                             this.deleteDelivery(currentdelivery._id)
-                                            
+
                                         }}>
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
@@ -290,14 +290,14 @@ export class DeliveryList extends Component {
     //                     <td style={{ width: "10%" }}>{currentdelivery.deliveryAddress}</td>
     //                     <td style={{ width: "10%" }}>{currentdelivery.amount}</td>
     //                     <td style={{ width: "10%" }}>{currentdelivery.orderStatus}</td>
-                      
+
 
     //                     {/* <td style={{ width: "20%" }}>
     //                         {
     //                         <button >
     //                             <Link
     //                             to={"/editDelivery/" + currentdelivery._id}
-                                
+
     //                             >
     //                             Edit
     //                             </Link>
@@ -306,7 +306,7 @@ export class DeliveryList extends Component {
     //                         {"  "}
     //                         {
     //                         <button
-                                
+
     //                             onClick={() => {
     //                               //Delete the selected record
     //                             axios
@@ -345,20 +345,16 @@ export class DeliveryList extends Component {
     // }
 
     exportDelivery = () => {
-        console.log( "Export PDF" )
-
-
+        console.log("Export PDF")
         const unit = "pt";
-        const size = "A3"; 
-        const orientation = "landscape"; 
+        const size = "A3";
+        const orientation = "landscape";
         const marginLeft = 40;
-        const doc = new jsPDF( orientation, unit, size );
-
+        const doc = new jsPDF(orientation, unit, size);
         const title = "Delivery List Report ";
-        const headers = [["Delivery ID","Order ID","Customer","Item 1","Quantity 1","Item 2","Quantity 2","Item 3","Quantity 3","Delivery Address","Amount","Order Status","Assigned Driver"]];
-
+        const headers = [["Delivery ID", "Order ID", "Customer", "Item 1", "Quantity 1", "Item 2", "Quantity 2", "Item 3", "Quantity 3", "Delivery Address", "Amount", "Order Status", "Assigned Driver"]];
         const del = this.state.delivery.map(
-            Delivery=>[
+            Delivery => [
                 Delivery._id,
                 Delivery.orderId,
                 Delivery.customer,
@@ -378,13 +374,13 @@ export class DeliveryList extends Component {
         let content = {
             startY: 50,
             head: headers,
-            body:del
+            body: del
         };
-        doc.setFontSize( 20 );
-        doc.text( title, marginLeft, 40 );
+        doc.setFontSize(20);
+        doc.text(title, marginLeft, 40);
         require('jspdf-autotable');
-        doc.autoTable( content );
-        doc.save( "Delivery-list.pdf" )
+        doc.autoTable(content);
+        doc.save("Delivery-list.pdf")
     }
 
 
@@ -393,49 +389,50 @@ export class DeliveryList extends Component {
             <div className="flex flex-col px-5 pt-2">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                        <div className='items-center overflow-hidden'>                <div class="grid grid-cols-1 gap-4 content-start">
-                            <table className=''>
-                                <tr>
-                                    <th className='drop-shadow-md'>
-                                        <h3>Delivery Details</h3>
-                                    </th>
-                                    <td className='flex justify-end gap-2'>
-                                       
-                                        <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                                <Link className='font-semibold text-white no-underline' to={"/creatDelivery"}>
-                                                    Add Delivery Details
-                                                </Link>
-                                            </button>
-                                            <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.exportDelivery() }}>
-                                                
-                                                    Download Report Here
-                                                
-                                            </button>
-                                        </div>
-                                        <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
-                                            <input
-                                                className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-                                                type="text"
-                                                placeholder="Search by Delivery ID"
-                                                aria-label="Search"
-                                                onChange={(e) => {
-                                                    this.setState({
-                                                        searchDelivery: e.target.value
-                                                    });
-                                                }}
-                                            />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+                        <div className='items-center overflow-hidden'>
+                            <div class="grid grid-cols-1 gap-4 content-start">
+                                <table className=''>
+                                    <tr>
+                                        <th className='drop-shadow-md'>
+                                            <h3>Delivery Details</h3>
+                                        </th>
+                                        <td className='flex justify-end gap-2'>
 
-                        </div>
+                                            <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
+                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                    <Link className='font-semibold text-white no-underline' to={"/creatDelivery"}>
+                                                        Add Delivery Details
+                                                    </Link>
+                                                </button>
+                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.exportDelivery() }}>
+
+                                                    Download Report Here
+
+                                                </button>
+                                            </div>
+                                            <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
+                                                <input
+                                                    className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+                                                    type="text"
+                                                    placeholder="Search by Delivery ID"
+                                                    aria-label="Search"
+                                                    onChange={(e) => {
+                                                        this.setState({
+                                                            searchDelivery: e.target.value
+                                                        });
+                                                    }}
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
                             <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
                                 <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
                                     <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                                         <tr>
-                                        <th className="p-2 border-black tbhead ">Delivery Id</th>
+                                            <th className="p-2 border-black tbhead ">Delivery Id</th>
                                             <th className="p-2 border-black tbhead ">Order Id</th>
                                             <th className="p-2 tbhead">Customer</th>
                                             <th className="p-2 tbhead">Delivery Address</th>
@@ -446,7 +443,7 @@ export class DeliveryList extends Component {
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        {this.state.searchDelivery == "" ? this.deliveryList() : this.searchDeliveryList()}
+                                        {this.state.searchDelivery === "" ? this.deliveryList() : this.searchDeliveryList()}
                                     </tbody>
                                 </table>
                             </div>
@@ -463,7 +460,7 @@ export class DeliveryList extends Component {
                                         </div>
                                     </Modal.Header >
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
-                                        <ViewDeliveryDetails deId={this.state.id} key={this.state.id}  />
+                                        <ViewDeliveryDetails deId={this.state.id} key={this.state.id} />
                                     </Modal.Body>
                                 </Modal>
                             </div>
