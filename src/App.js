@@ -37,11 +37,12 @@ import { SalaryList } from './components/salary/salary-list.component';
 import { CreateOT } from './components/overTime/overTime-add.component';
 import { OTList } from './components/overTime/overTime-list.component';
 import EditOT from './components/overTime/overTime-edit.component';
-
+import { InventoryOrderListKitchen } from './components/inventoryOrder/inventoryOrder-list-kitchen.component';
 
 import { FeedbackList } from './components/feedback/feedback-list.component'
 import {CreateFeedback} from './components/feedback/feedback-add.component'
 import EditFeedback from './components/feedback/feedback-edit.component'
+
 
 import { UserRegistration } from './components/user/user-registration.component';
 import {UserLogin} from './components/user/user-login.component';
@@ -130,6 +131,8 @@ function App() {
           <Route exact path="/createOT" element={<CreateOT />} />
           <Route exact path="/ot" element={<OTList />} />
           <Route exact path="/editOT/:id" element={EditOT } />
+
+          <Route exact path="/iokitchen" element={<InventoryOrderListKitchen />} />{/* Done */}
           
         </Routes>
       </Router>

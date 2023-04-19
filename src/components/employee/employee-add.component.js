@@ -76,7 +76,7 @@ export class CreateEmployee extends Component {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         if(this.state.empID.length < 10 || this.state.empID.length > 10){
-            this.setState({empIDError : "Employee ID should be longer than 0 characters."})
+            this.setState({empIDError : "Employee ID should be 10 characters."})
         }
         else if(this.state.fullName.length < 6){
             this.setState({nameError : "Name should be longer than 6 characters."})
@@ -91,7 +91,7 @@ export class CreateEmployee extends Component {
             this.setState({ addressError: "Your address is too short." })
 
         }else if (this.state.address.position < 4) {
-            this.setState({ positionError: "Your address is too short." })
+            this.setState({ positionError: "Your position is too short." })
 
         }else {
 
@@ -108,7 +108,7 @@ export class CreateEmployee extends Component {
                     Swal.fire({
                         icon: 'success',
                         title: 'Successful',
-                        text: 'Classroom has been added!!',
+                        text: 'Employee has been added!!',
                         background: '#fff',
                         confirmButtonColor: '#333533',
                         iconColor: '#60e004'
@@ -216,6 +216,7 @@ export class CreateEmployee extends Component {
                                                     value={this.state.position}
                                                     onChange={this.onChangeposition}
                                                 >
+                                                    <option>Select From Here</option>
                                                     <option>Waiter Staff</option>
                                                     <option>Kitchen Head Chef</option>
                                                     <option>Inventory Manager</option>
@@ -224,7 +225,9 @@ export class CreateEmployee extends Component {
                                                     <option>Employee Manager</option>
                                                     <option>Financial Manager</option>
                                                     <option>Product Manager</option>
-                                                </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.positionError}</p>
+                                                </select>
+                                                
+                                                <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.positionError}</p>
                                             </div>
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Employee" />

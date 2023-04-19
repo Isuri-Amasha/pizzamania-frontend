@@ -197,16 +197,29 @@ export default class EditEmployee extends Component {
                                                     className="form-control"
                                                     value={this.state.address}
                                                     onChange={this.onChangeaddress}
-                                                /><p />
+                                                />
+                                                <p />
                                             </div>
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Position</label>
-                                                <input type="text"
+                                                <select type="text"
                                                     required
                                                     className="form-control"
                                                     value={this.state.position}
                                                     onChange={this.onChangeposition}
-                                                /><p />
+                                                >
+                                                    <option>Select From Here</option>
+                                                    <option>Waiter Staff</option>
+                                                    <option>Kitchen Head Chef</option>
+                                                    <option>Inventory Manager</option>
+                                                    <option>Driver</option>
+                                                    <option>Delivery Manager</option>
+                                                    <option>Employee Manager</option>
+                                                    <option>Financial Manager</option>
+                                                    <option>Product Manager</option>
+                                                </select>
+                                                
+                                                <p />
                                                
                                                 <p />
                                             </div>

@@ -65,10 +65,10 @@ export class CreateInventory extends Component {
         }
         else if(this.state.productCategory.length <4){
             this.setState({categoryError : "Product Category cannot be shorter than 4 digits."})
-        }
-        else if(this.state.quantity != null){
+        }else if(this.state.quantity == null){
             this.setState({quantityError : "Quantity can not be zero."})
-        }else{
+        }
+       else{
         axios.post('http://localhost:5000/inventory/', inventory)
         
 
@@ -162,7 +162,7 @@ export class CreateInventory extends Component {
                                                     <div className="form-group">
                                                         <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                             Quantity                                                    </label>
-                                                        <input type="number"
+                                                        <input type="text"
                                                             className="form-control"
                                                             value={this.state.quantity}
                                                             onChange={this.onChangequantity}

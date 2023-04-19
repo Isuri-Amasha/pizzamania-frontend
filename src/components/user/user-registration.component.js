@@ -144,6 +144,7 @@ export class UserRegistration extends Component {
                                                 value={this.state.userRole}
                                                 onChange={this.onChangeuserRole}
                                             >
+                                                <option>Select From Here</option>
                                                 <option>Employee Manager</option>
                                                 <option>Customer Manager</option>
                                                 <option>Waiter Staff</option>

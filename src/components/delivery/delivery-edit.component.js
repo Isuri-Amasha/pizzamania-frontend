@@ -186,7 +186,7 @@ this.refreshList();
                                                         Customer                                                        </label>
                                                     <input type="text"
                                                         required
-                                                        
+                                                        disabled
                                                         className="form-control"
                                                         value={this.state.customer}
                                                         onChange={this.onChangecustomer}

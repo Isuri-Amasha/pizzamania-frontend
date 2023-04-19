@@ -4,7 +4,7 @@ import * as Swal from "sweetalert2";
 
 
 
-export class CreateInventoryOrder extends Component {
+export class EditInventoryOrder extends Component {
 
     
     constructor(props){
@@ -17,7 +17,7 @@ export class CreateInventoryOrder extends Component {
         this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
         this.onChangeavailablequantity = this.onChangeavailablequantity.bind(this);
         this.onChangerequestedquantity = this.onChangerequestedquantity.bind(this);
-
+        this.onChangeStatus = this.onChangeStatus.bind(this);
         
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -30,7 +30,8 @@ export class CreateInventoryOrder extends Component {
             productName : '',
             productCategory : '',
             availableQuantity : '',
-            requestedQuantity :''
+            requestedQuantity :'',
+            status:''
             
         }
     }
@@ -65,14 +66,22 @@ export class CreateInventoryOrder extends Component {
         });
     }
 
+    onChangeStatus(e){
+        this.setState({
+            status : e.target.value
+        });
+    }
+
     componentDidMount() {
-        axios.get('http://localhost:5000/inventory/'+this.state.id)
+        axios.get('http://localhost:5000/inventoryOrders/'+this.state.id)
         .then(response => {
             this.setState({
             productID : response.data.productID,
             productName : response.data.productName,
             productCategory : response.data.productCategory,
-            availableQuantity : response.data.quantity,
+            availableQuantity : response.data.availableQuantity,
+            requestedQuantity : response.data.requestedQuantity,
+            status : response.data.status,
                 })
             })
             .catch(function(error) {
@@ -91,7 +100,7 @@ export class CreateInventoryOrder extends Component {
             productCategory : this.state.productCategory,
             availableQuantity : this.state.availableQuantity,
             requestedQuantity : this.state.requestedQuantity,
-            status:'Pending'
+            status:this.state.status
         }
 
         console.log(inventoryorder);
@@ -110,7 +119,7 @@ export class CreateInventoryOrder extends Component {
         }else if(this.state.quantity != null){
             this.setState({rquantityError : "Quantity can not be zero."})
         }else{
-            axios.post('http://localhost:5000/inventoryOrders', inventoryorder)
+            axios.put('http://localhost:5000/inventoryOrders/'+this.state.id, inventoryorder)
        
 
         .then(res => {
@@ -150,7 +159,8 @@ export class CreateInventoryOrder extends Component {
             productName : '',
             productCategory : '',
             availableQuantity : '',
-            requestedQuantity:''
+            requestedQuantity:'',
+            status:''
         })
     }
 
@@ -229,6 +239,17 @@ export class CreateInventoryOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.requestedQuantity}
                                                         onChange={this.onChangerequestedquantity}
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.rquantityError}</p>
+                                                </div>
+
+                                                <div className="form-group">
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Status                                                   </label>
+                                                    <input type="text"
+                                                        className="form-control"
+                                                        disabled
+                                                        value={this.state.status}
+                                                        onChange={this.onChangeStatus}
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.rquantityError}</p>
                                                 </div>
                                            

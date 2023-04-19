@@ -130,7 +130,7 @@ export class EditProduct extends Component {
             this.setState({ priceError: "Price cannot be lesser than 500" })
         } else {
             axios.put('http://localhost:5000/product/' + this.state.id, product)
-               
+
 
                 .then(res => {
 
@@ -159,7 +159,7 @@ export class EditProduct extends Component {
                     }
                 })
 
-            
+
         }
 
     }
@@ -173,7 +173,7 @@ export class EditProduct extends Component {
             price: '',
             discount: '',
             availability: ''
-           
+
         })
     }
 
@@ -224,6 +224,7 @@ export class EditProduct extends Component {
                                                     value={this.state.productCategory}
                                                     onChange={this.onChangeproductCategory}
                                                 >
+                                                    <option>Select From Here</option>
                                                     <option>Pizza</option>
                                                     <option>Beverage</option>
 
@@ -241,6 +242,7 @@ export class EditProduct extends Component {
                                                     onChange={this.onChangeproductSize}
                                                 >
 
+                                                    <option>Select From Here</option>
                                                     <option>Small</option>
                                                     <option>Medium</option>
                                                     <option>Large</option>

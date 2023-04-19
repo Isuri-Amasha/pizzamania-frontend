@@ -86,7 +86,7 @@ export default class EditInventory extends Component {
         else if(this.state.productCategory.length <4){
             this.setState({categoryError : "Product Category cannot be shorter than 4 digits."})
         }
-        else if(this.state.quantity != null){
+        else if(this.state.quantity == null){
             this.setState({quantityError : "Quantity can not be zero."})
         }else{
 

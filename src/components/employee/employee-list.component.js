@@ -16,7 +16,8 @@ const Employee = props => (
         <td className='px-6 py-4'>{props.employee.contactNo}</td>
         <td className='px-6 py-4'>{props.employee.email}</td>
         <td className='px-6 py-4'>{props.employee.address}</td>
-        <td className='px-6 py-4'>{props.employee.position}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.employee.position}</span></td>
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
@@ -154,7 +155,8 @@ export class EmployeeList extends Component {
                         <td className='px-6 py-4'>{currentemployee.contactNo}</td>
                         <td className='px-6 py-4'>{currentemployee.email}</td>
                         <td className='px-6 py-4'>{currentemployee.address}</td>
-                        <td className='px-6 py-4'>{currentemployee.position}</td>
+                        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{currentemployee.position}</span></td>
                         <td className='flex justify-center px-6 py-4 '>
                             {
                                 <div class="">

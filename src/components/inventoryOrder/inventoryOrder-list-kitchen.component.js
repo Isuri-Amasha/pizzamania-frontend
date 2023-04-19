@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
+import { EditInventoryOrder } from './inventoryOrder-edit.component';
 
 const InventoryOrder = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -20,7 +21,7 @@ const InventoryOrder = props => (
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'onClick={() => { props.approveInventoryOrder(props.inventoryorder._id) }}>
+                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'onClick={() => { props.gotoUpdateInventoryOrders(props.inventoryorder._id) }}>
                         
                             <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                                 <div class="">
@@ -29,14 +30,14 @@ const InventoryOrder = props => (
                                     </svg>
                                 </div>
                                 <div class="">
-                                    Approve
+                                    Edit
                                 </div>
                             </div>
                         
                     </button>
                 </div>
                 <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => { props.declineInventoryOrder(props.inventoryorder._id) }}>
+                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => { props.deleteInventoryOrder(props.inventoryorder._id) }}>
                         <div class="grid grid-cols-2 gap-1 hover:text-black">
                             <div class="">
                                 <svg class="h-5 w-5 mr-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -44,7 +45,7 @@ const InventoryOrder = props => (
                                 </svg>
                             </div>
                             <div>
-                                Decline
+                                Delete
                             </div>
                         </div>
                     </button>
@@ -54,61 +55,86 @@ const InventoryOrder = props => (
     </tr>
 )
 
-export class InventoryOrderList extends Component {
+export class InventoryOrderListKitchen extends Component {
 
     constructor(props) {
         super(props);
         this.deleteInventoryOrder = this.deleteInventoryOrder.bind(this);
-        this.approveInventoryOrder = this.approveInventoryOrder.bind(this);
-        this.declineInventoryOrder = this.declineInventoryOrder.bind(this);
+        this.gotoUpdateInventoryOrders = this.gotoUpdateInventoryOrders.bind(this);
+      
         this.state = {
             inventoryorder: [],
-            searchInventoryOrder: ""
+            searchInventoryOrder: "",
+        show:''
         };
     }
 
 
     componentDidMount() {
+       this.refreshList();
+    }
+
+    refreshList(){
         axios.get('http://localhost:5000/inventoryOrders/')
-            .then(response => {
-                this.setState({ inventoryorder: response.data })
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        .then(response => {
+            this.setState({ inventoryorder: response.data })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     }
 
-    approveInventoryOrder(id) {
-        const order = {
-            status: 'Approved'
-        }
+    gotoUpdateInventoryOrders = (id) => {
+        this.setState({
+            id: id,
+            show: true
 
-        axios.put('http://localhost:5000/inventoryOrders/status/' + id, order)
-            .then(res => console.log(res.data));
-        window.location = '/inventoryorder';
+        })
+        console.log("LIst id is :" +id);
     }
 
-    declineInventoryOrder(id) {
-        const order = {
-            status: 'Declined'
-        }
-
-        axios.put('http://localhost:5000/inventoryOrders/status/' + id, order)
-            .then(res => console.log(res.data));
-        window.location = '/inventoryorder';
+    closeModalBox = () => {
+        this.setState({ show: false })
+        this.refreshList();
     }
 
     deleteInventoryOrder(id) {
         axios.delete('http://localhost:5000/inventoryOrders/' + id)
-            .then(res => console.log(res.data));
-        this.setState({
-            inventoryorder: this.state.inventoryorder.filter(el => el._id !== id)
+        .then(response => {
+            console.log(response.status)
+            // this.refreshTable();
+
+            if(response.status == 200){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successful',
+                    text: "Inventory Order has been deleted!!",
+                    background: '#fff',
+                    confirmButtonColor: '#0a5bf2',
+                    iconColor: '#60e004'
+                })
+
+                this.refreshList();
+            }
+            
+            else {
+                Swal.fire({
+                    icon: 'Unsuccess',
+                    title: 'Unsuccessfull',
+                    text: "Inventory Order has not been deleted!!",
+                    background: '#fff',
+                    confirmButtonColor: '#eb220c',
+                    iconColor: '#60e004'
+                })
+            }
+
+            
         })
     }
 
     inventoryorderList() {
         return this.state.inventoryorder.map(currentinventoryorder => {
-            return <InventoryOrder inventoryorder={currentinventoryorder} deleteInventoryOrder={this.deleteInventoryOrder} approveInventoryOrder={this.approveInventoryOrder} declineInventoryOrder={this.declineInventoryOrder} key={currentinventoryorder._id} />;
+            return <InventoryOrder inventoryorder={currentinventoryorder} deleteInventoryOrder={this.deleteInventoryOrder} gotoUpdateInventoryOrders={this.gotoUpdateInventoryOrders}  key={currentinventoryorder._id} />;
         })
     }
 
@@ -133,7 +159,7 @@ export class InventoryOrderList extends Component {
 
                         <td className='px-6 py-4'>
                             {
-                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'onClick={() => { this.approveInventoryOrder(currentinventoryorder._id) }}>
+                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'onClick={() => { this.gotoUpdateInventoryOrders(currentinventoryorder._id) }}>
                                     <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                                 <div class="">
                                     <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -141,7 +167,7 @@ export class InventoryOrderList extends Component {
                                     </svg>
                                 </div>
                                 <div class="">
-                                    Approve
+                                    Edit
                                 </div>
                             </div>
                                 </button>
@@ -150,7 +176,7 @@ export class InventoryOrderList extends Component {
                             {
                                 
 
-                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200'onClick={() => { this.declineInventoryOrder(currentinventoryorder._id) }}>
+                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200'onClick={() => { this.deleteInventoryOrder(currentinventoryorder._id) }}>
                                 <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                             <div class="">
                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -158,7 +184,7 @@ export class InventoryOrderList extends Component {
                                 </svg>
                             </div>
                             <div class="">
-                                Decline
+                                Delete
                             </div>
                         </div>
                             </button>
@@ -266,6 +292,22 @@ export class InventoryOrderList extends Component {
                                         {this.state.searchInventoryOrder == "" ? this.inventoryorderList() : this.searchInventoryOrderList()}
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="">
+                                <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
+                                    <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
+                                        <div class="">
+                                            <Modal.Title className='items-center' >
+                                                <p className='font-semibold text-black uppercase '>
+                                                    Edit Instructor
+                                                </p>
+                                            </Modal.Title>
+                                        </div>
+                                    </Modal.Header >
+                                    <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
+                                        <EditInventoryOrder ioId={this.state.id} key={this.state.id} close={this.closeModalBox} />
+                                    </Modal.Body>
+                                </Modal>
                             </div>
                         </div>
                     </div>

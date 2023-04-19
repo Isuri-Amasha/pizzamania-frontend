@@ -132,6 +132,7 @@ export class EditSalary extends Component {
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee ID </label>
                                                 <input type="text"
                                                     // required
+                                                    disabled
                                                     className="form-control"
                                                     value={this.state.empId}
                                                     onChange={this.onChangeempID}
@@ -142,6 +143,7 @@ export class EditSalary extends Component {
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Employee Name</label>
                                                 <input type="text"
                                                     required
+                                                    disabled
                                                     className="form-control"
                                                     value={this.state.empName}
                                                     onChange={this.onChangeempName}
