@@ -34,6 +34,9 @@ import { ApprovedScheduleRequestList } from './components/schedule/approvedSched
 import { DeclinedScheduleRequestList } from './components/schedule/declinedSchedule.component';
 import { CreateSalary } from './components/salary/salary-add.component';
 import { SalaryList } from './components/salary/salary-list.component';
+import { CreateOT } from './components/overTime/overTime-add.component';
+import { OTList } from './components/overTime/overTime-list.component';
+import EditOT from './components/overTime/overTime-edit.component';
 
 import { InventoryOrderAddd } from './components/inventoryOrder-addd.component'
 
@@ -125,6 +128,9 @@ function App() {
 
           <Route exact path="/createSalary" element={<CreateSalary />} />
           <Route exact path="/salary" element={<SalaryList />} />
+          <Route exact path="/createOT" element={<CreateOT />} />
+          <Route exact path="/ot" element={<OTList />} />
+          <Route exact path="/editOT/:id" element={EditOT } />
           
         </Routes>
       </Router>

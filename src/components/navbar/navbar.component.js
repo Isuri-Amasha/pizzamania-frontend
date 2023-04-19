@@ -30,7 +30,6 @@ class navbar extends Component {
     } else {
       unknownUser = true;
     }
-
     if (loggedUserRole != null && loggedUserRole === 'Employee Manager') {
       loggedAsEManager = true;
     }
@@ -77,85 +76,82 @@ class navbar extends Component {
             }
             {isUserLoggedIn &&
               <>
-                <div className="flex mb-2 sm:mb-0">
+                <div className="mb-2 sm:mb-0">
                   <a href="/" className="text-xl no-underline duration-300 text-grey-darkest hover:text-blue-dark hover:font-bold">Home</a>
                 </div>
-                <div className='flex text-lg font-light hover:text-blue-dark'>
-                  {/* logout button */}
-                  {/* <div class="flex flex-col sm:flex-row sm:text-left sm:justify-between">
-                    ass="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={this.logout}>  Log Out</button>
-                    </div> */}
+                <div className='text-lg font-light hover:text-blue-dark'>
                   {loggedAsEManager &&
                     <>
-                      <div class="">
-                        <a href="/employee" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Employees</a>
-                        <a href="/schedule" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">My Schedule</a>
-                        <a href="/allSchedule" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Schedules</a>
-                        <a href="/creatSchedule" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Add Schedule</a>
-                        <a href="/scheduleRequestLsit" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Schedule Requests</a>
+                      <div>
+                        <a href="/employee" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Employees</a>
+                        <a href="/schedule" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">My Schedule</a>
+                        <a href="/allSchedule" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Schedules</a>
+                        <a href="/creatSchedule" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Add Schedule</a>
+                        <a href="/scheduleRequestLsit" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Schedule Requests</a>
                       </div>
                     </>
                   }
 
                   {loggedAsCManager &&
-                    <div class="">
-                      <a href="/customer" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Customer</a>
+                    <div>
+                      <a href="/customer" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Customer</a>
                     </div>
                   }
 
                   {loggedAsIManager &&
                     <>
-                      <div class="">
-                        <a href="/inventory" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Inventory</a>
+                      <div>
+                        <a href="/inventory" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory</a>
                       </div>
                     </>
                   }
 
                   {loggedAsWStaff &&
                     <>
-                      <div class="">
-                        <a href="/order" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Orders</a>
-                        <a href="/feedback" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Feedback</a>
+                      <div>
+                        <a href="/order" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Orders</a>
+                        <a href="/feedback" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Feedback</a>
                       </div>
                     </>
                   }
 
                   {loggedAsHChef &&
                     <>
-                      <div class="">
-                        <a href="/kitchenOrder" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Kitchen Orders</a>
-                        <a href="/inventorylistfororder" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Order Inventory</a>
+                      <div>
+                        <a href="/kitchenOrder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Kitchen Orders</a>
+                        <a href="/inventorylistfororder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Order Inventory</a>
                       </div>
                     </>
                   }
 
                   {(loggedAsIManager || loggedAsHChef) &&
-                    <div class="">
-                      <a href="/inventoryorder" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Inventory Order</a>
+                    <div>
+                      <a href="/inventoryorder" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inventory Order</a>
                     </div>
                   }
 
                   {loggedAsPManager &&
-                    <div class="">
-                      <a href="/product" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Product</a>
+                    <div>
+                      <a href="/product" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Product</a>
                     </div>
                   }
 
                   {loggedAsDManager &&
                     <>
-                      <div class="">
-                        <a href="/delivery" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">All Deliveries</a>
-                        <a href="/readyDelivery" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Ready Delivery</a>
-                        <a href="/completedDelivery" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Completed Delivery</a>
-                        <a href="/ongoingDelivery" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Ongoing Delivery</a>
+                      <div>
+                        <a href="/delivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">All Deliveries</a>
+                        <a href="/readyDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Ready Delivery</a>
+                        <a href="/completedDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Completed Delivery</a>
+                        <a href="/ongoingDelivery" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Ongoing Delivery</a>
                       </div>
                     </>
                   }
 
                   {loggedAsFManager &&
                     <>
-                      <div class="">
-                        <a href="/salary" className="m-2 text-xl font-bold text-black no-underline duration-500 hover:text-2xl">Salary</a>
+                      <div>
+                        <a href="/salary" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Salary</a>
+                        <a href="/ot" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Over Time</a>
                       </div>
                     </>
                   }
@@ -167,8 +163,8 @@ class navbar extends Component {
               </>
             }
           </nav>
-        </div>
-      </div>
+        </div >
+      </div >
     );
   }
 }
