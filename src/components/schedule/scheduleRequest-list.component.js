@@ -15,7 +15,7 @@ const Schedule = props => (
         <td className='px-6 py-4'>{props.schedule.scheduleID}</td>
         <td className='px-6 py-4'>{props.schedule.empID}</td>
         <td className='px-6 py-4'>{props.schedule.date.substring(0, 10)}</td>
-        <td className='px-6 py-4'>{props.schedule.changingScheduleID}</td>
+        {/* <td className='px-6 py-4'>{props.schedule.changingScheduleID}</td> */}
         <td className='px-6 py-4'>{props.schedule.changingEmpID}</td>
         <td className='px-6 py-4'>{props.schedule.changingDate.substring(0, 10)}</td>
         <td className='px-6 py-4'>{props.schedule.changingsTime}</td>

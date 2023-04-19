@@ -188,7 +188,7 @@ export class CreateEmployee extends Component {
                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.contactNoError}</p>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Eamil</label>
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Email</label>
                                                     <input type="text"
                                                         required
                                                         className="form-control"

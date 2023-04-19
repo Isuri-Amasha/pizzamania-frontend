@@ -145,7 +145,7 @@ export class InventoryListForOrder extends Component {
                                                 <input
                                                     className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
                                                     type="text"
-                                                    placeholder="Search by Product ID"
+                                                    placeholder="Search by Product Name"
                                                     aria-label="Search"
                                                     onChange={(e) => {
                                                         this.setState({
