@@ -32,6 +32,8 @@ import { ScheduleRequestList } from './components/schedule/scheduleRequest-list.
 import { PendingScheduleRequestList } from './components/schedule/pendingScheduleRequest-list.component';
 import { ApprovedScheduleRequestList } from './components/schedule/approvedScheduleRequest-list.component';
 import { DeclinedScheduleRequestList } from './components/schedule/declinedSchedule.component';
+import { CreateSalary } from './components/salary/salary-add.component';
+import { SalaryList } from './components/salary/salary-list.component';
 
 import { InventoryOrderAddd } from './components/inventoryOrder-addd.component'
 
@@ -120,6 +122,9 @@ function App() {
           <Route exact path="/pendingScheduleRequestLsit" element={<PendingScheduleRequestList />} />
           <Route exact path="/approvedScheduleRequestLsit" element={<ApprovedScheduleRequestList />} />
           <Route exact path="/decliedScheduleRequestLsit" element={<DeclinedScheduleRequestList />} />
+
+          <Route exact path="/createSalary" element={<CreateSalary />} />
+          <Route exact path="/salary" element={<SalaryList />} />
           
         </Routes>
       </Router>
