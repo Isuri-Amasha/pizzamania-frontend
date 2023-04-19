@@ -15,7 +15,8 @@ const Order = props => (
         <td className='px-6 py-4'>{props.order.customer}</td>
         <td className='px-6 py-4'>{props.order.deliveryAddress}</td>
         <td className='px-6 py-4'>{props.order.amount}</td>
-        <td className='px-6 py-4'>{props.order.orderStatus}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.order.orderStatus}</span></td>
         <td className='px-6 py-4'>{props.order.assignedEmp}</td>
         <td className='px-6 py-4'>
             <div class="flex justify-center">
@@ -150,7 +151,7 @@ export class ReadyDeliveryList extends Component {
                         <td className='px-6 py-4'>{currentdorder.amount}</td>
                         <td className='px-6 py-4'>
                             <span
-                                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
+                                class="text-base inline-block whitespace-nowrap rounded-full bg-yellow-400 p-1 hover:bg-yellow-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
                                 {currentdorder.orderStatus}
                             </span>
                         </td>
