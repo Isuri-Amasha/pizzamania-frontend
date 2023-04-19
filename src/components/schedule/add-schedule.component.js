@@ -145,7 +145,7 @@ export class CreateSchedule extends Component {
                                     <form className='px-12 py-3 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
                                         <div class="mt-3">
                                             <p className='text-4xl font-semibold text-black uppercase drop-shadow-lg'>
-                                                Add Instructor
+                                                Add Schedule
                                             </p>
                                             <div className="grid grid-cols-2 gap-4 form-group">
 
