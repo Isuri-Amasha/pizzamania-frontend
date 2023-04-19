@@ -116,7 +116,7 @@ componentDidMount(){
                     }else if(currentuser.userRole== "Delivery Manager"){
                         window.location = "/delivery"
                     }else if(currentuser.userRole== "Finance Manager"){
-                        window.location = "/createSalary"
+                        window.location = "/salary"
                     }
                     
                 }else if (this.state.NIC != currentuser.NIC || this.state.password != currentuser.password){
