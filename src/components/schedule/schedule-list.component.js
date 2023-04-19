@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
-// import EditEmployee  from './employee-edit.component';
 import AuthenticationService from '../user/AuthenticationService';
-import RequestChangeSchedule from'./requestChange-schedule.component';
-
+import RequestChangeSchedule from './requestChange-schedule.component';
 
 const Schedule = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-        {/* <td>{props.employee._id}</td> */}
         <td className='px-6 py-4'>{props.schedule._id}</td>
         <td className='px-6 py-4'>{props.schedule.date.substring(0, 10)}</td>
         <td className='px-6 py-4'>{props.schedule.sTime}</td>
@@ -24,18 +19,16 @@ const Schedule = props => (
             <div class="flex justify-center">
                 <div class="">
                     <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'>
-                        
-                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
-                                </div>
-                                <div class="">
-                                    Edit
-                                </div>
+                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                            <div class="">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                </svg>
                             </div>
-                       
+                            <div class="">
+                                Edit
+                            </div>
+                        </div>
                     </button>
                 </div>
                 <div class="">
@@ -61,33 +54,20 @@ export class ScheduleList extends Component {
 
     constructor(props) {
         super(props);
-
         var today = new Date(),
-
-        time = today.getHours() + ':' + today.getMinutes()  ;
-
+            time = today.getHours() + ':' + today.getMinutes();
         const loggedUserId = AuthenticationService.loggedUserId();
-
-
         this.clockIn = this.clockIn.bind(this);
         this.clockOut = this.clockOut.bind(this);
-
-
-        // this.deleteEmployee = this.deleteEmployee.bind(this);
-        // this.gotoUpdateEmployee = this.gotoUpdateEmployee.bind(this);
-
         this.state = {
             schedule: [],
             searchSchedule: loggedUserId,
-            show:false,
-            currentTime:time
+            show: false,
+            currentTime: time
         };
     }
 
-    
-
-    refreshList(){
-
+    refreshList() {
         axios.get('http://localhost:5000/workingSchedule/')
             .then(response => {
                 this.setState({ schedule: response.data })
@@ -95,195 +75,99 @@ export class ScheduleList extends Component {
             .catch((error) => {
                 console.log(error);
             })
-        
     }
 
-    employeeScheduler(){
-        
-            return this.state.schedule.map((currentschedule) => {
-                if (
-                    this.state.searchSchedule ==
-                    currentschedule.empID
-                ) {
-                    return (
-                        <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                            <td className='px-6 py-4'>{currentschedule._id}</td>
-                            <td className='px-6 py-4'>{currentschedule.date.substring(0, 10)}</td>
-                            <td className='px-6 py-4'>{currentschedule.sTime}</td>
-                            <td className='px-6 py-4'>{currentschedule.eTime}</td>
-                            <td className='px-6 py-4'>{currentschedule.clockIn}</td>
-                            <td className='px-6 py-4'>{currentschedule.clockOut}</td>
-                            <td className='px-6 py-4'>{currentschedule.status}</td>
-                           
-                            {/* <td className='flex justify-center px-6 py-4 '>
-                                {
+    employeeScheduler() {
+        return this.state.schedule.map((currentschedule) => {
+            if (
+                this.state.searchSchedule ===
+                currentschedule.empID
+            ) {
+                return (
+                    <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                        <td className='px-6 py-4'>{currentschedule._id}</td>
+                        <td className='px-6 py-4'>{currentschedule.date.substring(0, 10)}</td>
+                        <td className='px-6 py-4'>{currentschedule.sTime}</td>
+                        <td className='px-6 py-4'>{currentschedule.eTime}</td>
+                        <td className='px-6 py-4'>{currentschedule.clockIn}</td>
+                        <td className='px-6 py-4'>{currentschedule.clockOut}</td>
+                        <td className='px-6 py-4'>{currentschedule.status}</td>
+                        <td className='px-6 py-4'>
+                            {
+                                <div class="flex justify-center">
                                     <div class="">
-                                        <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.updateDeliveryStatus(currentdelivery._id) }}>
-                                            
-                                                <div class=" grid grid-cols-2 gap-1">
-                                                    <div class="">
-                                                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                                        </svg>
-                                                    </div>
-                                                    <div class="">
-                                                        Delivery Completed
-                                                    </div>
+                                        <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' >
+                                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                                <div class="">
+                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                    </svg>
                                                 </div>
-                                            
+                                                <div class="">
+                                                    View
+                                                </div>
+                                            </div>
                                         </button>
                                     </div>
-                                }
-                            </td> */}
-                            <td className='px-6 py-4'>
-                                {
-                                    <div class="flex justify-center">
-                                    <div class="">
-                                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' >
-                                        
-                                    <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                    <div class="">
-                                        <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="">
-                                        View
-                                    </div>
                                 </div>
-                                        
-                                    </button>
-                                    </div>
-                                   </div> 
-                                }
-                                </td>
-                        </tr>
-                    );
-                }
-            });
-        
-    
+                            }
+                        </td>
+                    </tr>
+                );
+            }
+        });
     }
-
 
     componentDidMount() {
-       this.refreshList();
+        this.refreshList();
     }
 
-    // gotoUpdateEmployee = (id) => {
-    //     this.setState({
-    //         id: id,
-    //         show: true
-
-    //     })
-    //     console.log("LIst id is :" +id);
-    // }
-
-    // //Modal box
-    // closeModalBox = () => {
-    //     this.setState({ show: false })
-    //     this.refreshList();
-    // }
-
-    // deleteEmployee(id) {
-    //     axios.delete('http://localhost:5000/employee/' + id)
-    //         .then(res => console.log(res.data));
-    //     this.setState({
-    //         employee: this.state.employee.filter(el => el._id !== id)
-    //     })
-    // }
-
-//     deleteEmployee(id) {
-        
-//         axios.delete('http://localhost:5000/employee/' + id).then(response => {
-//             console.log(response.status)
-//             // this.refreshTable();
-
-//             if(response.status == 200){
-//                 Swal.fire({
-//                     icon: 'success',
-//                     title: 'Successful',
-//                     text: "Employee has been deleted!!",
-//                     background: '#fff',
-//                     confirmButtonColor: '#0a5bf2',
-//                     iconColor: '#60e004'
-//                 })
-
-//                 this.refreshList();
-//             }
-            
-//             else {
-//                 Swal.fire({
-//                     icon: 'Unsuccess',
-//                     title: 'Unsuccessfull',
-//                     text: "Employee has not been deleted!!",
-//                     background: '#fff',
-//                     confirmButtonColor: '#eb220c',
-//                     iconColor: '#60e004'
-//                 })
-//             }
-
-            
-//         })
-        
-
-// }
-clockIn(id){
-
-    
-
-    const schedule = {
-        clockIn:this.state.currentTime,
-        status: 'Clocked In'
+    clockIn(id) {
+        const schedule = {
+            clockIn: this.state.currentTime,
+            status: 'Clocked In'
+        }
+        console.log("Schedul ID is" + this.state.id);
+        axios.put('http://localhost:5000/workingSchedule/clockIn/' + id, schedule)
+            .then(res => console.log(res.data));
+        window.location = '/schedule';
     }
 
-    console.log("Schedul ID is"+this.state.id);
-
-    axios.put('http://localhost:5000/workingSchedule/clockIn/' + id, schedule)
-        .then(res => console.log(res.data));
-    window.location = '/schedule';
-}
-
-clockOut(id){
-
-    const schedule = {
-        clockOut:this.state.currentTime,
-        status: 'Clocked Out'
+    clockOut(id) {
+        const schedule = {
+            clockOut: this.state.currentTime,
+            status: 'Clocked Out'
+        }
+        console.log("Schedul ID is" + this.state.id);
+        axios.put('http://localhost:5000/workingSchedule/clockOut/' + id, schedule)
+            .then(res => console.log(res.data));
+        window.location = '/schedule';
     }
 
-    console.log("Schedul ID is"+this.state.id);
+    gotoRequestChange = (id) => {
+        this.setState({
+            id: id,
+            show: true
+        })
+        console.log("LIst id is :" + id);
+    }
 
-    axios.put('http://localhost:5000/workingSchedule/clockOut/' + id, schedule)
-        .then(res => console.log(res.data));
-    window.location = '/schedule';
-}
-
-gotoRequestChange = (id) => {
-    this.setState({
-        id: id,
-        show: true
-
-    })
-    console.log("LIst id is :" +id);
-}
-
-//Modal box
-closeModalBox = () => {
-    this.setState({ show: false })
-    this.refreshList();
-}
-
+    //Modal box
+    closeModalBox = () => {
+        this.setState({ show: false })
+        this.refreshList();
+    }
 
     scheduleList() {
         return this.state.schedule.map(currentschedule => {
-            return <Schedule schedule={currentschedule} clockIn={this.clockIn}  key={currentschedule._id} />;
+            return <Schedule schedule={currentschedule} clockIn={this.clockIn} key={currentschedule._id} />;
         })
     }
 
     searchScheduleList() {
         return this.state.schedule.map((currentschedule) => {
             if (
-                this.state.searchSchedule ==
+                this.state.searchSchedule ===
                 currentschedule.empID
             ) {
                 return (
@@ -299,28 +183,25 @@ closeModalBox = () => {
                             {
                                 <div class="">
                                     <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.clockIn(currentschedule._id) }}>
-                                       
-                                            <div class=" grid grid-cols-2 gap-1">
-                                                <div class="">
-                                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                                    </svg>
-                                                </div>
-                                                <div class="">
-                                                    Clock In
-                                                </div>
+                                        <div class=" grid grid-cols-2 gap-1">
+                                            <div class="">
+                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
+                                                </svg>
                                             </div>
-                                      
+                                            <div class="">
+                                                Clock In
+                                            </div>
+                                        </div>
                                     </button>
                                 </div>
                             }
-                            </td>
-                            <td className='px-6 py-4'>
+                        </td>
+                        <td className='px-6 py-4'>
                             {
                                 <div class="">
                                     <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-200' onClick={() => { this.clockOut(currentschedule._id) }}
-                                        
-                                        >
+                                    >
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -335,13 +216,11 @@ closeModalBox = () => {
                                 </div>
                             }
                         </td>
-
                         <td className='px-6 py-4'>
                             {
                                 <div class="">
                                     <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-200' onClick={() => { this.gotoRequestChange(currentschedule._id) }}
-                                        
-                                        >
+                                    >
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -362,22 +241,17 @@ closeModalBox = () => {
         });
     }
 
-
     exportSchedule = () => {
-        console.log( "Export PDF" )
-
-
+        console.log("Export PDF")
         const unit = "pt";
-        const size = "A3"; 
-        const orientation = "landscape"; 
+        const size = "A3";
+        const orientation = "landscape";
         const marginLeft = 40;
-        const doc = new jsPDF( orientation, unit, size );
-
+        const doc = new jsPDF(orientation, unit, size);
         const title = "Schedule List Report ";
-        const headers = [["Schedule ID","Employee ID","Date","Start Time","End Time","Clock In","Clock Out","Status"]];
-
+        const headers = [["Schedule ID", "Employee ID", "Date", "Start Time", "End Time", "Clock In", "Clock Out", "Status"]];
         const sch = this.state.schedule.map(
-            Schedule=>[
+            Schedule => [
                 Schedule._id,
                 Schedule.empID,
                 Schedule.date,
@@ -388,16 +262,16 @@ closeModalBox = () => {
                 Schedule.status
             ]
         );
-
         let content = {
             startY: 50,
             head: headers,
-            body:sch        };
-        doc.setFontSize( 20 );
-        doc.text( title, marginLeft, 40 );
+            body: sch
+        };
+        doc.setFontSize(20);
+        doc.text(title, marginLeft, 40);
         require('jspdf-autotable');
-        doc.autoTable( content );
-        doc.save( "Schedule-list.pdf" )
+        doc.autoTable(content);
+        doc.save("Schedule-list.pdf")
     }
 
     render() {
@@ -414,11 +288,9 @@ closeModalBox = () => {
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                               
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportSchedule()}>
-                                                  
-                                                        Download Report Here
-                                                    </button>
+                                                    Download Report Here
+                                                </button>
                                             </div>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
                                                 <input
@@ -454,7 +326,7 @@ closeModalBox = () => {
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        {this.state.searchSchedule == "" ? this.scheduleList() : this.searchScheduleList()}
+                                        {this.state.searchSchedule === "" ? this.scheduleList() : this.searchScheduleList()}
                                     </tbody>
                                 </table>
                             </div>
@@ -477,7 +349,6 @@ closeModalBox = () => {
                         </div>
                     </div>
                 </div>
-                
             </div>
         )
     }
