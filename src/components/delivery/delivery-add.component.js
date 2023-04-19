@@ -197,7 +197,7 @@ export class CreateDelivery extends Component {
                 this.clearData();
                 Swal.fire({
                     icon: 'success',
-                    title: 'Your Delivery ID is' +id,
+                    title: 'Your Delivery ID is ' +id,
                     text: 'Delivery has been added Successfully!!',
                     background: '#fff',
                     confirmButtonColor: '#333533',
@@ -366,6 +366,7 @@ export class CreateDelivery extends Component {
                                                         Delivery Address                                                    </label>
                                                     <input type="text"
                                                         className="form-control"
+                                                        disabled
                                                         value={this.state.deliveryAddress}
                                                         
                                                     />
@@ -375,6 +376,7 @@ export class CreateDelivery extends Component {
                                                         Amount                                                    </label>
                                                     <input type="text"
                                                         className="form-control"
+                                                        disabled
                                                         value={this.state.amount}
                                                         
                                                     />
@@ -386,6 +388,7 @@ export class CreateDelivery extends Component {
                                                         Status                                                    </label>
                                                     <input type="text"
                                                         className="form-control"
+                                                        disabled
                                                         value={this.state.orderStatus}
                                                         
                                                     />

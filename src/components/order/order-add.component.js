@@ -168,9 +168,7 @@ export class CreateOrder extends Component {
         }else if(this.state.orderFor.length < 5){
             this.setState({orderForError : "Order For is too short."})
         }
-        else if(this.state.deliveryAddress.length < 5){
-            this.setState({deliveryAddressError : "Delivery Address is too short"})
-        }else{
+        else{
         axios.post('http://localhost:5000/order/', order)
             // .then(res => console.log("success")).catch(err=>console.log(err));
 

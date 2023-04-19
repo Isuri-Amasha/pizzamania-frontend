@@ -223,7 +223,7 @@ export class CreateEmployee extends Component {
                                                     <option>Driver</option>
                                                     <option>Delivery Manager</option>
                                                     <option>Employee Manager</option>
-                                                    <option>Finantial Manager</option>
+                                                    <option>Financial Manager</option>
                                                     <option>Product Manager</option>
                                                 </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.positionError}</p>
                                             </div>

@@ -16,7 +16,8 @@ const Delivery = props => (
         <td className='px-6 py-4'>{props.delivery.customer}</td>
         <td className='px-6 py-4'>{props.delivery.deliveryAddress}</td>
         <td className='px-6 py-4'>{props.delivery.amount}</td>
-        <td className='px-6 py-4'>{props.delivery.orderStatus}</td>
+        <td className='px-6 py-4'><span
+                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">{props.delivery.orderStatus}</span></td>
 
         <td className='px-6 py-4'>
             <div class="flex justify-center">
