@@ -2,16 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
 
-
-
 export class CreateProduct extends Component {
-
-
     constructor(props) {
         super(props);
-
-
-
         this.onChangeproductID = this.onChangeproductID.bind(this);
         this.onChangeproductName = this.onChangeproductName.bind(this);
         this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
@@ -19,12 +12,7 @@ export class CreateProduct extends Component {
         this.onChangeprice = this.onChangeprice.bind(this);
         this.onChangediscount = this.onChangediscount.bind(this);
         this.onChangeavailability = this.onChangeavailability.bind(this);
-
-
         this.onSubmit = this.onSubmit.bind(this);
-
-
-
         this.state = {
             productID: '',
             productName: '',
@@ -33,7 +21,6 @@ export class CreateProduct extends Component {
             price: '',
             discount: '',
             availability: ''
-
         }
     }
 
@@ -79,10 +66,8 @@ export class CreateProduct extends Component {
         });
     }
 
-
     onSubmit(e) {
         e.preventDefault();
-
         const product = {
             productID: this.state.productID,
             productName: this.state.productName,
@@ -111,14 +96,9 @@ export class CreateProduct extends Component {
             this.setState({ priceError: "Price cannot be lesser than 500" })
         } else {
 
-
             axios.post('http://localhost:5000/product/', product)
-
-
                 .then(res => {
-
                     console.log(res);
-
                     if (res.status === 200) {
                         this.clearData();
                         Swal.fire({
@@ -129,7 +109,6 @@ export class CreateProduct extends Component {
                             confirmButtonColor: '#333533',
                             iconColor: '#60e004'
                         })
-
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -141,10 +120,7 @@ export class CreateProduct extends Component {
                         })
                     }
                 })
-
-
         }
-
     }
 
     clearData = () => {
@@ -156,129 +132,129 @@ export class CreateProduct extends Component {
             price: '',
             discount: '',
             availability: ''
-
         })
     }
 
-
-
-
-
-
-
     render() {
         return (
-            <div >
+            <div className="flex flex-col px-5 pt-2 ">
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div className='items-center overflow-hidden'>
+                            <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
+                                <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
+                                    <div class="">
+                                        <p className='text-4xl font-semibold text-black uppercase'>
+                                            Add Product
+                                        </p>
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product ID</label>
+                                            <input type="text"
+                                                required
+                                                placeholder='P00x'
+                                                className="form-control"
+                                                value={this.state.productID}
+                                                onChange={this.onChangeproductID}
+                                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.proIDError}</p>
+                                        </div>
 
-                <div>
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product Name</label>
+                                            <input type="text"
+                                                required
+                                                className="form-control"
+                                                value={this.state.productName}
+                                                onChange={this.onChangeproductName}
+                                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nameError}</p>
 
-                    <h3 >Add Product</h3>
+                                        </div>
 
-                    <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label>Product ID</label>
-                            <input type="text"
-                                required
-                                className="form-control"
-                                value={this.state.productID}
-                                onChange={this.onChangeproductID}
-                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.proIDError}</p>
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product Category</label>
+                                            <select type="text"
+                                                required
+                                                className="form-control"
+                                                value={this.state.productCategory}
+                                                onChange={this.onChangeproductCategory}
+                                            >
+                                                <option>Select Category</option>
+                                                <option>Pizza</option>
+                                                <option>Beverage</option>
+                                                <option>Other</option>
 
+                                            </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.productCategoryError}</p>
+
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product Size</label>
+                                            <select type="text"
+
+                                                className="form-control"
+                                                value={this.state.productSize}
+                                                onChange={this.onChangeproductSize}
+                                            >
+
+                                                <option>Select From Here</option>
+                                                <option>Small</option>
+                                                <option>Medium</option>
+                                                <option>Large</option>
+
+                                            </select>
+
+                                            <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.productSizeError}</p>
+
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Price (LKR)</label>
+                                            <input type="number"
+                                                placeholder='2700 LKR'
+                                                className="form-control"
+                                                value={this.state.price}
+                                                onChange={this.onChangeprice}
+                                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.priceError}</p>
+
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Discount (LKR)</label>
+                                            <input type="number"
+                                                placeholder='1000 LKR'
+                                                className="form-control"
+                                                value={this.state.discount}
+                                                onChange={this.onChangediscount}
+                                            />
+
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Availability</label>
+                                            <select type="text"
+
+                                                className="form-control"
+                                                value={this.state.availability}
+                                                onChange={this.onChangeavailability}
+                                            >
+                                                <option>Select From Here</option>
+                                                <option>Yes</option>
+                                                <option>No</option>
+
+                                            </select><p />
+
+                                        </div>
+
+                                        <div className="text-center align-middle form-group">
+                                            <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Product" />
+                                        </div>
+                                    </div>
+
+                                </form>
+
+
+                            </div>
                         </div>
-
-                        <div className="form-group">
-                            <label>Product Name</label>
-                            <input type="text"
-                                required
-                                className="form-control"
-                                value={this.state.productName}
-                                onChange={this.onChangeproductName}
-                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nameError}</p>
-
-                        </div>
-
-                        <div className="form-group">
-                            <label>Product Category</label>
-                            <select type="text"
-                                required
-                                className="form-control"
-                                value={this.state.productCategory}
-                                onChange={this.onChangeproductCategory}
-                            >
-                                <option>Pizza</option>
-                                <option>Beverage</option>
-
-                            </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.productCategoryError}</p>
-
-                        </div>
-
-                        <div className="form-group">
-                            <label>Product Size</label>
-                            <select type="text"
-
-                                className="form-control"
-                                value={this.state.productSize}
-                                onChange={this.onChangeproductSize}
-                            >
-
-                                <option>Select From Here</option>
-                                <option>Small</option>
-                                <option>Medium</option>
-                                <option>Large</option>
-
-                            </select>
-
-                            <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.productSizeError}</p>
-
-                        </div>
-
-                        <div className="form-group">
-                            <label>Price</label>
-                            <input type="text"
-
-                                className="form-control"
-                                value={this.state.price}
-                                onChange={this.onChangeprice}
-                            /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.priceError}</p>
-
-                        </div>
-
-                        <div className="form-group">
-                            <label>Discount</label>
-                            <input type="text"
-
-                                className="form-control"
-                                value={this.state.discount}
-                                onChange={this.onChangediscount}
-                            />
-
-                        </div>
-
-                        <div className="form-group">
-                            <label>Availability</label>
-                            <select type="text"
-
-                                className="form-control"
-                                value={this.state.availability}
-                                onChange={this.onChangeavailability}
-                            >
-                                <option>Select From Here</option>
-                                <option>Yes</option>
-                                <option>No</option>
-
-                            </select><p />
-
-                        </div>
-
-
-
-                        <div className="form-group">
-                            <input type="submit" value="Add Product" />
-                        </div>
-                    </form>
-
-
-
+                    </div>
                 </div>
 
 

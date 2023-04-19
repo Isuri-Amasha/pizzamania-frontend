@@ -10,7 +10,6 @@ export class CreateCustomer extends Component {
         this.onChangecontactNo = this.onChangecontactNo.bind(this);
         this.onChangeaddress = this.onChangeaddress.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
         this.state = {
             fullName: '',
             email: '',
@@ -65,16 +64,16 @@ export class CreateCustomer extends Component {
             this.setState({ contactError: "Please Enter a valid Phone Number." })
         } else if (this.state.address.length < 10) {
             this.setState({ addressError: "Your address is too short." })
-        }else {
+        } else {
 
             axios.post('http://localhost:5000/customer/', customers)
-               
+
                 .then(res => {
 
                     console.log(res);
 
                     if (res.status === 200) {
-                        
+
                         Swal.fire({
                             icon: 'success',
                             title: 'Successful',
