@@ -146,6 +146,7 @@ if (loggedUserRole != null && loggedUserRole === 'Product Manager') {
           {loggedAsFManager &&
           <>
           <a href="/salary" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Salary</a>
+          <a href="/ot" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Over Time</a>
         
           </>
           }
