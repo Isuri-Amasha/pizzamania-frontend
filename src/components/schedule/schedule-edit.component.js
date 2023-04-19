@@ -22,14 +22,14 @@ export default class EditSchedule extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id:props.schId,
+            id: props.schId,
             empID: '',
             date: new Date(),
             sTime: '',
             eTime: '',
-           clockIn:'',
-           clockOut:'',
-           status:''
+            clockIn: '',
+            clockOut: '',
+            status: ''
 
         }
     }
@@ -40,7 +40,7 @@ export default class EditSchedule extends Component {
                 this.setState({
                     id: response.data._id,
                     empID: response.data.empID,
-                    date:new Date(response.data.date),
+                    date: new Date(response.data.date),
                     sTime: response.data.sTime,
                     eTime: response.data.eTime,
                     clockIn: response.data.clockIn,
@@ -118,44 +118,44 @@ export default class EditSchedule extends Component {
         if (this.state.empID.length < 10) {
             this.setState({ empIDError: "Employee ID can not be lower than 10 digits" })
 
-        } 
+        }
         else if (this.state.sTime == null) {
             this.setState({ sTimeError: "Start Time can not be null" })
-        } 
+        }
         else if (this.state.eTime == null) {
             this.setState({ eTimeError: "End Time can not be null" })
-        }else{
+        } else {
 
-        axios.put('http://localhost:5000/workingSchedule/' + this.state.id, schedule)
-            .then(res => {
-                console.log(res);
+            axios.put('http://localhost:5000/workingSchedule/' + this.state.id, schedule)
+                .then(res => {
+                    console.log(res);
 
-                if (res.status === 200) {
-                   
-                    this.props.close();
+                    if (res.status === 200) {
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Schedule has been updated!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+                        this.props.close();
 
-                   
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Schedule has been updated!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
 
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'There was an error updating!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#e00404'
-                    })
-                }
-            })
+
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'There was an error updating!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
+                })
         }
 
     }
@@ -170,8 +170,8 @@ export default class EditSchedule extends Component {
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
-                                        <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
-                                           
+                                        <form className='px-12 py-12' onSubmit={this.onSubmit}>
+
                                             <div class="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee ID </label>
@@ -238,21 +238,21 @@ export default class EditSchedule extends Component {
                                                     value={this.state.clockOut}
                                                     onChange={this.onChangeclockOut}
                                                 /><p />
-                                                   
+
                                                 <p />
 
                                                 <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Status</label>
-                                                <input type="text"
-                                                    required
-                                                    disabled
-                                                    className="form-control"
-                                                    value={this.state.status}
-                                                    onChange={this.onChangestatus}
-                                                /><p />
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Status</label>
+                                                    <input type="text"
+                                                        required
+                                                        disabled
+                                                        className="form-control"
+                                                        value={this.state.status}
+                                                        onChange={this.onChangestatus}
+                                                    /><p />
+                                                </div>
                                             </div>
-                                            </div>
-                                            
+
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Schedule" />
                                             </div>

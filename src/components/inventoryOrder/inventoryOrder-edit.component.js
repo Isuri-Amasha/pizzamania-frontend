@@ -1,202 +1,179 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
 
-
-
 export class EditInventoryOrder extends Component {
-
-    
-    constructor(props){
+    constructor(props) {
         super(props);
-
-        
-       
         this.onChangeproductID = this.onChangeproductID.bind(this);
         this.onChangeproductName = this.onChangeproductName.bind(this);
         this.onChangeproductCategory = this.onChangeproductCategory.bind(this);
         this.onChangeavailablequantity = this.onChangeavailablequantity.bind(this);
         this.onChangerequestedquantity = this.onChangerequestedquantity.bind(this);
         this.onChangeStatus = this.onChangeStatus.bind(this);
-        
-
         this.onSubmit = this.onSubmit.bind(this);
-        
-       
-
         this.state = {
-            id:props.ioId,
-            productID : '',
-            productName : '',
-            productCategory : '',
-            availableQuantity : '',
-            requestedQuantity :'',
-            status:''
-            
+            id: props.ioId,
+            productID: '',
+            productName: '',
+            productCategory: '',
+            availableQuantity: '',
+            requestedQuantity: '',
+            status: ''
         }
     }
 
-    onChangeproductID(e){
+    onChangeproductID(e) {
         this.setState({
-            productID : e.target.value
+            productID: e.target.value
         });
     }
 
-    onChangeproductName(e){
+    onChangeproductName(e) {
         this.setState({
-            productName : e.target.value
+            productName: e.target.value
         });
     }
 
-    onChangeproductCategory(e){
+    onChangeproductCategory(e) {
         this.setState({
-            productCategory : e.target.value
+            productCategory: e.target.value
         });
     }
 
-    onChangeavailablequantity(e){
+    onChangeavailablequantity(e) {
         this.setState({
-            availableQuantity : e.target.value
+            availableQuantity: e.target.value
         });
     }
 
-    onChangerequestedquantity(e){
+    onChangerequestedquantity(e) {
         this.setState({
-            requestedQuantity : e.target.value
+            requestedQuantity: e.target.value
         });
     }
 
-    onChangeStatus(e){
+    onChangeStatus(e) {
         this.setState({
-            status : e.target.value
+            status: e.target.value
         });
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/inventoryOrders/'+this.state.id)
-        .then(response => {
-            this.setState({
-            productID : response.data.productID,
-            productName : response.data.productName,
-            productCategory : response.data.productCategory,
-            availableQuantity : response.data.availableQuantity,
-            requestedQuantity : response.data.requestedQuantity,
-            status : response.data.status,
+        axios.get('http://localhost:5000/inventoryOrders/' + this.state.id)
+            .then(response => {
+                this.setState({
+                    productID: response.data.productID,
+                    productName: response.data.productName,
+                    productCategory: response.data.productCategory,
+                    availableQuantity: response.data.availableQuantity,
+                    requestedQuantity: response.data.requestedQuantity,
+                    status: response.data.status,
                 })
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.log(error);
             })
+    }
 
-        }
-
-
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
 
         const inventoryorder = {
-            productID : this.state.productID,
-            productName : this.state.productName,
-            productCategory : this.state.productCategory,
-            availableQuantity : this.state.availableQuantity,
-            requestedQuantity : this.state.requestedQuantity,
-            status:this.state.status
+            productID: this.state.productID,
+            productName: this.state.productName,
+            productCategory: this.state.productCategory,
+            availableQuantity: this.state.availableQuantity,
+            requestedQuantity: this.state.requestedQuantity,
+            status: this.state.status
         }
 
         console.log(inventoryorder);
 
-        if(this.state.productID.length < 3){
-            this.setState({proError : "Product Id cannot be shorter than 3 digits."})
+        if (this.state.productID.length < 3) {
+            this.setState({ proError: "Product Id cannot be shorter than 3 digits." })
         }
-        else if(this.state.productName.length < 3){
-            this.setState({nameError : "Product Name cannot be shorter than 3 digits."})
+        else if (this.state.productName.length < 3) {
+            this.setState({ nameError: "Product Name cannot be shorter than 3 digits." })
         }
-        else if(this.state.productCategory.length <4){
-            this.setState({categoryError : "Product Category cannot be shorter than 4 digits."})
+        else if (this.state.productCategory.length < 4) {
+            this.setState({ categoryError: "Product Category cannot be shorter than 4 digits." })
         }
-        else if(this.state.quantity != null){
-            this.setState({aquantityError : "Quantity can not be zero."})
-        }else if(this.state.quantity != null){
-            this.setState({rquantityError : "Quantity can not be zero."})
-        }else{
-            axios.put('http://localhost:5000/inventoryOrders/'+this.state.id, inventoryorder)
-       
+        else if (this.state.quantity != null) {
+            this.setState({ aquantityError: "Quantity can not be zero." })
+        } else if (this.state.quantity != null) {
+            this.setState({ rquantityError: "Quantity can not be zero." })
+        } else {
+            axios.put('http://localhost:5000/inventoryOrders/' + this.state.id, inventoryorder)
 
-        .then(res => {
-            
-            console.log(res);
 
-            if (res.status === 200) {
-                this.clearData();
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Successful',
-                    text: 'Inventory Order has been added!!',
-                    background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#60e004'
+                .then(res => {
+
+                    console.log(res);
+
+                    if (res.status === 200) {
+                        this.clearData();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Inventory Order has been added!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error in adding!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
                 })
-
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'Error in adding!',
-                    background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#e00404'
-                })
-            }
-        })
-
-    }
-        
+        }
     }
 
     clearData = () => {
         this.setState({
-            productID : '',
-            productName : '',
-            productCategory : '',
-            availableQuantity : '',
-            requestedQuantity:'',
-            status:''
+            productID: '',
+            productName: '',
+            productCategory: '',
+            availableQuantity: '',
+            requestedQuantity: '',
+            status: ''
         })
     }
-
-    
-
-    
-
-    
 
     render() {
         return (
             <div >
-            <div className="flex flex-col px-5 ">
-                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div className="inline-block min-w-full sm:px-6 lg:px-8">
-                        <div className='items-center overflow-hidden'>
-                            <div className=''>
-                                <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
-                                    <form className='px-12 py-6 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
-                                        <div class="">
-                                            <div className="grid grid-cols-1 gap-4 form-group">
-                                                <div class="">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
-                                                        Product ID                                                        </label>
-                                                    <input
-                                                        type="text"
-                                                        required
-                                                        disabled
-                                                        className="form-control"
-                                                        value={this.state.productID}
-                                                        onChange={this.onChangeproductID}
-                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.proError}</p>
+                <div className="flex flex-col px-5 ">
+                    <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div className="inline-block min-w-full sm:px-6 lg:px-8">
+                            <div className='items-center overflow-hidden'>
+                                <div className=''>
+                                    <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
+                                        <form className='px-12 py-6' onSubmit={this.onSubmit}>
+                                            <div class="">
+                                                <div className="grid grid-cols-1 gap-4 form-group">
+                                                    <div class="">
+                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                            Product ID                                                        </label>
+                                                        <input
+                                                            type="text"
+                                                            required
+                                                            disabled
+                                                            className="form-control"
+                                                            value={this.state.productID}
+                                                            onChange={this.onChangeproductID}
+                                                        /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.proError}</p>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                           
+
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Product Name                                                        </label>
@@ -219,8 +196,8 @@ export class EditInventoryOrder extends Component {
                                                         onChange={this.onChangeproductCategory}
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.categoryError}</p>
                                                 </div>
-                                            
-                                            
+
+
                                                 <div className="form-group">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Available Quantity                                                    </label>
@@ -252,28 +229,28 @@ export class EditInventoryOrder extends Component {
                                                         onChange={this.onChangeStatus}
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.rquantityError}</p>
                                                 </div>
-                                           
-                                            <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Order Inventory" />
+
+                                                <div className="text-center align-middle form-group">
+                                                    <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Order Inventory" />
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                   
+                                        </form>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
             </div>
 
 
 
-        </div>
 
 
-
-
-                
         )
     }
 }

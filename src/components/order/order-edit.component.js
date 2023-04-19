@@ -215,7 +215,7 @@ export default class EditOrder extends Component {
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
-                                        <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
+                                        <form className='px-12 py-12' onSubmit={this.onSubmit}>
                                            
                                             <div class="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
