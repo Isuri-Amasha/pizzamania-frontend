@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
 
+
 export class CreateProduct extends Component {
     constructor(props) {
         super(props);
@@ -68,8 +69,11 @@ export class CreateProduct extends Component {
 
     onSubmit(e) {
         e.preventDefault();
+
+        const shortid = require('shortid');
         const product = {
-            productID: this.state.productID,
+            // productID: this.state.productID,
+            productID:shortid.generate(),
             productName: this.state.productName,
             productCategory: this.state.productCategory,
             productSize: this.state.productSize,
@@ -80,10 +84,10 @@ export class CreateProduct extends Component {
 
         console.log(product);
 
-        if (this.state.productID.length < 3) {
-            this.setState({ proIDError: "Product ID should be longer than 3 characters." })
-        }
-        else if (this.state.productName.length < 3) {
+        // if (this.state.productID.length < 3) {
+        //     this.setState({ proIDError: "Product ID should be longer than 3 characters." })
+        // }
+        if (this.state.productName.length < 3) {
             this.setState({ nameError: "Product Name should be longer than 3 characters." })
         }
         else if (this.state.productCategory.length < 3) {
@@ -147,7 +151,7 @@ export class CreateProduct extends Component {
                                         <p className='text-4xl font-semibold text-black uppercase'>
                                             Add Product
                                         </p>
-                                        <div className="form-group">
+                                        {/* <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product ID</label>
                                             <input type="text"
                                                 required
@@ -156,7 +160,7 @@ export class CreateProduct extends Component {
                                                 value={this.state.productID}
                                                 onChange={this.onChangeproductID}
                                             /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.proIDError}</p>
-                                        </div>
+                                        </div> */}
 
                                         <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product Name</label>
@@ -208,7 +212,7 @@ export class CreateProduct extends Component {
 
                                         <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Price (LKR)</label>
-                                            <input type="number"
+                                            <input type="text"
                                                 placeholder='2700 LKR'
                                                 className="form-control"
                                                 value={this.state.price}
@@ -219,7 +223,7 @@ export class CreateProduct extends Component {
 
                                         <div className="form-group">
                                             <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Discount (LKR)</label>
-                                            <input type="number"
+                                            <input type="text"
                                                 placeholder='1000 LKR'
                                                 className="form-control"
                                                 value={this.state.discount}

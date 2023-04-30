@@ -17,6 +17,7 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-time-picker": "^6.0.4",
+    "shortid": "^2.2.16",
     "sweetalert2-react": "^0.8.3",
     "tw-elements": "^1.0.0-beta2",
     "web-vitals": "^2.1.4",

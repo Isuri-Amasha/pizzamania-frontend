@@ -124,8 +124,8 @@ export class CompletedDeliveryList extends Component {
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                        <td className='px-6 py-4'>{currentdelivery._id}</td>
-                        <td className='px-6 py-4'>{currentdelivery.orderId}</td>
+                        {/* <td className='px-6 py-4'>{currentdelivery._id}</td>
+                        <td className='px-6 py-4'>{currentdelivery.orderId}</td> */}
                         <td className='px-6 py-4'>{currentdelivery.customer}</td>
                         <td className='px-6 py-4'>{currentdelivery.deliveryAddress}</td>
                         <td className='px-6 py-4'>{currentdelivery.amount}</td>
@@ -221,7 +221,7 @@ export class CompletedDeliveryList extends Component {
                                 <table className=''>
                                     <tr>
                                         <th className='drop-shadow-md'>
-                                            <h3>Delivery Details</h3>
+                                            <h3>Completed Delivery Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
@@ -240,8 +240,8 @@ export class CompletedDeliveryList extends Component {
                                 <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
                                     <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                                         <tr>
-                                        <th className="p-2 border-black tbhead ">Delivery Id</th>
-                                            <th className="p-2 border-black tbhead ">Order Id</th>
+                                        {/* <th className="p-2 border-black tbhead ">Delivery Id</th>
+                                            <th className="p-2 border-black tbhead ">Order Id</th> */}
                                             <th className="p-2 tbhead">Customer</th>
                                             <th className="p-2 tbhead">Delivery Address</th>
                                             <th className="p-2 tbhead">Amount</th>

@@ -45,6 +45,8 @@ import { FeedbackList } from './components/feedback/feedback-list.component'
 import { CreateFeedback } from './components/feedback/feedback-add.component'
 import EditFeedback from './components/feedback/feedback-edit.component'
 
+import CreatePayment from './components/order/payment-add.component';
+
 
 import { UserRegistration } from './components/user/user-registration.component';
 import { UserLogin } from './components/user/user-login.component';
@@ -134,6 +136,8 @@ function App() {
 
           <Route exact path="/iokitchen" element={<InventoryOrderListKitchen />} />{/* Done */}
 
+          <Route exact path="/payment" element={<CreatePayment />} />{/* Done */}
+          
         </Routes>
       </Router>
       <Footer />
