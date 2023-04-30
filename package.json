@@ -18,6 +18,7 @@
     "react-scripts": "5.0.1",
     "react-time-picker": "^6.0.4",
     "sweetalert2-react": "^0.8.3",
+    "tw-elements": "^1.0.0-beta2",
     "web-vitals": "^2.1.4",
     "with-router": "^1.0.1"
   },

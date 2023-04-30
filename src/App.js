@@ -1,8 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Carousel, initTE } from "tw-elements";
 
 import Navbar from "./components/navbar/navbar.component";
+import Footer from "./components/navbar/footer.component";
 import { EmployeeList } from "./components/employee/employee-list.component";
 import { CreateEmployee } from './components/employee/employee-add.component';
 import EditEmployee from "./components/employee/employee-edit.component";
@@ -40,14 +42,15 @@ import EditOT from './components/overTime/overTime-edit.component';
 import { InventoryOrderListKitchen } from './components/inventoryOrder/inventoryOrder-list-kitchen.component';
 
 import { FeedbackList } from './components/feedback/feedback-list.component'
-import {CreateFeedback} from './components/feedback/feedback-add.component'
+import { CreateFeedback } from './components/feedback/feedback-add.component'
 import EditFeedback from './components/feedback/feedback-edit.component'
 
 
 import { UserRegistration } from './components/user/user-registration.component';
-import {UserLogin} from './components/user/user-login.component';
+import { UserLogin } from './components/user/user-login.component';
 
 import Home from "./components/navbar/home";
+initTE({ Carousel }, true); // set second parameter to true if you want to use a debugger
 
 function App() {
   return (
@@ -72,15 +75,14 @@ function App() {
       {/* <Home/> */}
       <Router>
         {/* <EmployeeList/> */}
-
         <Routes>
 
-        <Route exact path="/nav" element={Navbar } />
-        <Route exact path="/" element={<Home/> } />
+          <Route exact path="/nav" element={Navbar} />
+          <Route exact path="/" element={<Home />} />
 
           <Route exact path="/employee" element={<EmployeeList />} />{/* Done */}
           <Route exact path="/creatEmployee" element={<CreateEmployee />} />{/* Done */}
-          <Route exact path="/editEmployee/:id" element={EditEmployee } />{/* Done */}
+          <Route exact path="/editEmployee/:id" element={EditEmployee} />{/* Done */}
 
           <Route exact path="/customer" element={<CustomerList />} /> {/* Done */}
           <Route exact path="/creatcustomer" element={<CreateCustomer />} /> {/* Done */}
@@ -88,14 +90,14 @@ function App() {
 
           <Route exact path="/order" element={<OrderList />} /> {/* Done */}
           <Route exact path="/creatOrder" element={<CreateOrder />} /> {/* Done */}
-          <Route exact path="/editOrder/:id" element={EditOrder } />
+          <Route exact path="/editOrder/:id" element={EditOrder} />{/* Done */}
 
           <Route exact path="/inventory" element={<InventoryList />} /> {/* Done */}
-          <Route exact path="/creatInventory" element={<CreateInventory />} />
-          <Route exact path="/editInventory/:id" element={EditInventory } />
+          <Route exact path="/creatInventory" element={<CreateInventory />} />{/* Done */}
+          <Route exact path="/editInventory/:id" element={EditInventory} />{/* Done */}
 
           <Route exact path="/product" element={<ProductList />} /> {/* Done */}
-          <Route exact path="/creatProduct" element={<CreateProduct />} />
+          <Route exact path="/creatProduct" element={<CreateProduct />} />{/* Done */}
 
           <Route exact path="/inventoryorder" element={<InventoryOrderList />} />{/* Done */}
           <Route exact path="/creatInventoryOrder" element={<CreateInventoryOrder />} />  {/* dont edit this */}
@@ -108,35 +110,33 @@ function App() {
           <Route exact path="/kitchenOrder" element={<KitchenOrderList />} /> {/* Done */}
 
           <Route exact path="/inventorylistfororder" element={<InventoryListForOrder />} /> {/* Done */}
-        
 
           <Route exact path="/feedback" element={<FeedbackList />} />{/* Done */}
           <Route exact path="/creatFeedback" element={<CreateFeedback />} />{/* Done */}
-          <Route exact path="/editFeedback/:id" element={EditFeedback } />{/* Done */}
+          <Route exact path="/editFeedback/:id" element={EditFeedback} />{/* Done */}
 
+          <Route exact path="/signUp" element={<UserRegistration />} />{/* Done */}
+          <Route exact path="/signIn" element={<UserLogin />} />{/* Done */}
 
-          <Route exact path="/signUp" element={<UserRegistration />} />
-          <Route exact path="/signIn" element={<UserLogin />} />
+          <Route exact path="/schedule" element={<ScheduleList />} />{/* Done */}
+          <Route exact path="/allSchedule" element={<AllScheduleList />} />{/* Done */}
+          <Route exact path="/creatSchedule" element={<CreateSchedule />} />{/* Done */}
+          <Route exact path="/scheduleRequestLsit" element={<ScheduleRequestList />} />{/* Done */}
+          <Route exact path="/pendingScheduleRequestLsit" element={<PendingScheduleRequestList />} />{/* Done */}
+          <Route exact path="/approvedScheduleRequestLsit" element={<ApprovedScheduleRequestList />} />{/* Done */}
+          <Route exact path="/decliedScheduleRequestLsit" element={<DeclinedScheduleRequestList />} />{/* Done */}
 
-          <Route exact path="/schedule" element={<ScheduleList />} />
-          <Route exact path="/allSchedule" element={<AllScheduleList />} />
-          <Route exact path="/creatSchedule" element={<CreateSchedule />} />
-          <Route exact path="/scheduleRequestLsit" element={<ScheduleRequestList />} />
-          <Route exact path="/pendingScheduleRequestLsit" element={<PendingScheduleRequestList />} />
-          <Route exact path="/approvedScheduleRequestLsit" element={<ApprovedScheduleRequestList />} />
-          <Route exact path="/decliedScheduleRequestLsit" element={<DeclinedScheduleRequestList />} />
-
-          <Route exact path="/createSalary" element={<CreateSalary />} />
-          <Route exact path="/salary" element={<SalaryList />} />
-          <Route exact path="/createOT" element={<CreateOT />} />
-          <Route exact path="/ot" element={<OTList />} />
-          <Route exact path="/editOT/:id" element={EditOT } />
+          <Route exact path="/createSalary" element={<CreateSalary />} />{/* Done */}
+          <Route exact path="/salary" element={<SalaryList />} />{/* Done */}
+          <Route exact path="/createOT" element={<CreateOT />} />{/* Done */}
+          <Route exact path="/ot" element={<OTList />} />{/* Done */}
+          <Route exact path="/editOT/:id" element={EditOT} />{/* Done */}
 
           <Route exact path="/iokitchen" element={<InventoryOrderListKitchen />} />{/* Done */}
-          
+
         </Routes>
       </Router>
-
+      <Footer />
     </div>
   );
 
