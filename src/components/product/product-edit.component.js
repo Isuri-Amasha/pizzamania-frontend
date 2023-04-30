@@ -114,10 +114,10 @@ export class EditProduct extends Component {
 
         console.log(product);
 
-        if (this.state.productID.length < 3) {
-            this.setState({ proIDError: "Product ID should be longer than 3 characters." })
-        }
-        else if (this.state.productName.length < 3) {
+        // if (this.state.productID.length < 3) {
+        //     this.setState({ proIDError: "Product ID should be longer than 3 characters." })
+        // }
+        if (this.state.productName.length < 3) {
             this.setState({ nameError: "Product Name should be longer than 3 characters." })
         }
         else if (this.state.productCategory.length < 3) {
@@ -198,7 +198,7 @@ export class EditProduct extends Component {
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Product ID</label>
                                                     <input type="text"
-                                                        // required
+                                                        readOnly
                                                         className="form-control"
                                                         value={this.state.productID}
                                                         onChange={this.onChangeproductID}

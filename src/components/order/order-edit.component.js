@@ -19,7 +19,9 @@ export default class EditOrder extends Component {
         this.onChangeorderFor = this.onChangeorderFor.bind(this);
         this.onChangedeliveryAddress = this.onChangedeliveryAddress.bind(this);
         this.onChangeamount = this.onChangeamount.bind(this);
-        this.onChangeorderStatus = this.onChangeorderStatus.bind(this);
+        this.onChangesize1 = this.onChangesize1.bind(this);
+        this.onChangesize2 = this.onChangesize2.bind(this);
+        this.onChangesize3 = this.onChangesize3.bind(this);
 
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -28,10 +30,13 @@ export default class EditOrder extends Component {
             orderId: '',
             customer:'',
             item1: '',
+            size1:'',
             quantity1: '',
             item2: '',
+            size2:'',
             quantity2: '',
             item3: '',
+            size3:'',
             quantity3:'',
             orderFor:'',
             deliveryAddress:'',
@@ -48,10 +53,13 @@ export default class EditOrder extends Component {
                     orderId: response.data._id,
                     customer: response.data.customer,
                     item1: response.data.item1,
+                    size1:response.data.size1,
                     quantity1: response.data.quantity1,
                     item2: response.data.item2,
+                    size1:response.data.size2,
                     quantity2: response.data.quantity2,
                     item3: response.data.item3,
+                    size1:response.data.size3,
                     quantity3: response.data.quantity3,
                     orderFor: response.data.orderFor,
                     deliveryAddress: response.data.deliveryAddress,
@@ -75,6 +83,24 @@ export default class EditOrder extends Component {
     onChangeitem1(e) {
         this.setState({
             item1: e.target.value
+        });
+    }
+
+    onChangesize1(e) {
+        this.setState({
+            size1: e.target.value
+        });
+    }
+
+    onChangesize2(e) {
+        this.setState({
+            size2: e.target.value
+        });
+    }
+
+    onChangesize3(e) {
+        this.setState({
+            size3: e.target.value
         });
     }
 
@@ -132,7 +158,215 @@ export default class EditOrder extends Component {
         });
     }
 
+    getPrice3(item3, size3, quantity3) {
+
+        console.log(item3)
+
+        // const item1 = this.state.item1;
+        // const quantity1 = this.state.quantity1;
+        // const item2 = this.state.item2;
+        // const quantity2 = this.state.quantity2;
+        // const item3 = this.state.item3;
+        // const quantity3 = this.state.quantity3;
+        let amount3 = 0;
+        let i = 1;
+
+       
+
+        // for (let i = 1; i <= 3; i++) {
+            this.state.products.map((currentProduct) => {
+
+                if(item3 == currentProduct.productName && currentProduct.availability == "No"){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Error',
+                        text: 'Item is not available!!',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#60e004'
+                    })
+
+                }else{
+                
+                // let quantity = quantity[i];
+
+                if (item3 == currentProduct.productName && size3 == currentProduct.productSize) {
+                    console.log("Product Name inside getproduct is " + currentProduct.productName)
+
+                    
+                    if(currentProduct.discount > 0){
+                        amount3 = (currentProduct.price * quantity3) - currentProduct.discount
+
+                    }else{
+                    amount3 = currentProduct.price * quantity3
+                    }
+                  
+
+                }
+                // return amount;
+                
+                // console.log("Amount is" + amount);
+
+            }
+
+            })
+            return amount3;
+            // console.log("Amount  154 is" + amount);
+
+        // }
+        
+
+    }
+
+    getPrice2(item2, size2, quantity2) {
+
+        console.log(item2)
+
+        // const item1 = this.state.item1;
+        // const quantity1 = this.state.quantity1;
+        // const item2 = this.state.item2;
+        // const quantity2 = this.state.quantity2;
+        // const item3 = this.state.item3;
+        // const quantity3 = this.state.quantity3;
+        let amount2 = 0;
+        let i = 1;
+
+       
+
+        // for (let i = 1; i <= 3; i++) {
+            this.state.products.map((currentProduct) => {
+
+                if(item2 == currentProduct.productName && currentProduct.availability == "No"){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Error',
+                        text: 'Item is not available!!',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#60e004'
+                    })
+
+                }else{
+                
+                // let quantity = quantity[i];
+
+                if (item2 == currentProduct.productName && size2 == currentProduct.productSize) {
+                    console.log("Product Name inside getproduct is " + currentProduct.productName)
+
+                    if(currentProduct.discount > 0){
+                        amount2 = (currentProduct.price * quantity2) - currentProduct.discount
+
+                    }else{
+
+                    amount2 = currentProduct.price * quantity2
+
+                    }
+
+                }
+                // return amount;
+                
+                // console.log("Amount is" + amount);
+
+            }
+
+            })
+            return amount2;
+            // console.log("Amount  154 is" + amount);
+
+        // }
+        
+
+    }
+
+    getPrice1(item1, size1,quantity1) {
+
+        console.log(item1)
+
+        // const item1 = this.state.item1;
+        // const quantity1 = this.state.quantity1;
+        // const item2 = this.state.item2;
+        // const quantity2 = this.state.quantity2;
+        // const item3 = this.state.item3;
+        // const quantity3 = this.state.quantity3;
+        let amount1 = 0;
+        let i = 1;
+
+
+        // for (let i = 1; i <= 3; i++) {
+            this.state.products.map((currentProduct) => {
+
+                if(item1 == currentProduct.productName && currentProduct.availability == "No"){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Error',
+                        text: 'Item is not available!!',
+                        background: '#fff',
+                        confirmButtonColor: '#333533',
+                        iconColor: '#60e004'
+                    })
+
+                }else{
+                // let quantity = quantity[i];
+
+                if (item1 == currentProduct.productName && size1 == currentProduct.productSize) {
+                    console.log("Product Name inside getproduct is " + currentProduct.productName)
+
+
+                    if(currentProduct.discount > 0){
+                        amount1 = (currentProduct.price * quantity1) - currentProduct.discount
+
+                    }else{
+                        amount1 = currentProduct.price * quantity1
+                    }
+
+                    
+
+                    
+
+                  
+
+                }
+            }
+                // return amount;
+                
+                // console.log("Amount is" + amount);
+
+
+
+            })
+            return amount1;
+            // console.log("Amount  154 is" + amount);
+
+        // }
+        
+
+    }
+
+
     onSubmit(e) {
+
+        const item1 = this.state.item1;
+        const size1 = this.state.size1;
+        const quantity1 = this.state.quantity1;
+        const item2 = this.state.item2;
+        const size2 = this.state.size2;
+        const quantity2 = this.state.quantity2;
+        const item3 = this.state.item3;
+        const size3 = this.state.size3;
+        const quantity3 = this.state.quantity3;
+
+        let price1 = this.getPrice1(item1,size1,quantity1);
+        console.log("Price 1 is"+price1);
+
+        let price2 = this.getPrice2(item2,size2,quantity2);
+        console.log("Price 2 is"+price2);
+
+        let price3 = this.getPrice2(item3,size3,quantity3);
+        console.log("Price 3 is"+price3);
+
+        let amount = price1 + price2 + price3;
+        console.log("Amount is"+amount);
+
         e.preventDefault();
 
         const product = [];
@@ -141,14 +375,17 @@ export default class EditOrder extends Component {
         const order = {
             customer: this.state.customer,
             item1: this.state.item1,
+            size1: this.state.size1,
             quantity1: this.state.quantity1,
             item2: this.state.item2,
+            size2: this.state.size2,
             quantity2: this.state.quantity2,
             item3: this.state.item3,
+            size3: this.state.size3,
             quantity3: this.state.quantity3,
             orderFor: this.state.orderFor,
             deliveryAddress: this.state.deliveryAddress,
-            amount: this.state.amount,
+            amount: amount,
             orderStatus: this.state.orderStatus,
         }
 
@@ -252,6 +489,16 @@ export default class EditOrder extends Component {
                                                     <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.item1Error}</p>
                                                 </div>
                                                 <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 1</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.size1}
+                                                        onChange={this.onChangesize1}
+                                                       
+                                                    />
+                                                </div>
+                                                <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 1</label>
                                                     <input type="text"
                                                         required
@@ -276,6 +523,16 @@ export default class EditOrder extends Component {
                                                     <p />
                                                 </div>
                                                 <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 2</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.size2}
+                                                        onChange={this.onChangesize2}
+                                                       
+                                                    />
+                                                </div>
+                                                <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 2</label>
                                                     <input type="text"
                                                         
@@ -297,6 +554,16 @@ export default class EditOrder extends Component {
                                                        
                                                     />
                                                     <p />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 3</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.size3}
+                                                        onChange={this.onChangesize3}
+                                                       
+                                                    />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 3</label>
@@ -339,6 +606,7 @@ export default class EditOrder extends Component {
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Amount</label>
                                                     <input type="text"
                                                         required
+                                                        readOnly
                                                         className="form-control"
                                                         value={this.state.amount}
                                                         onChange={this.onChangeamount}
