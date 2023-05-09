@@ -34,7 +34,7 @@ class home extends Component {
 
     return (
       <div>
-        {isUserLoggedIn &&
+        {/* {isUserLoggedIn && */}
           <div class="">
             <section class="">
               <div class="text-center bg-white text-gray-800 py-20 px-6">
@@ -100,7 +100,7 @@ class home extends Component {
               </div>
             </div>
           </div>
-        }
+        {/* } */}
       </div>
     );
   }

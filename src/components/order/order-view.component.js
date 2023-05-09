@@ -29,7 +29,7 @@ export default class ViewOrder extends Component {
         axios.get('http://localhost:5000/order/' + this.state.id)
             .then(response => {
                 this.setState({
-                    orderId: response.data._id,
+                    orderId: response.data.orderId,
                     customer: response.data.customer,
                     item1: response.data.item1,
                     quantity1: response.data.quantity1,

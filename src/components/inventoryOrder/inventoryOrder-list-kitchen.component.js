@@ -10,7 +10,7 @@ import { EditInventoryOrder } from './inventoryOrder-edit.component';
 const InventoryOrder = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
       
-        <td className='px-6 py-4'>{props.inventoryorder._id}</td>
+        {/* <td className='px-6 py-4'>{props.inventoryorder._id}</td> */}
         <td className='px-6 py-4'>{props.inventoryorder.productID}</td>
         <td className='px-6 py-4'>{props.inventoryorder.productName}</td>
         <td className='px-6 py-4'>{props.inventoryorder.productCategory}</td>
@@ -148,7 +148,7 @@ export class InventoryOrderListKitchen extends Component {
                 return (
                     <tr>
 
-                        <td className='px-6 py-4'>{currentinventoryorder._id}</td>
+                        {/* <td className='px-6 py-4'>{currentinventoryorder._id}</td> */}
                         <td className='px-6 py-4'>{currentinventoryorder.productID}</td>
                         <td className='px-6 py-4'>{currentinventoryorder.productName}</td>
                         <td className='px-6 py-4'>{currentinventoryorder.productCategory}</td>

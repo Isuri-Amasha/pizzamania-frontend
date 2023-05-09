@@ -96,8 +96,8 @@ export class CreateProduct extends Component {
         else if (this.state.productSize.length < 3) {
             this.setState({ productSizeError: "Invalid Product Size" })
         }
-        else if (this.state.price < 500) {
-            this.setState({ priceError: "Price cannot be lesser than 500" })
+        else if (this.state.price <=0 ) {
+            this.setState({ priceError: "Price cannot be zero or lesser than zero" })
         } else {
 
             axios.post('http://localhost:5000/product/', product)

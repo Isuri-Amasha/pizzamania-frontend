@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as Swal from "sweetalert2";
 import { Modal } from "react-bootstrap";
 import CreatePayment from './payment-add.component';
+const shortid = require('shortid');
 
 
 
@@ -28,6 +29,7 @@ export class CreateOrder extends Component {
 
         this.state = {
             products: [],
+            orderId:'',
             customer: '',
             item1: '',
             size1:'',
@@ -372,6 +374,7 @@ export class CreateOrder extends Component {
 
 
         const order = {
+            orderId:shortid.generate(),
             customer: this.state.customer,
             item1: this.state.item1,
             size1: this.state.size1,

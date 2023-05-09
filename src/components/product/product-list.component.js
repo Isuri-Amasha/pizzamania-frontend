@@ -214,7 +214,7 @@ export class ProductList extends Component {
 
         const pro = this.state.product.map(
             Product=>[
-                Product.product,
+                Product.productID,
                 Product.productName,
                 Product.productCategory,
                 Product.productSize,

@@ -50,7 +50,7 @@ export default class EditOrder extends Component {
         axios.get('http://localhost:5000/order/' + this.state.id)
             .then(response => {
                 this.setState({
-                    orderId: response.data._id,
+                    orderId: response.data.orderId,
                     customer: response.data.customer,
                     item1: response.data.item1,
                     size1:response.data.size1,
@@ -373,6 +373,7 @@ export default class EditOrder extends Component {
         const price = 0;
 
         const order = {
+            orderId: this.state.orderId,
             customer: this.state.customer,
             item1: this.state.item1,
             size1: this.state.size1,

@@ -11,7 +11,8 @@ export default class CreatePayment extends Component {
         this.onChangechange = this.onChangechange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.state = {
-            orderId: props.payId,
+            id: props.payId,
+            orderId: '',
             amount: '',
             givenAmount: '',
             change: ''
@@ -19,10 +20,10 @@ export default class CreatePayment extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/order/' + this.state.orderId)
+        axios.get('http://localhost:5000/order/' + this.state.id)
             .then(response => {
                 this.setState({
-                    orderId: response.data._id,
+                    orderId: response.data.orderId,
                     customer: response.data.customer,
                     item1: response.data.item1,
                     size1: response.data.size1,

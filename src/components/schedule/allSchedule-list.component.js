@@ -14,7 +14,7 @@ import EditSchedule from './schedule-edit.component';
 const Schedule = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
      
-        <td className='px-6 py-4'>{props.schedule._id}</td>
+        {/* <td className='px-6 py-4'>{props.schedule._id}</td> */}
         <td className='px-6 py-4'>{props.schedule.empID}</td>
         <td className='px-6 py-4'>{props.schedule.date.substring(0,10)}</td>
         <td className='px-6 py-4'>{props.schedule.sTime}</td>
@@ -206,7 +206,7 @@ clockOut(id){
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                        <td className='px-6 py-4'>{currentschedule._id}</td>
+                        {/* <td className='px-6 py-4'>{currentschedule._id}</td> */}
                         <td className='px-6 py-4'>{currentschedule.empID}</td>
                         <td className='px-6 py-4'>{currentschedule.date.substring(0, 10)}</td>
                         <td className='px-6 py-4'>{currentschedule.sTime}</td>

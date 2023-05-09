@@ -14,7 +14,7 @@ export class CreateSalary extends Component {
 
         this.state = {
             empId: '',
-            empName: '',
+           
             basicSalary: '',
             otRate: ''
         }
@@ -50,7 +50,7 @@ export class CreateSalary extends Component {
 
         const salary = {
             empId: this.state.empId,
-            empName: this.state.empName,
+           
             basicSalary: this.state.basicSalary,
             otRate: this.state.otRate
         }
@@ -62,9 +62,7 @@ export class CreateSalary extends Component {
         if(this.state.empId.length < 10 || this.state.empId.length > 10){
             this.setState({empIDError : "Employee ID should be 10 characters long"})
         }
-        else if(this.state.empName.length < 6){
-            this.setState({nameError : "Name should be longer than 6 characters."})
-        }
+        
         else if(this.state.basicSalary == 0){
             this.setState({basicSalaryError : "Basic Salary Can not be zero"})
 
@@ -109,7 +107,7 @@ export class CreateSalary extends Component {
     clearData = () => {
         this.setState({
             empId: '',
-            empName: '',
+          
             basicSalary: '',
             otRate: ''
         })
@@ -128,7 +126,7 @@ export class CreateSalary extends Component {
                                             <p className='text-4xl font-semibold text-black uppercase'>
                                                 Add Salary Details
                                             </p>
-                                            <div className="grid grid-cols-2 gap-4 form-group">
+                                           
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee ID</label>
                                                     <input type="text"
@@ -139,17 +137,8 @@ export class CreateSalary extends Component {
                                                     />
                                                     <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.empIDError}</p>
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee Name</label>
-                                                    <input type="text"
-                                                        required
-                                                        className="form-control"
-                                                        value={this.state.empName}
-                                                        onChange={this.onChangeempName}
-                                                    />
-                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nameError}</p>
-                                                </div>
-                                            </div>
+                                               
+                                            
 
                                             <div className="grid grid-cols-2 gap-4 form-group">
                                                 <div class="">
@@ -164,12 +153,16 @@ export class CreateSalary extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Over Time Rate</label>
-                                                    <input type="text"
+                                                    <select type="text"
                                                         required
                                                         className="form-control"
                                                         value={this.state.otRate}
                                                         onChange={this.onChangeotRate}
-                                                    />
+                                                    >
+                                                        <option>Select From Here</option>
+
+                                                        <option>400 LKR</option>
+                                                    </select>
                                                     <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.otError}</p>
                                                 </div>
                                             </div>

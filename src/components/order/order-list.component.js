@@ -11,7 +11,7 @@ import EditOrder from './order-edit.component';
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
       
-        <td className='px-6 py-4'>{props.order._id}</td>
+        <td className='px-6 py-4'>{props.order.orderId}</td>
         <td className='px-6 py-4'>{props.order.item1}</td>
         <td className='px-6 py-4'>{props.order.quantity1}</td>
         <td className='px-6 py-4'>{props.order.item2}</td>
@@ -196,11 +196,11 @@ export class OrderList extends Component {
         return this.state.order.map((currentorder) => {
             if (
                 this.state.searchOrder ==
-                currentorder._id
+                currentorder.orderId
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                         <td className='px-6 py-4'>{currentorder._id}</td>
+                         <td className='px-6 py-4'>{currentorder.orderId}</td>
                       
                         <td className='px-6 py-4'>{currentorder.item1}</td>
                         <td className='px-6 py-4'>{currentorder.quantity1}</td>

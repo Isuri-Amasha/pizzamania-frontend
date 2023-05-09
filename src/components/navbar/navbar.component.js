@@ -5,6 +5,7 @@ import AuthenticationService from "../user/AuthenticationService";
 class navbar extends Component {
   logout = () => {
     AuthenticationService.logout();
+   
     window.location = "/"
   }
   render() {
@@ -166,6 +167,7 @@ class navbar extends Component {
                         <a href="/ot" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Over Time</a>
                         <a href="/schedule" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">My Schedule</a>
                         <a href="/allSchedule" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Schedules</a>
+                        {/* <a href="/wages" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Wages</a> */}
                       </div>
                     </>
                   }

@@ -79,6 +79,8 @@ export class UserLogin extends Component {
     onSubmit(e) {
         e.preventDefault();
 
+        // let isUserLoggedIn = false;
+
         if (this.state.NIC.length < 10 || this.state.NIC.length > 12) {
 
             this.setState({ nicError: "Please enter a valid NIC" })
@@ -104,27 +106,37 @@ export class UserLogin extends Component {
                         iconColor: '#60e004'
                     })
 
-                    if (currentuser.userRole == "Employee Manager") {
+                    const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
+                    // isUserLoggedIn = true;
+
+                    
+
+                    if (isUserLoggedIn === true && currentuser.userRole == "Employee Manager") {
+                        
                         window.location = "/nav"
-                        window.location = "/employee"
+                        window.location = "/"
                     }
-                    else if (currentuser.userRole == "Customer Manager") {
+                    else if (isUserLoggedIn === true && currentuser.userRole == "Customer Manager") {
                         window.location = "/customer"
-                    } else if (currentuser.userRole == "Inventory Manager") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Inventory Manager") {
                         window.location = "/inventory"
-                    } else if (currentuser.userRole == "Head Chef") {
-                        window.location = "/kitchen"
-                    } else if (currentuser.userRole == "Waiter Staff") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Head Chef") {
+                        window.location = "/kitchenOrder"
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Waiter Staff") {
                         window.location = "/order"
-                    } else if (currentuser.userRole == "Product Manager") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Product Manager") {
                         window.location = "/product"
-                    } else if (currentuser.userRole == "Delivery Manager") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Delivery Manager") {
                         window.location = "/delivery"
-                    } else if (currentuser.userRole == "Finance Manager") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Finance Manager") {
                         window.location = "/salary"
-                    } else if (currentuser.userRole == "Employee Manager") {
+                    } else if (isUserLoggedIn === true && currentuser.userRole == "Employee Manager") {
                         window.location = "/employee"
+                    }else if(isUserLoggedIn === false){
+                        window.location = "/nav"
+                        window.location = "/"
                     }
+                
 
                 } 
                 // else {
@@ -158,6 +170,8 @@ export class UserLogin extends Component {
     }
 
     render() {
+
+        
         return (
             <div className="flex flex-col px-5 pt-2 ">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -72,10 +72,7 @@ export default class EditFeedback extends Component {
 
         console.log(feedback);
 
-        if(this.state.feedback.length < 4){
-            this.setState({feedbackError : "Feedback is too short"})
-        }
-        else if(this.state.userContact.length < 5){
+        if(this.state.userContact.length < 5){
             this.setState({userContactError : "User is too short"})
         }
         else if(this.state.empID.length < 10){
@@ -137,7 +134,7 @@ export default class EditFeedback extends Component {
                                                         value={this.state.feedback}
                                                         onChange={this.onChangefeedback}
 
-                                                    /><p className="validateMsg">{this.state.feedbackError}</p>
+                                                    /><p/>
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >User Contact</label>

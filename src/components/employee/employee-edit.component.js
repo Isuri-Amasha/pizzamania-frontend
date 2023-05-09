@@ -101,37 +101,56 @@ export default class EditEmployee extends Component {
 
         console.log(employee);
 
+        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        axios.put('http://localhost:5000/employee/' + this.state.id, employee)
-            .then(res => {
-                console.log(res);
+        if (this.state.empID.length < 10 || this.state.empID.length > 10) {
+            this.setState({ empIDError: "Employee ID should be 10 characters." })
+        }
+        else if (this.state.contactNo.length != 10) {
+            this.setState({ contactNoError: "Contact Number is invalid." })
 
-                if (res.status === 200) {
+        } else if (!this.state.email || regex.test(this.state.email) === false) {
+            this.setState({ emailError: "Please Enter a valid email." })
 
-                    this.props.close();
+        } else if (this.state.address.length < 10) {
+            this.setState({ addressError: "Your address is too short." })
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Employee has been updated!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+        } else if (this.state.address.position < 4) {
+            this.setState({ positionError: "Your position is too short." })
+
+        } else {
+
+            axios.put('http://localhost:5000/employee/' + this.state.id, employee)
+                .then(res => {
+                    console.log(res);
+
+                    if (res.status === 200) {
+
+                        this.props.close();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Employee has been updated!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
 
 
 
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'There was an error updating!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#e00404'
-                    })
-                }
-            })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'There was an error updating!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
+                })
+        }
 
     }
 
@@ -156,7 +175,7 @@ export default class EditEmployee extends Component {
                                                         value={this.state.empID}
                                                         onChange={this.onChangeempID}
 
-                                                    /><p />
+                                                    /> <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.empIDError}</p>
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Full Name</label>
@@ -177,7 +196,7 @@ export default class EditEmployee extends Component {
                                                         value={this.state.contactNo}
                                                         onChange={this.onChangecontactNo}
                                                     />
-                                                    <p />
+                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.contactNoError}</p>
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Email</label>
@@ -186,7 +205,8 @@ export default class EditEmployee extends Component {
                                                         className="form-control"
                                                         value={this.state.email}
                                                         onChange={this.onChangeemail}
-                                                    /><p />
+                                                    />
+                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.emailError}</p>
                                                 </div>
                                             </div>
 
@@ -198,32 +218,24 @@ export default class EditEmployee extends Component {
                                                     value={this.state.address}
                                                     onChange={this.onChangeaddress}
                                                 />
-                                                <p />
+                                                <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.addressError}</p>
                                             </div>
                                             <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Position</label>
-                                                <select type="text"
+                                                <input type="text"
                                                     required
+                                                   
                                                     className="form-control"
                                                     value={this.state.position}
                                                     onChange={this.onChangeposition}
-                                                >
-                                                    <option>Select From Here</option>
-                                                    <option>Waiter Staff</option>
-                                                    <option>Kitchen Head Chef</option>
-                                                    <option>Inventory Manager</option>
-                                                    <option>Driver</option>
-                                                    <option>Delivery Manager</option>
-                                                    <option>Employee Manager</option>
-                                                    <option>Financial Manager</option>
-                                                    <option>Product Manager</option>
-                                                </select>
-                                                
+                                                />
+                                                    
+
                                                 <p />
-                                               
+
                                                 <p />
                                             </div>
-                                          
+
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Employee" />
                                             </div>

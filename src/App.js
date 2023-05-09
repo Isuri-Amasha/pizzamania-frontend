@@ -51,8 +51,12 @@ import CreatePayment from './components/order/payment-add.component';
 import { UserRegistration } from './components/user/user-registration.component';
 import { UserLogin } from './components/user/user-login.component';
 
+import { MonthlyWages } from './components/salary/monthly-wages.component';
+
 import Home from "./components/navbar/home";
 initTE({ Carousel }, true); // set second parameter to true if you want to use a debugger
+
+
 
 function App() {
   return (
@@ -137,6 +141,8 @@ function App() {
           <Route exact path="/iokitchen" element={<InventoryOrderListKitchen />} />{/* Done */}
 
           <Route exact path="/payment" element={<CreatePayment />} />{/* Done */}
+
+          <Route exact path="/wages" element={<MonthlyWages />} />{/* Done */}
           
         </Routes>
       </Router>

@@ -79,9 +79,7 @@ export default class EditCustomer extends Component {
 
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-        if (this.state.fullName.length < 6) {
-            this.setState({ fullNameError: "Your Name is too short" })
-        } else if (!this.state.email || regex.test(this.state.email) === false) {
+        if (!this.state.email || regex.test(this.state.email) === false) {
             this.setState({ emailError: "Please Enter a valid email." })
         } else if (this.state.contactNo.length != 10) {
             this.setState({ contactError: "Please Enter a valid Phone Number." })
@@ -140,7 +138,7 @@ export default class EditCustomer extends Component {
                                                         value={this.state.fullName}
                                                         onChange={this.onChangeFullName}
 
-                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.fullNameError}</p>
+                                                    /><p/>
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Email</label>

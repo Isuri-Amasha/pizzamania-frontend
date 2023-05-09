@@ -78,9 +78,6 @@ export class CreateEmployee extends Component {
         if(this.state.empID.length < 10 || this.state.empID.length > 10){
             this.setState({empIDError : "Employee ID should be 10 characters."})
         }
-        else if(this.state.fullName.length < 6){
-            this.setState({nameError : "Name should be longer than 6 characters."})
-        }
         else if(this.state.contactNo.length != 10){
             this.setState({contactNoError : "Contact Number is invalid."})
 
@@ -172,7 +169,7 @@ export class CreateEmployee extends Component {
                                                         value={this.state.fullName}
                                                         onChange={this.onChangefullName}
                                                     />
-                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.nameError}</p>
+                                                    <p/>
                                                 </div>
                                             </div>
 

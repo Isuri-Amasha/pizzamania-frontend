@@ -10,7 +10,7 @@ import ViewOrder from '../order/order-view.component';
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
      
-        <td className='px-2 py-2'>{props.order._id}</td>
+        <td className='px-2 py-2'>{props.order.orderId}</td>
         <td className='px-2 py-2'>{props.order.item1}</td>
         <td className='px-2 py-2'>{props.order.quantity1}</td>
         <td className='px-2 py-2'>{props.order.item2}</td>
@@ -173,11 +173,11 @@ export class KitchenOrderList extends Component {
         return this.state.order.map((currentorder) => {
             if (
                 this.state.searchOrder ==
-                currentorder._id
+                currentorder.orderId
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                        <td className='px-6 py-4'>{currentorder._id}</td>
+                        <td className='px-6 py-4'>{currentorder.orderId}</td>
                         <td className='px-6 py-4'>{currentorder.item1}</td>
                         <td className='px-6 py-4'>{currentorder.quantity1}</td>
                         <td className='px-6 py-4'>{currentorder.item2}</td>
@@ -328,10 +328,10 @@ export class KitchenOrderList extends Component {
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                                {/* <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
                                                     <Link className='font-semibold text-white no-underline' to={"/creatOrder"}>
                                                         Add Order
-                                                    </Link></button>
+                                                    </Link></button> */}
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.exportOrder() }}>
                                                     
                                                         Download Report Here

@@ -100,7 +100,7 @@ export default class EditInventory extends Component {
                         Swal.fire({
                             icon: 'success',
                             title: 'Successful',
-                            text: 'Employee has been updated!!',
+                            text: 'Inventory has been updated!!',
                             background: '#fff',
                             confirmButtonColor: '#333533',
                             iconColor: '#60e004'
