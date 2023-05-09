@@ -601,12 +601,18 @@ export class CreateOrder extends Component {
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Order For
                                                 </label>
-                                                <input type="text"
+                                                <select type="text"
                                                     required
                                                     className="form-control"
                                                     value={this.state.orderFor}
                                                     onChange={this.onChangeorderFor}
-                                                /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
+                                                >
+                                                    <option>Select From Here</option>
+                                                    <option>Dine In</option>
+                                                    <option>Take Away</option>
+                                                    <option>Delivery</option>
+                                                    
+                                                    </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
                                             </div>
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>

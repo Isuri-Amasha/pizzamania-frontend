@@ -5,7 +5,7 @@ import AuthenticationService from "../user/AuthenticationService";
 class navbar extends Component {
   logout = () => {
     AuthenticationService.logout();
-   
+
     window.location = "/"
   }
   render() {
@@ -24,6 +24,7 @@ class navbar extends Component {
     let loggedAsDManager = false;
     let loggedAsPManager = false;
     let loggedAsFManager = false;
+    let loggedAsAdmin = false;
     let unknownUser = false;
 
     if (isUserLoggedIn == true) {
@@ -50,6 +51,8 @@ class navbar extends Component {
     }
     if (loggedUserRole != null && loggedUserRole === 'Product Manager') {
       loggedAsPManager = true;
+    } if (loggedUserRole != null && loggedUserRole === 'Super Admin') {
+      loggedAsAdmin = true;
     } if (loggedUserRole != null && loggedUserRole === 'Finance Manager') {
       loggedAsFManager = true;
     }
@@ -169,6 +172,21 @@ class navbar extends Component {
                         <a href="/allSchedule" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Schedules</a>
                         {/* <a href="/wages" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Wages</a> */}
                       </div>
+                    </>
+                  }{
+                    loggedAsAdmin &&
+                    <>
+                      <a href="/employee" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Employees</a>
+                      <a href="/customer" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Customer</a>
+                      <a href="/feedback" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Feedback</a>
+                      <a href="/allSchedule" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Schedules</a>
+                      <a href="/inventory" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Inventory</a>
+                      <a href="/inventoryorder" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Inventory Order</a>
+                      <a href="/order" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Orders</a>
+                      <a href="/product" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Product</a>
+                      <a href="/delivery" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Delivery</a>
+                      <a href="/salary" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Salary</a>
+                      <a href="/ot" className="m-2 text-black no-underline duration-300 hover:text-orange-800 hover:font-normal">Over Time</a>
                     </>
                   }
 

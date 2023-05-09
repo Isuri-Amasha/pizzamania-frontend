@@ -99,10 +99,10 @@ export class EditInventoryOrder extends Component {
         else if (this.state.productCategory.length < 4) {
             this.setState({ categoryError: "Product Category cannot be shorter than 4 digits." })
         }
-        else if (this.state.quantity != null) {
-            this.setState({ aquantityError: "Quantity can not be zero." })
-        } else if (this.state.quantity != null) {
-            this.setState({ rquantityError: "Quantity can not be zero." })
+        else if(this.state.availableQuantity == null){
+            this.setState({aquantityError : "Quantity can not be zero."})
+        }else if(this.state.requestedQuantity <= 0){
+            this.setState({rquantityError : "Quantity can not be zero 0 minus."})
         } else {
             axios.put('http://localhost:5000/inventoryOrders/' + this.state.id, inventoryorder)
 
@@ -212,7 +212,7 @@ export class EditInventoryOrder extends Component {
                                                 <div className="form-group">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Requested Quantity                                                    </label>
-                                                    <input type="text"
+                                                    <input type="number"
                                                         className="form-control"
                                                         value={this.state.requestedQuantity}
                                                         onChange={this.onChangerequestedquantity}

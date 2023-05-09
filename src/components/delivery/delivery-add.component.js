@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import * as Swal from "sweetalert2";
+const shortid = require('shortid');
 
 
 
@@ -22,6 +23,7 @@ export class CreateDelivery extends Component {
         this.state = {
             order:[],
             id:props.deId,
+            deliverId:'',
             orderId : '',
             customer : '',
             item1 : '',
@@ -97,6 +99,7 @@ export class CreateDelivery extends Component {
         this.updateOrderStatus(this.state.id);
 
         const delivery = {
+            deliveryId:shortid.generate(),
             orderId : this.state.orderId,
             customer : this.state.customer,
             item1: this.state.item1,
