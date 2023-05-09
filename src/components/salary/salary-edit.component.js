@@ -6,16 +6,16 @@ export class EditSalary extends Component {
     constructor(props) {
         super(props);
         this.onChangeempID = this.onChangeempID.bind(this);
-        this.onChangeempName = this.onChangeempName.bind(this);
+        // this.onChangeempName = this.onChangeempName.bind(this);
         this.onChangebasicSalary = this.onChangebasicSalary.bind(this);
         this.onChangeotRate = this.onChangeotRate.bind(this);
-       
+
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id:props.salId,
+            id: props.salId,
             empId: '',
-            empName: '',
+            // empName: '',
             basicSalary: '',
             otRate: ''
         }
@@ -26,7 +26,7 @@ export class EditSalary extends Component {
             .then(response => {
                 this.setState({
                     empId: response.data.empId,
-                    empName: response.data.empName,
+                    // empName: response.data.empName,
                     basicSalary: response.data.basicSalary,
                     otRate: response.data.otRate
 
@@ -44,11 +44,11 @@ export class EditSalary extends Component {
         });
     }
 
-    onChangeempName(e) {
-        this.setState({
-            empName: e.target.value
-        });
-    }
+    // onChangeempName(e) {
+    //     this.setState({
+    //         empName: e.target.value
+    //     });
+    // }
 
     onChangebasicSalary(e) {
         this.setState({
@@ -68,15 +68,15 @@ export class EditSalary extends Component {
 
         const salary = {
             empId: this.state.empId,
-            empName: this.state.empName,
+            // empName: this.state.empName,
             basicSalary: this.state.basicSalary,
             otRate: this.state.otRate
         }
 
         console.log(salary);
 
-        axios.put('http://localhost:5000/salary/'+this.state.id, salary)
-            
+        axios.put('http://localhost:5000/salary/' + this.state.id, salary)
+
 
             .then(res => {
 
@@ -104,13 +104,13 @@ export class EditSalary extends Component {
                     })
                 }
             })
-   
+
     }
 
     clearData = () => {
         this.setState({
             empId: '',
-            empName: '',
+            // empName: '',
             basicSalary: '',
             otRate: ''
         })
@@ -119,27 +119,27 @@ export class EditSalary extends Component {
     render() {
         return (
             <div className="flex flex-col px-5 pt-2 ">
-            <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-                    <div className='items-center overflow-hidden'>
-                        <div className=''>
-                            <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
-                                <div className="formdiv">
-                                    <form className='px-12 py-12 ' onSubmit={this.onSubmit}>
+                <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                        <div className='items-center overflow-hidden'>
+                            <div className=''>
+                                <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
+                                    <div className="formdiv">
+                                        <form className='px-12 py-12 ' onSubmit={this.onSubmit}>
 
-                                        <div class="grid grid-cols-2 gap-4 form-group">
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee ID </label>
-                                                <input type="text"
-                                                    // required
-                                                    disabled
-                                                    className="form-control"
-                                                    value={this.state.empId}
-                                                    onChange={this.onChangeempID}
+                                            <div class="grid grid-cols-1 gap-4 form-group">
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Employee ID </label>
+                                                    <input type="text"
+                                                        // required
+                                                        disabled
+                                                        className="form-control"
+                                                        value={this.state.empId}
+                                                        onChange={this.onChangeempID}
 
-                                                /><p />
-                                            </div>
-                                            <div className="form-group">
+                                                    /><p />
+                                                </div>
+                                                {/* <div className="form-group">
                                                 <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Employee Name</label>
                                                 <input type="text"
                                                     required
@@ -148,44 +148,44 @@ export class EditSalary extends Component {
                                                     value={this.state.empName}
                                                     onChange={this.onChangeempName}
                                                 /><p />
+                                            </div> */}
                                             </div>
-                                        </div>
-                                        <div class="grid grid-cols-2 gap-4 form-group">
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Basic Salary</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.basicSalary}
-                                                    onChange={this.onChangebasicSalary}
-                                                />
-                                                <p />
+                                            <div class="grid grid-cols-2 gap-4 form-group">
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Basic Salary</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.basicSalary}
+                                                        onChange={this.onChangebasicSalary}
+                                                    />
+                                                    <p />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Over Time Rate</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.otRate}
+                                                        onChange={this.onChangeotRate}
+                                                    /><p />
+                                                </div>
                                             </div>
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Over Time Rate</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.otRate}
-                                                    onChange={this.onChangeotRate}
-                                                /><p />
-                                            </div>
-                                        </div>
 
-                                        <div className="text-center align-middle form-group">
-                                            <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Salary" />
-                                        </div>
-                                    </form>
+                                            <div className="text-center align-middle form-group">
+                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Salary" />
+                                            </div>
+                                        </form>
 
+
+                                    </div>
 
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         )
     }
 }

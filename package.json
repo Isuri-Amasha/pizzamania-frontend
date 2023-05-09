@@ -16,6 +16,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
+    "react-select": "^5.7.3",
     "react-time-picker": "^6.0.4",
     "shortid": "^2.2.16",
     "sweetalert2-react": "^0.8.3",
