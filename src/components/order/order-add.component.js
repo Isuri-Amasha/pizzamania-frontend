@@ -3,6 +3,8 @@ import axios from 'axios';
 import * as Swal from "sweetalert2";
 import { Modal } from "react-bootstrap";
 import CreatePayment from './payment-add.component';
+import Select from 'react-select'
+
 const shortid = require('shortid');
 
 
@@ -45,20 +47,47 @@ export class CreateOrder extends Component {
             amount: '',
             orderStatus: '',
             price: '',
-            show: false
+            show: false,
 
+            FullDataSet: [], //change to id
+            NameSet: []
         }
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/product/')
+            .then(response => {
+                this.setState({
+                    FullDataSet: response.data,
+                })
+                const tempOptions = []
+                response.data.forEach((product) => {
+                    let tempObject = {
+                        value: product.productName,
+                        label: product.productName
+                    }
+                    console.log(tempObject.value, tempObject.label)
+                    tempOptions.push(tempObject);
+                })
+                this.setState({
+                    NameSet: tempOptions
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        this.getProduct();
+    }
+
+    onChangeitem1(choice) {
+        this.setState({
+            item1: choice.value
+        });
     }
 
     onChangecustomer(e) {
         this.setState({
             customer: e.target.value
-        });
-    }
-
-    onChangeitem1(e) {
-        this.setState({
-            item1: e.target.value
         });
     }
 
@@ -86,9 +115,9 @@ export class CreateOrder extends Component {
         });
     }
 
-    onChangeitem2(e) {
+    onChangeitem2(choice) {
         this.setState({
-            item2: e.target.value
+            item2: choice.value
         });
     }
 
@@ -98,9 +127,9 @@ export class CreateOrder extends Component {
         });
     }
 
-    onChangeitem3(e) {
+    onChangeitem3(choice) {
         this.setState({
-            item3: e.target.value
+            item3: choice.value
         });
     }
 
@@ -128,9 +157,9 @@ export class CreateOrder extends Component {
         });
     }
 
-    componentDidMount() {
-        this.getProduct();
-    }
+    // componentDidMount() {
+    //     this.getProduct();
+    // }
 
     getProduct() {
         axios.get('http://localhost:5000/product/')
@@ -142,32 +171,23 @@ export class CreateOrder extends Component {
             })
     }
     getPrice3(item3, size3, quantity3) {
-
         console.log(item3)
-
         let amount3 = 0;
         let i = 1;
-
-
-
-
         this.state.products.map((currentProduct) => {
 
-            if (item3 == currentProduct.productName && currentProduct.availability == "No") {
+            if (item3 === currentProduct.productName && currentProduct.availability === "No") {
                 Swal.fire({
                     icon: 'info',
                     title: 'Error',
-                    text: 'Item3 is not available!!',
+                    text: 'Item is not available!!',
                     background: '#fff',
                     confirmButtonColor: '#333533',
                     iconColor: '#60e004'
                 })
-
             } else {
-
-
-
-                if (item3 == currentProduct.productName && size3 == currentProduct.productSize) {
+                // let quantity = quantity[i];
+                if (item3 === currentProduct.productName && size3 === currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
 
@@ -180,34 +200,26 @@ export class CreateOrder extends Component {
 
 
                 }
-
-
             }
 
         })
         return amount3;
-
-
-
     }
 
     getPrice2(item2, size2, quantity2) {
 
         console.log(item2)
-
-
         let amount2 = 0;
         let i = 1;
-
-
-
+        // for (let i = 1; i <= 3; i++) {
         this.state.products.map((currentProduct) => {
 
-            if (item2 == currentProduct.productName && currentProduct.availability == "No") {
+            if (item2 ===
+                currentProduct.productName && currentProduct.availability === "No") {
                 Swal.fire({
                     icon: 'info',
                     title: 'Error',
-                    text: 'Item2 is not available!!',
+                    text: 'Item is not available!!',
                     background: '#fff',
                     confirmButtonColor: '#333533',
                     iconColor: '#60e004'
@@ -215,7 +227,7 @@ export class CreateOrder extends Component {
 
             } else {
 
-
+                // let quantity = quantity[i];
 
                 if (item2 == currentProduct.productName && size2 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
@@ -230,94 +242,38 @@ export class CreateOrder extends Component {
                     }
 
                 }
+                // return amount;
 
+                // console.log("Amount is" + amount);
 
             }
 
         })
         return amount2;
+        // console.log("Amount  154 is" + amount);
 
+        // }
 
-
-    }
-
-    getAvailability1(item1,size1){
-
-        let availability1 = ""
-
-        this.state.products.map((currentProduct) => {
-
-            if (item1 == currentProduct.productName ) {
-                  
-               availability1 = currentProduct.availability
-
-            } 
-
-        })
-        return availability1;
-
-    }
-    getAvailability2(item2,size2){
-
-        let availability2 = ""
-
-        this.state.products.map((currentProduct) => {
-
-            if (item2 == currentProduct.productName ) {
-                  
-               availability2 = currentProduct.availability
-
-            } 
-
-        })
-        return availability2;
-
-    }
-    getAvailability3(item3,size3){
-
-        let availability3 = ""
-
-        this.state.products.map((currentProduct) => {
-
-            if (item3 == currentProduct.productName ) {
-                  
-               availability3 = currentProduct.availability
-
-            } 
-
-        })
-        return availability3;
 
     }
 
     getPrice1(item1, size1, quantity1) {
 
         console.log(item1)
-
-
         let amount1 = 0;
         let i = 1;
-       
-
-
-
         this.state.products.map((currentProduct) => {
-
-            if (item1 == currentProduct.productName && currentProduct.availability == "No") {
-                
-                
+            if (item1 === currentProduct.productName && currentProduct.availability === "No") {
                 Swal.fire({
                     icon: 'info',
                     title: 'Error',
-                    text: 'Item1 is not available!!',
+                    text: 'Item is not available!!',
                     background: '#fff',
                     confirmButtonColor: '#333533',
                     iconColor: '#60e004'
                 })
-
             } else {
-
-
+                // let quantity = quantity[i];
                 if (item1 == currentProduct.productName && size1 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
@@ -328,24 +284,10 @@ export class CreateOrder extends Component {
                     } else {
                         amount1 = currentProduct.price * quantity1
                     }
-
-
-
-
-
-
-
                 }
             }
-
-
-
-
         })
         return amount1;
-
-
-
     }
 
     gotoPayment = (id) => {
@@ -360,11 +302,7 @@ export class CreateOrder extends Component {
 
     closeModalBox = () => {
         this.setState({ show: false })
-
     }
-
-
-
 
     onSubmit(e) {
 
@@ -378,22 +316,13 @@ export class CreateOrder extends Component {
         const size3 = this.state.size3;
         const quantity3 = this.state.quantity3;
 
-        let av1 = this.getAvailability1(item1,size1);
-        console.log("Availability1 is"+av1);
-
-        let av2 = this.getAvailability2(item2,size2);
-        console.log("Availability2 is"+av2);
-
-        let av3 = this.getAvailability3(item3,size3);
-        console.log("Availability3 is"+av3);
-
         let price1 = this.getPrice1(item1, size1, quantity1);
         console.log("Price 1 is" + price1);
 
         let price2 = this.getPrice2(item2, size2, quantity2);
         console.log("Price 2 is" + price2);
 
-        let price3 = this.getPrice3(item3, size3, quantity3);
+        let price3 = this.getPrice2(item3, size3, quantity3);
         console.log("Price 3 is" + price3);
 
         let amount = price1 + price2 + price3;
@@ -403,8 +332,6 @@ export class CreateOrder extends Component {
 
 
         const product = [];
-
-
         const order = {
             orderId: shortid.generate(),
             customer: this.state.customer,
@@ -461,7 +388,6 @@ export class CreateOrder extends Component {
 
                         this.gotoPayment(id);
                         // window.location = '/payment';
-
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -473,12 +399,7 @@ export class CreateOrder extends Component {
                         })
                     }
                 })
-
-
-
-
         }
-
     }
 
     clearData = () => {
@@ -496,13 +417,12 @@ export class CreateOrder extends Component {
             orderFor: '',
             deliveryAddress: '',
             amount: '',
-
         })
     }
 
     render() {
         return (
-            <div className="flex flex-col px-5 ">
+            <div className="flex flex-col px-5 mb-16">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div className="inline-block min-w-full sm:px-6 lg:px-8">
                         <div className='items-center overflow-hidden'>
@@ -528,28 +448,37 @@ export class CreateOrder extends Component {
 
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-4 form-group">
+                                            <div className="grid grid-cols-3 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Item 1
                                                     </label>
-                                                    <input type="text"
+                                                    {/* <input type="text"
                                                         required
                                                         className="form-control"
                                                         value={this.state.item1}
                                                         onChange={this.onChangeitem1}
-                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.item1Error}</p>
+                                                    /> */}
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem1(choice)}
+                                                    />
+                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.item1Error}</p>
                                                 </div>
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
                                                         Size 1
                                                     </label>
-                                                    <input type="text"
-                                                        required
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size1}
                                                         onChange={this.onChangesize1}
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
@@ -563,27 +492,31 @@ export class CreateOrder extends Component {
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantity1Error}</p>
                                                 </div>
                                             </div>
-                                            <div className="grid grid-cols-2 gap-4 form-group">
+                                            <div className="grid grid-cols-3 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Item 2
                                                     </label>
-                                                    <input type="text"
-                                                        className="form-control"
-                                                        value={this.state.item2}
-                                                        onChange={this.onChangeitem2}
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem2(choice)}
                                                     />
                                                 </div>
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
                                                         Size 2
                                                     </label>
-                                                    <input type="text"
 
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size2}
                                                         onChange={this.onChangesize2}
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
                                                 <div className="form-group">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -597,28 +530,31 @@ export class CreateOrder extends Component {
                                                 </div>
                                             </div>
 
-                                            <div className="grid grid-cols-2 gap-4 form-group">
+                                            <div className="grid grid-cols-3 gap-4 form-group">
 
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                         Item 3
                                                     </label>
-                                                    <input type="text"
-                                                        className="form-control"
-                                                        value={this.state.item3}
-                                                        onChange={this.onChangeitem3}
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem3(choice)}
                                                     />
                                                 </div>
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
                                                         Size 3
                                                     </label>
-                                                    <input type="text"
-
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size3}
                                                         onChange={this.onChangesize3}
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
                                                 <div className="form-group">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -642,12 +578,11 @@ export class CreateOrder extends Component {
                                                     value={this.state.orderFor}
                                                     onChange={this.onChangeorderFor}
                                                 >
-                                                    <option>Select From Here</option>
-                                                    <option>Dine In</option>
-                                                    <option>Take Away</option>
-                                                    <option>Delivery</option>
-
-                                                </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
+                                                    <option value="Take Away">Take Away</option>
+                                                    <option value="Dine In">Dine In</option>
+                                                    <option value="Delivery">Delivery</option>
+                                                </select>
+                                                <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
                                             </div>
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -660,19 +595,6 @@ export class CreateOrder extends Component {
                                                     onChange={this.onChangedeliveryAddress}
                                                 /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
                                             </div>
-                                            
-                                                
-                                            {/* <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
-                                                    Amount
-                                                </label>
-                                                <input type="number"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.amount}
-                                                    onChange={this.onChangeamount}
-                                                />
-                                            </div> */}
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Add Order" />
                                             </div>
@@ -683,15 +605,6 @@ export class CreateOrder extends Component {
 
                                 <div class="">
                                     <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
-                                        <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
-                                            <div class="">
-                                                <Modal.Title className='items-center' >
-                                                    <p className='font-semibold text-black uppercase '>
-                                                        Add Payment Details
-                                                    </p>
-                                                </Modal.Title>
-                                            </div>
-                                        </Modal.Header >
                                         <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
                                             <CreatePayment payId={this.state.id} key={this.state.id} close={this.closeModalBox} />
                                         </Modal.Body>

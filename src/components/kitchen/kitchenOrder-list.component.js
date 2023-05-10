@@ -9,7 +9,7 @@ import ViewOrder from '../order/order-view.component';
 
 const Order = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-     
+
         <td className='px-2 py-2'>{props.order.orderId}</td>
         <td className='px-2 py-2'>{props.order.item1}</td>
         <td className='px-2 py-2'>{props.order.quantity1}</td>
@@ -18,59 +18,62 @@ const Order = props => (
         <td className='px-2 py-2'>{props.order.item3}</td>
         <td className='px-2 py-2'>{props.order.quantity3}</td>
         <td className='px-2 py-2'>{props.order.orderFor}</td>
-       
+
         <td className='px-2 py-2'>
-      
-            
-            
-                <span
-           
+
+
+
+            <span
+
                 class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
                 {props.order.orderStatus}
             </span>
-            </td>
+        </td>
 
-            <td>
-        <div class="flex justify-center">
+        <td>
+            <div class="flex justify-center">
                 <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200'onClick={() => { props.gotoViewOrder(props.order._id) }}>
-                       
-                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                                <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
-                                </div>
-                                <div class="">
-                                    View
-                                </div>
+                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { props.gotoViewOrder(props.order._id) }}>
+
+                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                            <div class="">
+                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+
+
                             </div>
-                        
+                            <div class="">
+                                View
+                            </div>
+                        </div>
+
                     </button>
                 </div>
-                </div>
+            </div>
 
         </td>
-            
-            
-        
+
+
+
         <td className='px-6 py-4'>
             <div class="justify-center">
                 <button className='items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { props.updateOrderStatus(props.order._id) }}>
-                    
-                        <div class=" flex gap-1 hover:text-black duration-100">
-                            <div class="">
-                                <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                                </svg>
-                            </div>
-                            <div class="m-2">
-                                Order Accepted
 
-                            </div>
+                    <div class=" flex gap-1 hover:text-black duration-100">
+                        <div class="">
+                            <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                            </svg>
+                        </div>
+                        <div class="m-2">
+                            Order Accepted
 
                         </div>
-                    
+
+                    </div>
+
                 </button>
             </div>
         </td>
@@ -106,23 +109,23 @@ export class KitchenOrderList extends Component {
         this.state = {
             order: [],
             searchOrder: "",
-            show:false,
+            show: false,
         };
     }
 
 
     componentDidMount() {
-       this.refreshList();
+        this.refreshList();
     }
 
-    refreshList(){
+    refreshList() {
         axios.get('http://localhost:5000/order/')
-        .then(response => {
-            this.setState({ order: response.data })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+            .then(response => {
+                this.setState({ order: response.data })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     gotoViewOrder = (id) => {
@@ -131,14 +134,14 @@ export class KitchenOrderList extends Component {
             show: true
 
         })
-        console.log("LIst id is :" +id);
+        console.log("LIst id is :" + id);
     }
 
     //Modal box
     closeModalBoxForView = () => {
         this.setState({ show: false })
         this.refreshList();
-       
+
     }
 
     updateOrderStatus(id) {
@@ -165,7 +168,7 @@ export class KitchenOrderList extends Component {
     orderList() {
         return this.state.order.map(currentorder => {
             return <Order order={currentorder} gotoViewOrder={this.gotoViewOrder} updateOrderStatus={this.updateOrderStatus} readyForDelivery={this.readyForDelivery} key={currentorder._id} />
-           
+
         })
     }
 
@@ -185,82 +188,83 @@ export class KitchenOrderList extends Component {
                         <td className='px-6 py-4'>{currentorder.item3}</td>
                         <td className='px-6 py-4'>{currentorder.quantity3}</td>
                         <td className='px-6 py-4'>{currentorder.orderFor}</td>
-                       
-                        <td className='px-6 py-4'> <span
-                class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
-                {currentorder.orderStatus}
-            </span>
-            </td>
 
-            <td>{
-        <div class="flex justify-center">
-                <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200'onClick={() => { this.gotoViewOrder(currentorder._id) }}>
-                       
-                            <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                        <td className='px-6 py-4'> <span
+                            class="text-base inline-block whitespace-nowrap rounded-full bg-green-400 p-1 hover:bg-green-500 hover:drop-shadow-md hover:text-white  px-2 pt-[0.35em] pb-[0.25em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700">
+                            {currentorder.orderStatus}
+                        </span>
+                        </td>
+
+                        <td>{
+                            <div class="flex justify-center">
                                 <div class="">
-                                    <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                    </svg>
-                                </div>
-                                <div class="">
-                                    View
+                                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-yellow-500 rounded-md hover:bg-yellow-200' onClick={() => { this.gotoViewOrder(currentorder._id) }}>
+
+                                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                                            <div class="">
+                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                </svg>
+                                            </div>
+                                            <div class="">
+                                                View
+                                            </div>
+                                        </div>
+
+                                    </button>
                                 </div>
                             </div>
-                        
-                    </button>
-                </div>
-                </div>
-            }
-        </td>
-            
-            
+                        }
+                        </td>
+
+
                         <td className='px-6 py-4'>
                             {
-                                  <div class="justify-center">
-                                <button className='items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'
-                                    onClick={() => {
-                                        //Delete the selected record
-                                        this.updateOrderStatus(currentorder._id)
-                                    }}>
+                                <div class="justify-center">
+                                    <button className='items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200'
+                                        onClick={() => {
+                                            //Delete the selected record
+                                            this.updateOrderStatus(currentorder._id)
+                                        }}>
 
 
-                                    <div class=" flex gap-1 hover:text-black duration-100">
-                            <div class="">
-                                <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                                </svg>
-                            </div>
-                            <div class="m-2">
-                                Order Accepted
+                                        <div class=" flex gap-1 hover:text-black duration-100">
+                                            <div class="">
+                                                <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                                </svg>
+                                            </div>
+                                            <div class="m-2">
+                                                Order Accepted
 
-                            </div>
+                                            </div>
 
-                        </div>
-                                </button>
+                                        </div>
+                                    </button>
                                 </div>
                             }
-                            </td>
-                            <td className='px-6 py-4'>
+                        </td>
+                        <td className='px-6 py-4'>
 
                             {
                                 <div class="justify-center">
-                                <button className='inline-flex px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-green-500 rounded-md hover:bg-red-200'
-                                    onClick={() => {
-                                        //Delete the selected record
-                                        this.readyForDelivery(currentorder._id)
-                                    }}>
-                                    <div class="flex gap-1 hover:text-black">
-                        <div class="">
-                            <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                            </svg>
-                        </div>
-                        <div class="m-2">
-                            Ready For Delivery
-                        </div>
-                    </div>
-                                </button>
+                                    <button className='inline-flex px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-green-500 rounded-md hover:bg-red-200'
+                                        onClick={() => {
+                                            //Delete the selected record
+                                            this.readyForDelivery(currentorder._id)
+                                        }}>
+                                        <div class="flex gap-1 hover:text-black">
+                                            <div class="">
+                                                <svg class="h-5 w-5 m-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                                                </svg>
+                                            </div>
+                                            <div class="m-2">
+                                                Ready For Delivery
+                                            </div>
+                                        </div>
+                                    </button>
                                 </div>
                             }
 
@@ -273,20 +277,20 @@ export class KitchenOrderList extends Component {
 
 
     exportOrder = () => {
-        console.log( "Export PDF" )
+        console.log("Export PDF")
 
 
         const unit = "pt";
-        const size = "A3"; 
-        const orientation = "landscape"; 
+        const size = "A3";
+        const orientation = "landscape";
         const marginLeft = 40;
-        const doc = new jsPDF( orientation, unit, size );
+        const doc = new jsPDF(orientation, unit, size);
 
         const title = "Order List Report ";
-        const headers = [["Order ID","Customer","Item1","Quantity1","Item2","Quantity2","Item3","Quantity3","Order For","Delivery Address","Amount","Order Status"]];
+        const headers = [["Order ID", "Customer", "Item1", "Quantity1", "Item2", "Quantity2", "Item3", "Quantity3", "Order For", "Delivery Address", "Amount", "Order Status"]];
 
         const or = this.state.order.map(
-            Order=>[
+            Order => [
                 Order._id,
                 Order.customer,
                 Order.item1,
@@ -305,13 +309,13 @@ export class KitchenOrderList extends Component {
         let content = {
             startY: 50,
             head: headers,
-            body:or
+            body: or
         };
-        doc.setFontSize( 20 );
-        doc.text( title, marginLeft, 40 );
+        doc.setFontSize(20);
+        doc.text(title, marginLeft, 40);
         require('jspdf-autotable');
-        doc.autoTable( content );
-        doc.save( "Order-list.pdf" )
+        doc.autoTable(content);
+        doc.save("Order-list.pdf")
     }
 
     render() {
@@ -333,9 +337,9 @@ export class KitchenOrderList extends Component {
                                                         Add Order
                                                     </Link></button> */}
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => { this.exportOrder() }}>
-                                                    
-                                                        Download Report Here
-                                                    </button>
+
+                                                    Download Report Here
+                                                </button>
                                             </div>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
                                                 <input
@@ -366,7 +370,7 @@ export class KitchenOrderList extends Component {
                                             <th className='p-2 tbhead'>Item 3</th>
                                             <th className='p-2 tbhead'>Quantity 3</th>
                                             <th className='p-2 tbhead'>Order For</th>
-                                           
+
                                             <th className='p-2 tbhead'>Order Status</th>
                                             <th className='p-2 tbhead'>More Details</th>
                                             <th className='p-2 text-center tbhead'>Kitchen Accepted</th>
@@ -391,7 +395,7 @@ export class KitchenOrderList extends Component {
                                         </div>
                                     </Modal.Header >
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
-                                        <ViewOrder orId={this.state.id} key={this.state.id}  />
+                                        <ViewOrder orId={this.state.id} key={this.state.id} />
                                     </Modal.Body>
                                 </Modal>
                             </div>

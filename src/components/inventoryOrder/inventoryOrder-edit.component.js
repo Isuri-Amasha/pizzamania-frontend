@@ -156,7 +156,7 @@ export class EditInventoryOrder extends Component {
                             <div className='items-center overflow-hidden'>
                                 <div className=''>
                                     <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
-                                        <form className='px-12 py-6' onSubmit={this.onSubmit}>
+                                        <form className='' onSubmit={this.onSubmit}>
                                             <div class="">
                                                 <div className="grid grid-cols-1 gap-4 form-group">
                                                     <div class="">

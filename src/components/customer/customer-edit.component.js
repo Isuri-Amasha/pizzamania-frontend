@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from "sweetalert2";
 
 
 export default class EditCustomer extends Component {
 
-    
-    constructor(props){
+
+    constructor(props) {
         super(props);
 
         this.onChangeFullName = this.onChangeFullName.bind(this);
@@ -16,63 +16,63 @@ export default class EditCustomer extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id:props.cusId,
-            fullName : '',
-            email : '',
-            contactNo : '',
-            address : ''
-            
+            id: props.cusId,
+            fullName: '',
+            email: '',
+            contactNo: '',
+            address: ''
+
         }
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/customer/`+ this.state.id)
-        .then(response => {
-            this.setState({
-            fullName : response.data.fullName,
-            email : response.data.email,
-            contactNo : response.data.contactNo,
-            address : response.data.address,
+        axios.get(`http://localhost:5000/customer/` + this.state.id)
+            .then(response => {
+                this.setState({
+                    fullName: response.data.fullName,
+                    email: response.data.email,
+                    contactNo: response.data.contactNo,
+                    address: response.data.address,
                 })
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.log(error);
             })
 
-        }
+    }
 
-    onChangeFullName(e){
+    onChangeFullName(e) {
         this.setState({
-            fullName : e.target.value
+            fullName: e.target.value
         });
     }
 
-    onChangeEmail(e){
+    onChangeEmail(e) {
         this.setState({
-            email : e.target.value
+            email: e.target.value
         });
     }
 
-    onChangeContactNo(e){
+    onChangeContactNo(e) {
         this.setState({
-            contactNo : e.target.value
+            contactNo: e.target.value
         });
     }
 
-    onChangeAddress(e){
+    onChangeAddress(e) {
         this.setState({
-            address : e.target.value
+            address: e.target.value
         });
     }
 
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
 
         const customers = {
-            fullName : this.state.fullName,
-            email : this.state.email,
-            contactNo : this.state.contactNo,
-            address : this.state.address,
+            fullName: this.state.fullName,
+            email: this.state.email,
+            contactNo: this.state.contactNo,
+            address: this.state.address,
         }
 
         console.log(customers);
@@ -85,37 +85,37 @@ export default class EditCustomer extends Component {
             this.setState({ contactError: "Please Enter a valid Phone Number." })
         } else if (this.state.address.length < 10) {
             this.setState({ addressError: "Your address is too short." })
-        }else {
-        axios.put('http://localhost:5000/customer/' + this.state.id, customers)
-        .then(res => {
-            console.log(res);
+        } else {
+            axios.put('http://localhost:5000/customer/' + this.state.id, customers)
+                .then(res => {
+                    console.log(res);
 
-            if (res.status === 200) {
-               
-                this.props.close();
+                    if (res.status === 200) {
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Successful',
-                    text: 'Customer has been updated!!',
-                    background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#60e004'
+                        this.props.close();
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Customer has been updated!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'There was an error updating!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
+
                 })
-
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    text: 'There was an error updating!',
-                    background: '#fff',
-                    confirmButtonColor: '#333533',
-                    iconColor: '#e00404'
-                })
-            }
-        
-        })
-    }
+        }
     }
 
     render() {
@@ -127,8 +127,8 @@ export default class EditCustomer extends Component {
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
-                                        <form className='px-12 py-12' onSubmit={this.onSubmit}>
-                                           
+                                        <form className='' onSubmit={this.onSubmit}>
+
                                             <div class="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Name </label>
@@ -138,7 +138,7 @@ export default class EditCustomer extends Component {
                                                         value={this.state.fullName}
                                                         onChange={this.onChangeFullName}
 
-                                                    /><p/>
+                                                    /><p />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Email</label>
@@ -150,19 +150,19 @@ export default class EditCustomer extends Component {
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.emailError}</p>
                                                 </div>
                                             </div>
-                                            
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Contact Number</label>
-                                                    <input type="text"
-                                                        required
-                                                        className="form-control"
-                                                        value={this.state.contactNo}
-                                                        onChange={this.onChangeContactNo}
-                                                    />
-                                                    <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.contactError}</p>
-                                                </div>
-                                               
-                                            
+
+                                            <div className="form-group">
+                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Contact Number</label>
+                                                <input type="text"
+                                                    required
+                                                    className="form-control"
+                                                    value={this.state.contactNo}
+                                                    onChange={this.onChangeContactNo}
+                                                />
+                                                <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.contactError}</p>
+                                            </div>
+
+
 
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address</label>
@@ -175,8 +175,8 @@ export default class EditCustomer extends Component {
                                             </div>
 
 
-                                            
-                                           
+
+
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Edit Customer" />
                                             </div>

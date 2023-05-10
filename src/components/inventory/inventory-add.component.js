@@ -57,46 +57,48 @@ export class CreateInventory extends Component {
 
         console.log(inventory);
 
-        if(this.state.productID.length < 3){
-            this.setState({proError : "Product Id cannot be shorter than 3 digits."})
+        if (this.state.productID.length < 3) {
+            this.setState({ proError: "Product Id cannot be shorter than 3 digits." })
         }
-        else if(this.state.productName.length < 3){
-            this.setState({nameError : "Product Name cannot be shorter than 3 digits."})
+        else if (this.state.productName.length < 3) {
+            this.setState({ nameError: "Product Name cannot be shorter than 3 digits." })
         }
-        else if(this.state.productCategory.length <4){
-            this.setState({categoryError : "Product Category cannot be shorter than 4 digits."})
-        }else if(this.state.quantity == null){
-            this.setState({quantityError : "Quantity can not be zero."})
+        else if (this.state.productCategory.length < 4) {
+            this.setState({ categoryError: "Product Category cannot be shorter than 4 digits." })
+        } else if (parseInt(this.state.quantity, 10) <= 0) {
+            this.setState({ quantityError: "Quantity can not be minus" })
+        } else if (this.state.quantity == null) {
+            this.setState({ quantitynotnullError: "Quantity can not be zero." })
         }
-       else{
-        axios.post('http://localhost:5000/inventory/', inventory)
-        
+        else {
+            axios.post('http://localhost:5000/inventory/', inventory)
 
-            .then(res => {
-                console.log(res);
 
-                if (res.status === 200) {
-                    this.clearData();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Inventory has been added!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+                .then(res => {
+                    console.log(res);
 
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error in adding!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#e00404'
-                    })
-                }
-            })
+                    if (res.status === 200) {
+                        this.clearData();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Inventory has been added!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error in adding!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
+                })
         }
     }
 
@@ -118,7 +120,7 @@ export class CreateInventory extends Component {
                             <div className='items-center overflow-hidden'>
                                 <div className=''>
                                     <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
-                                        <form className='px-12 py-6' onSubmit={this.onSubmit}>
+                                        <form className='px-12 py-6 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
                                             <div class="">
                                                 <p className='text-4xl font-semibold text-black uppercase drop-shadow-lg'>
                                                     Add Inventory                                                </p>
@@ -166,7 +168,10 @@ export class CreateInventory extends Component {
                                                             className="form-control"
                                                             value={this.state.quantity}
                                                             onChange={this.onChangequantity}
-                                                        /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantityError}</p>
+                                                            required
+                                                        />
+                                                        <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantityError}</p>
+                                                        <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantitynotnullError}</p>
                                                     </div>
                                                 </div>
                                                 <div className="text-center align-middle form-group">
@@ -174,7 +179,7 @@ export class CreateInventory extends Component {
                                                 </div>
                                             </div>
                                         </form>
-                                        
+
                                     </div>
                                 </div>
                             </div>

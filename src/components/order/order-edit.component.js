@@ -26,22 +26,22 @@ export default class EditOrder extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            id:props.orId,
+            id: props.orId,
             orderId: '',
-            customer:'',
+            customer: '',
             item1: '',
-            size1:'',
+            size1: '',
             quantity1: '',
             item2: '',
-            size2:'',
+            size2: '',
             quantity2: '',
             item3: '',
-            size3:'',
-            quantity3:'',
-            orderFor:'',
-            deliveryAddress:'',
-            amount:'',
-            orderStatus:''
+            size3: '',
+            quantity3: '',
+            orderFor: '',
+            deliveryAddress: '',
+            amount: '',
+            orderStatus: ''
 
         }
     }
@@ -53,13 +53,13 @@ export default class EditOrder extends Component {
                     orderId: response.data.orderId,
                     customer: response.data.customer,
                     item1: response.data.item1,
-                    size1:response.data.size1,
+                    size1: response.data.size1,
                     quantity1: response.data.quantity1,
                     item2: response.data.item2,
-                    size1:response.data.size2,
+                    size1: response.data.size2,
                     quantity2: response.data.quantity2,
                     item3: response.data.item3,
-                    size1:response.data.size3,
+                    size1: response.data.size3,
                     quantity3: response.data.quantity3,
                     orderFor: response.data.orderFor,
                     deliveryAddress: response.data.deliveryAddress,
@@ -171,50 +171,50 @@ export default class EditOrder extends Component {
         let amount3 = 0;
         let i = 1;
 
-       
+
 
         // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
+        this.state.products.map((currentProduct) => {
 
-                if(item3 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+            if (item3 == currentProduct.productName && currentProduct.availability == "No") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
 
-                }else{
-                
+            } else {
+
                 // let quantity = quantity[i];
 
                 if (item3 == currentProduct.productName && size3 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
-                    
-                    if(currentProduct.discount > 0){
+
+                    if (currentProduct.discount > 0) {
                         amount3 = (currentProduct.price * quantity3) - currentProduct.discount
 
-                    }else{
-                    amount3 = currentProduct.price * quantity3
+                    } else {
+                        amount3 = currentProduct.price * quantity3
                     }
-                  
+
 
                 }
                 // return amount;
-                
+
                 // console.log("Amount is" + amount);
 
             }
 
-            })
-            return amount3;
-            // console.log("Amount  154 is" + amount);
+        })
+        return amount3;
+        // console.log("Amount  154 is" + amount);
 
         // }
-        
+
 
     }
 
@@ -231,54 +231,54 @@ export default class EditOrder extends Component {
         let amount2 = 0;
         let i = 1;
 
-       
+
 
         // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
+        this.state.products.map((currentProduct) => {
 
-                if(item2 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+            if (item2 == currentProduct.productName && currentProduct.availability == "No") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
 
-                }else{
-                
+            } else {
+
                 // let quantity = quantity[i];
 
                 if (item2 == currentProduct.productName && size2 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
-                    if(currentProduct.discount > 0){
+                    if (currentProduct.discount > 0) {
                         amount2 = (currentProduct.price * quantity2) - currentProduct.discount
 
-                    }else{
+                    } else {
 
-                    amount2 = currentProduct.price * quantity2
+                        amount2 = currentProduct.price * quantity2
 
                     }
 
                 }
                 // return amount;
-                
+
                 // console.log("Amount is" + amount);
 
             }
 
-            })
-            return amount2;
-            // console.log("Amount  154 is" + amount);
+        })
+        return amount2;
+        // console.log("Amount  154 is" + amount);
 
         // }
-        
+
 
     }
 
-    getPrice1(item1, size1,quantity1) {
+    getPrice1(item1, size1, quantity1) {
 
         console.log(item1)
 
@@ -293,52 +293,52 @@ export default class EditOrder extends Component {
 
 
         // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
+        this.state.products.map((currentProduct) => {
 
-                if(item1 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+            if (item1 == currentProduct.productName && currentProduct.availability == "No") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
 
-                }else{
+            } else {
                 // let quantity = quantity[i];
 
                 if (item1 == currentProduct.productName && size1 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
 
-                    if(currentProduct.discount > 0){
+                    if (currentProduct.discount > 0) {
                         amount1 = (currentProduct.price * quantity1) - currentProduct.discount
 
-                    }else{
+                    } else {
                         amount1 = currentProduct.price * quantity1
                     }
 
-                    
 
-                    
 
-                  
+
+
+
 
                 }
             }
-                // return amount;
-                
-                // console.log("Amount is" + amount);
+            // return amount;
+
+            // console.log("Amount is" + amount);
 
 
 
-            })
-            return amount1;
-            // console.log("Amount  154 is" + amount);
+        })
+        return amount1;
+        // console.log("Amount  154 is" + amount);
 
         // }
-        
+
 
     }
 
@@ -355,17 +355,17 @@ export default class EditOrder extends Component {
         const size3 = this.state.size3;
         const quantity3 = this.state.quantity3;
 
-        let price1 = this.getPrice1(item1,size1,quantity1);
-        console.log("Price 1 is"+price1);
+        let price1 = this.getPrice1(item1, size1, quantity1);
+        console.log("Price 1 is" + price1);
 
-        let price2 = this.getPrice2(item2,size2,quantity2);
-        console.log("Price 2 is"+price2);
+        let price2 = this.getPrice2(item2, size2, quantity2);
+        console.log("Price 2 is" + price2);
 
-        let price3 = this.getPrice2(item3,size3,quantity3);
-        console.log("Price 3 is"+price3);
+        let price3 = this.getPrice2(item3, size3, quantity3);
+        console.log("Price 3 is" + price3);
 
         let amount = price1 + price2 + price3;
-        console.log("Amount is"+amount);
+        console.log("Amount is" + amount);
 
         e.preventDefault();
 
@@ -392,57 +392,57 @@ export default class EditOrder extends Component {
 
         console.log(order);
 
-        if(this.state.customer.length < 6){
-            this.setState({cusError : "Customer name is too short."})
+        if (this.state.customer.length < 6) {
+            this.setState({ cusError: "Customer name is too short." })
         }
-        else if(this.state.item1.length < 3){
-            this.setState({item1Error : "Item name is too short."})
+        else if (this.state.item1.length < 3) {
+            this.setState({ item1Error: "Item name is too short." })
         }
-        else if(this.state.quantity1 == 0){
-            this.setState({quantity1Error : "Invalid Quantity."})
-        }else if(this.state.orderFor.length < 5){
-            this.setState({orderForError : "Order For is too short."})
+        else if (this.state.quantity1 == 0) {
+            this.setState({ quantity1Error: "Invalid Quantity." })
+        } else if (this.state.orderFor.length < 5) {
+            this.setState({ orderForError: "Order For is too short." })
         }
-        else if(this.state.deliveryAddress.length < 5){
-            this.setState({deliveryAddressError : "Delivery Address is too short"})
-        }else{
+        else if (this.state.deliveryAddress.length < 5) {
+            this.setState({ deliveryAddressError: "Delivery Address is too short" })
+        } else {
 
-        
-        axios.put('http://localhost:5000/order/'+this.state.id, order)
-           
 
-            .then(res => {
+            axios.put('http://localhost:5000/order/' + this.state.id, order)
 
-                console.log(res);
 
-                if (res.status === 200) {
-                    this.props.close();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Order has been Updated!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+                .then(res => {
 
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error in updating!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#e00404'
-                    })
-                }
-            })
+                    console.log(res);
+
+                    if (res.status === 200) {
+                        this.props.close();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Order has been Updated!!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#60e004'
+                        })
+
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error in updating!',
+                            background: '#fff',
+                            confirmButtonColor: '#333533',
+                            iconColor: '#e00404'
+                        })
+                    }
+                })
 
         }
 
     }
 
-    
+
 
     render() {
         return (
@@ -454,7 +454,7 @@ export default class EditOrder extends Component {
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
                                         <form className='px-12 py-12' onSubmit={this.onSubmit}>
-                                           
+
                                             <div class="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order ID </label>
@@ -462,8 +462,8 @@ export default class EditOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.orderId}
-                                                       
-                                                        
+
+
 
                                                     /><p />
                                                 </div>
@@ -474,7 +474,7 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.customer}
                                                         onChange={this.onChangecustomer}
-                                                     
+
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.cusError}</p>
                                                 </div>
                                             </div>
@@ -496,7 +496,7 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.size1}
                                                         onChange={this.onChangesize1}
-                                                       
+
                                                     />
                                                 </div>
                                                 <div className="form-group">
@@ -506,7 +506,7 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.quantity1}
                                                         onChange={this.onChangequantity1}
-                                                       
+
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantity1Error}</p>
                                                 </div>
                                             </div>
@@ -515,11 +515,11 @@ export default class EditOrder extends Component {
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Item 2</label>
                                                     <input type="text"
-                                                      
+
                                                         className="form-control"
                                                         value={this.state.item2}
                                                         onChange={this.onChangeitem2}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -530,17 +530,17 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.size2}
                                                         onChange={this.onChangesize2}
-                                                       
+
                                                     />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 2</label>
                                                     <input type="text"
-                                                        
+
                                                         className="form-control"
                                                         value={this.state.quantity2}
                                                         onChange={this.onChangequantity2}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
@@ -548,11 +548,11 @@ export default class EditOrder extends Component {
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Item 3</label>
                                                     <input type="text"
-                                                        
+
                                                         className="form-control"
                                                         value={this.state.item3}
                                                         onChange={this.onChangeitem3}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -563,43 +563,43 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.size3}
                                                         onChange={this.onChangesize3}
-                                                       
+
                                                     />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 3</label>
                                                     <input type="text"
-                                                       
+
                                                         className="form-control"
                                                         value={this.state.quantity3}
                                                         onChange={this.onChangequantity3}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
                                             <div class="grid grid-cols-2 gap-4 form-group">
-                                            <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order For</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.orderFor}
-                                                    onChange={this.onChangeorderFor}
-                                                   
-                                                /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
-                                            </div>
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Delivery Address</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.deliveryAddress}
-                                                    onChange={this.onChangedeliveryAddress}
-                                                   
-                                                /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
-                                                   
-                                               
-                                            </div>
+                                                <div className="form-group">
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order For</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.orderFor}
+                                                        onChange={this.onChangeorderFor}
+
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Delivery Address</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.deliveryAddress}
+                                                        onChange={this.onChangedeliveryAddress}
+
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
+
+
+                                                </div>
                                             </div>
 
                                             <div class="grid grid-cols-2 gap-4 form-group">
@@ -611,7 +611,7 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.amount}
                                                         onChange={this.onChangeamount}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -623,16 +623,16 @@ export default class EditOrder extends Component {
                                                         className="form-control"
                                                         value={this.state.orderStatus}
                                                         onChange={this.onChangeorderStatus}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
 
 
-                                             <div className="text-center align-middle form-group">
+                                            <div className="text-center align-middle form-group">
                                                 <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Order" />
-                                            </div> 
-                                            
+                                            </div>
+
                                         </form>
 
 
