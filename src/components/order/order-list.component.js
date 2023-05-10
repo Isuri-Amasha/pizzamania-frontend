@@ -223,7 +223,7 @@ export class OrderList extends Component {
                                     <div class=" grid grid-cols-2 gap-1">
                                         <div class="">
                                             <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
                                         </div>
                                         <div class="">
@@ -405,15 +405,6 @@ export class OrderList extends Component {
 
                             <div class="">
                                 <Modal show={this.state.display} onHide={this.closeModalBoxForUpdate} centered size={"xl"}>
-                                    <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
-                                        <div class="">
-                                            <Modal.Title className='items-center' >
-                                                <p className='font-semibold text-black uppercase '>
-                                                    Update Order
-                                                </p>
-                                            </Modal.Title>
-                                        </div>
-                                    </Modal.Header >
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
                                         <EditOrder orId={this.state.id} key={this.state.id} close={this.closeModalBoxForUpdate} />
                                     </Modal.Body>

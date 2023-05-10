@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from "sweetalert2";
+import Select from 'react-select'
 
 
 export default class EditOrder extends Component {
@@ -41,7 +42,9 @@ export default class EditOrder extends Component {
             orderFor: '',
             deliveryAddress: '',
             amount: '',
-            orderStatus: ''
+            orderStatus: '',
+            FullDataSet: [], //change to id
+            NameSet: []
 
         }
     }
@@ -56,16 +59,38 @@ export default class EditOrder extends Component {
                     size1: response.data.size1,
                     quantity1: response.data.quantity1,
                     item2: response.data.item2,
-                    size1: response.data.size2,
+                    size2: response.data.size2,
                     quantity2: response.data.quantity2,
                     item3: response.data.item3,
-                    size1: response.data.size3,
+                    size3: response.data.size3,
                     quantity3: response.data.quantity3,
                     orderFor: response.data.orderFor,
                     deliveryAddress: response.data.deliveryAddress,
                     amount: response.data.amount,
                     orderStatus: response.data.orderStatus,
 
+                })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        axios.get('http://localhost:5000/product/')
+            .then(response => {
+                this.setState({
+                    FullDataSet: response.data,
+                })
+                const tempOptions = []
+                response.data.forEach((product) => {
+                    let tempObject = {
+                        value: product.productName,
+                        label: product.productName
+                    }
+                    console.log(tempObject.value, tempObject.label)
+                    tempOptions.push(tempObject);
+                })
+                this.setState({
+                    NameSet: tempOptions
                 })
             })
             .catch(function (error) {
@@ -80,9 +105,9 @@ export default class EditOrder extends Component {
         });
     }
 
-    onChangeitem1(e) {
+    onChangeitem1(choice) {
         this.setState({
-            item1: e.target.value
+            item1: choice.value
         });
     }
 
@@ -110,9 +135,9 @@ export default class EditOrder extends Component {
         });
     }
 
-    onChangeitem2(e) {
+    onChangeitem2(choice) {
         this.setState({
-            item2: e.target.value
+            item2: choice.value
         });
     }
 
@@ -122,9 +147,9 @@ export default class EditOrder extends Component {
         });
     }
 
-    onChangeitem3(e) {
+    onChangeitem3(choice) {
         this.setState({
-            item3: e.target.value
+            item3: choice.value
         });
     }
 
@@ -453,187 +478,178 @@ export default class EditOrder extends Component {
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
-                                        <form className='px-12 py-12' onSubmit={this.onSubmit}>
-
-                                            <div class="grid grid-cols-2 gap-4 form-group">
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order ID </label>
-                                                    <input type="text"
-                                                        required
-                                                        className="form-control"
-                                                        value={this.state.orderId}
-
-
-
-                                                    /><p />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Customer Name</label>
+                                    <form className='' onSubmit={this.onSubmit}>
+                                        <div class="">
+                                            <p className='text-4xl font-semibold text-black uppercase drop-shadow-lg'>
+                                                Update Order
+                                            </p>
+                                            <div className="grid grid-cols-1 gap-4 form-group">
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Customer
+                                                    </label>
                                                     <input type="text"
                                                         required
                                                         className="form-control"
                                                         value={this.state.customer}
                                                         onChange={this.onChangecustomer}
-
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.cusError}</p>
                                                 </div>
+
                                             </div>
-                                            <div class="grid grid-cols-2 gap-4 form-group">
+
+                                            <div className="grid grid-cols-3 gap-4 form-group">
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Item 1</label>
-                                                    <input type="text"
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Item 1
+                                                    </label>
+                                                    {/* <input type="text"
                                                         required
                                                         className="form-control"
                                                         value={this.state.item1}
                                                         onChange={this.onChangeitem1}
+                                                    /> */}
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem1(choice)}
                                                     />
                                                     <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.item1Error}</p>
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 1</label>
-                                                    <input type="text"
-                                                        required
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
+                                                        Size 1
+                                                    </label>
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size1}
                                                         onChange={this.onChangesize1}
-
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 1</label>
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
+                                                        Quantity 1
+                                                    </label>
                                                     <input type="text"
                                                         required
                                                         className="form-control"
                                                         value={this.state.quantity1}
                                                         onChange={this.onChangequantity1}
-
                                                     /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantity1Error}</p>
                                                 </div>
                                             </div>
-
-                                            <div class="grid grid-cols-2 gap-4 form-group">
+                                            <div className="grid grid-cols-3 gap-4 form-group">
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Item 2</label>
-                                                    <input type="text"
-
-                                                        className="form-control"
-                                                        value={this.state.item2}
-                                                        onChange={this.onChangeitem2}
-
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Item 2
+                                                    </label>
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem2(choice)}
                                                     />
-                                                    <p />
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 2</label>
-                                                    <input type="text"
-                                                        required
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
+                                                        Size 2
+                                                    </label>
+
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size2}
                                                         onChange={this.onChangesize2}
-
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 2</label>
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Quantity 2
+                                                    </label>
                                                     <input type="text"
-
                                                         className="form-control"
                                                         value={this.state.quantity2}
                                                         onChange={this.onChangequantity2}
-
-                                                    /><p />
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantity2Error}</p>
                                                 </div>
                                             </div>
-                                            <div class="grid grid-cols-2 gap-4 form-group">
+
+                                            <div className="grid grid-cols-3 gap-4 form-group">
+
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Item 3</label>
-                                                    <input type="text"
-
-                                                        className="form-control"
-                                                        value={this.state.item3}
-                                                        onChange={this.onChangeitem3}
-
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Item 3
+                                                    </label>
+                                                    <Select
+                                                        options={this.state.NameSet}
+                                                        onChange={(choice) => this.onChangeitem3(choice)}
                                                     />
-                                                    <p />
                                                 </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Size 3</label>
-                                                    <input type="text"
-                                                        required
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
+                                                        Size 3
+                                                    </label>
+                                                    <select type="text"
                                                         className="form-control"
                                                         value={this.state.size3}
                                                         onChange={this.onChangesize3}
-
-                                                    />
+                                                    >
+                                                        <option >Select Size</option>
+                                                        <option value="Small">Small</option>
+                                                        <option value="Medium">Medium</option>
+                                                        <option value="Large">Large</option>
+                                                    </select>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Quantity 3</label>
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                        Quantity 3
+                                                    </label>
                                                     <input type="text"
-
                                                         className="form-control"
                                                         value={this.state.quantity3}
                                                         onChange={this.onChangequantity3}
-
-                                                    /><p />
-                                                </div>
-                                            </div>
-                                            <div class="grid grid-cols-2 gap-4 form-group">
-                                                <div className="form-group">
-                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order For</label>
-                                                    <input type="text"
-                                                        required
-                                                        className="form-control"
-                                                        value={this.state.orderFor}
-                                                        onChange={this.onChangeorderFor}
-
-                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
-                                                </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Delivery Address</label>
-                                                    <input type="text"
-                                                        required
-                                                        className="form-control"
-                                                        value={this.state.deliveryAddress}
-                                                        onChange={this.onChangedeliveryAddress}
-
-                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
-
-
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.quantity3Error}</p>
                                                 </div>
                                             </div>
 
-                                            <div class="grid grid-cols-2 gap-4 form-group">
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Amount</label>
-                                                    <input type="text"
-                                                        required
-                                                        readOnly
-                                                        className="form-control"
-                                                        value={this.state.amount}
-                                                        onChange={this.onChangeamount}
-
-                                                    />
-                                                    <p />
-                                                </div>
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order Status</label>
-                                                    <input type="text"
-                                                        required
-                                                        readOnly
-                                                        className="form-control"
-                                                        value={this.state.orderStatus}
-                                                        onChange={this.onChangeorderStatus}
-
-                                                    /><p />
-                                                </div>
+                                            <div className="form-group">
+                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                    Order For
+                                                </label>
+                                                <select type="text"
+                                                    required
+                                                    className="form-control"
+                                                    value={this.state.orderFor}
+                                                    onChange={this.onChangeorderFor}
+                                                >
+                                                    <option value="Take Away">Take Away</option>
+                                                    <option value="Dine In">Dine In</option>
+                                                    <option value="Delivery">Delivery</option>
+                                                </select>
+                                                <p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
                                             </div>
-
-
+                                            <div className="form-group">
+                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
+                                                    Delivery Address
+                                                </label>
+                                                <textarea
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={this.state.deliveryAddress}
+                                                    onChange={this.onChangedeliveryAddress}
+                                                /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
+                                            </div>
                                             <div className="text-center align-middle form-group">
-                                                <button className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit " value="Edit Order" />
+                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mt-4 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update Order" />
                                             </div>
-
-                                        </form>
+                                        </div>
+                                    </form>
 
 
                                     </div>
