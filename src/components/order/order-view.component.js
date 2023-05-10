@@ -8,19 +8,19 @@ export default class ViewOrder extends Component {
         super(props);
 
         this.state = {
-            id:props.orId,
+            id: props.orId,
             orderId: '',
-            customer:'',
+            customer: '',
             item1: '',
             quantity1: '',
             item2: '',
             quantity2: '',
             item3: '',
-            quantity3:'',
-            orderFor:'',
-            deliveryAddress:'',
-            amount:'',
-            orderStatus:''
+            quantity3: '',
+            orderFor: '',
+            deliveryAddress: '',
+            amount: '',
+            orderStatus: ''
 
         }
     }
@@ -50,7 +50,7 @@ export default class ViewOrder extends Component {
 
     }
 
-    
+
 
     render() {
         return (
@@ -61,8 +61,8 @@ export default class ViewOrder extends Component {
                             <div className=''>
                                 <div class="grid grid-cols-1 gap-4 content-start pt-5 px-20">
                                     <div className="formdiv">
-                                        <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' >
-                                           
+                                        <form className='' >
+
                                             <div class="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order ID </label>
@@ -70,7 +70,7 @@ export default class ViewOrder extends Component {
                                                         // required
                                                         className="form-control"
                                                         value={this.state.orderId}
-                                                        
+
 
                                                     /><p />
                                                 </div>
@@ -80,7 +80,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.customer}
-                                                     
+
                                                     /><p />
                                                 </div>
                                             </div>
@@ -91,7 +91,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.item1}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -101,7 +101,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.quantity1}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
@@ -113,7 +113,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.item2}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -123,7 +123,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.quantity2}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
@@ -134,7 +134,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.item3}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -144,31 +144,31 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.quantity3}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
                                             <div class="grid grid-cols-2 gap-4 form-group">
-                                            <div className="form-group">
-                                                <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order For</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.orderFor}
-                                                   
-                                                /><p />
-                                            </div>
-                                            <div className="form-group">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Delivery Address</label>
-                                                <input type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.deliveryAddress}
-                                                   
-                                                /><p />
-                                                   
-                                               
-                                            </div>
+                                                <div className="form-group">
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Order For</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.orderFor}
+
+                                                    /><p />
+                                                </div>
+                                                <div className="form-group">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Delivery Address</label>
+                                                    <input type="text"
+                                                        required
+                                                        className="form-control"
+                                                        value={this.state.deliveryAddress}
+
+                                                    /><p />
+
+
+                                                </div>
                                             </div>
 
                                             <div class="grid grid-cols-2 gap-4 form-group">
@@ -178,7 +178,7 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.amount}
-                                                       
+
                                                     />
                                                     <p />
                                                 </div>
@@ -188,12 +188,12 @@ export default class ViewOrder extends Component {
                                                         required
                                                         className="form-control"
                                                         value={this.state.orderStatus}
-                                                       
+
                                                     /><p />
                                                 </div>
                                             </div>
 
-                                            
+
                                         </form>
 
 

@@ -66,7 +66,7 @@ export class UserLogin extends Component {
 
                 AuthenticationService.successfulLogin(currentuser.NIC, currentuser.userRole)
                 console.log(currentuser.NIC, currentuser.userRole)
-               
+
                 window.location = "/nav"
 
             }
@@ -109,10 +109,10 @@ export class UserLogin extends Component {
                     const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
                     // isUserLoggedIn = true;
 
-                    
+
 
                     if (isUserLoggedIn === true && currentuser.userRole == "Employee Manager") {
-                        
+
                         window.location = "/nav"
                         window.location = "/"
                     }
@@ -132,13 +132,13 @@ export class UserLogin extends Component {
                         window.location = "/salary"
                     } else if (isUserLoggedIn === true && currentuser.userRole == "Employee Manager") {
                         window.location = "/employee"
-                    }else if(isUserLoggedIn === false){
+                    } else if (isUserLoggedIn === false) {
                         window.location = "/nav"
                         window.location = "/"
                     }
-                
 
-                } 
+
+                }
                 // else {
 
                 //     Swal.fire({
@@ -154,7 +154,7 @@ export class UserLogin extends Component {
 
             });
 
-            
+
 
         }
 
@@ -171,7 +171,7 @@ export class UserLogin extends Component {
 
     render() {
 
-        
+
         return (
             <div className="flex flex-col px-5 pt-2 ">
                 <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -222,6 +222,8 @@ export class UserLogin extends Component {
                         </div>
                     </div>
                 </div>
+
+                
             </div>
         )
     }

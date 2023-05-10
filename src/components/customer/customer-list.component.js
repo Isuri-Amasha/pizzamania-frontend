@@ -290,7 +290,7 @@ export class CustomerList extends Component {
                                         <div class="">
                                             <Modal.Title className='items-center' >
                                                 <p className='font-semibold text-black uppercase '>
-                                                    Edit Instructor
+                                                    Edit Customer
                                                 </p>
                                             </Modal.Title>
                                         </div>

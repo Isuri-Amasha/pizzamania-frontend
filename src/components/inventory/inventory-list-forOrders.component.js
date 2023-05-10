@@ -9,7 +9,7 @@ import { CreateInventoryOrder } from '../inventoryOrder/inventoryOrders-add.comp
 
 const Inventory = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-       
+
         <td className='px-6 py-4'>{props.inventory.productID}</td>
         <td className='px-6 py-4'>{props.inventory.productName}</td>
         <td className='px-6 py-4'>{props.inventory.productCategory}</td>
@@ -17,21 +17,23 @@ const Inventory = props => (
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { props.gotoOrderInventory(props.inventory._id) }}>
-                    
-                        <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
-                            <div class="">
-                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round " stroke-width="2" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"></path>
-                                </svg>
-                            </div>
-                            <div class="">
-                                Order
-                            </div>
+
+                    <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
+                        <div class="">
+                            <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            
+
                         </div>
-                    
+                        <div class="">
+                            Order
+                        </div>
+                    </div>
+
                 </button>
             </div>
-           
+
         </td>
     </tr>
 )
@@ -46,7 +48,7 @@ export class InventoryListForOrder extends Component {
         this.state = {
             inventory: [],
             searchInventory: "",
-            show:false
+            show: false
         };
     }
 
@@ -55,7 +57,7 @@ export class InventoryListForOrder extends Component {
         this.refreshList();
     }
 
-    refreshList(){
+    refreshList() {
         axios.get('http://localhost:5000/inventory/')
             .then(response => {
                 this.setState({ inventory: response.data })
@@ -66,7 +68,7 @@ export class InventoryListForOrder extends Component {
     }
 
     gotoOrderInventory(id) {
-        
+
         this.setState({
             id: id,
             show: true
@@ -103,8 +105,8 @@ export class InventoryListForOrder extends Component {
                         <td className='px-6 py-4'>
                             {
                                 <div class="flex justify-center">
-                                <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoOrderInventory(currentinventory._id) }}>
-                                    
+                                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoOrderInventory(currentinventory._id) }}>
+
                                         <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                                             <div class="">
                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -115,11 +117,11 @@ export class InventoryListForOrder extends Component {
                                                 Order
                                             </div>
                                         </div>
-                                    
-                                </button>
-                            </div>
+
+                                    </button>
+                                </div>
                             }
-                            
+
                         </td>
                     </tr>
                 );
