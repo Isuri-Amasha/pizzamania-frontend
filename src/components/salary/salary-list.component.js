@@ -12,7 +12,7 @@ const Salary = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
        
         <td className='px-6 py-4'>{props.salary.empId}</td>
-        <td className='px-6 py-4'>{props.salary.empName}</td>
+        {/* <td className='px-6 py-4'>{props.salary.empName}</td> */}
         <td className='px-6 py-4'>{props.salary.basicSalary}</td>
         <td className='px-6 py-4'>{props.salary.otRate}</td>
        
@@ -281,7 +281,7 @@ export class SalaryList extends Component {
                                     <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                                         <tr>
                                             <th className="p-2 border-black tbhead ">Employee ID</th>
-                                            <th className="p-2 tbhead">Employee Name</th>
+                                            {/* <th className="p-2 tbhead">Employee Name</th> */}
                                             <th className="p-2 tbhead">Basic Salary</th>
                                             <th className="p-2 tbhead">Over Time Rate</th>
                                            
