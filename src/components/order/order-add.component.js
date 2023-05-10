@@ -29,23 +29,23 @@ export class CreateOrder extends Component {
 
         this.state = {
             products: [],
-            orderId:'',
+            orderId: '',
             customer: '',
             item1: '',
-            size1:'',
+            size1: '',
             quantity1: '',
             item2: '',
-            size2:'',
+            size2: '',
             quantity2: '',
             item3: '',
-            size3:'',
+            size3: '',
             quantity3: '',
             orderFor: '',
             deliveryAddress: '',
             amount: '',
             orderStatus: '',
             price: '',
-            show:false
+            show: false
 
         }
     }
@@ -145,59 +145,49 @@ export class CreateOrder extends Component {
 
         console.log(item3)
 
-        // const item1 = this.state.item1;
-        // const quantity1 = this.state.quantity1;
-        // const item2 = this.state.item2;
-        // const quantity2 = this.state.quantity2;
-        // const item3 = this.state.item3;
-        // const quantity3 = this.state.quantity3;
         let amount3 = 0;
         let i = 1;
 
-       
 
-        // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
 
-                if(item3 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
 
-                }else{
-                
-                // let quantity = quantity[i];
+        this.state.products.map((currentProduct) => {
+
+            if (item3 == currentProduct.productName && currentProduct.availability == "No") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item3 is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
+
+            } else {
+
+
 
                 if (item3 == currentProduct.productName && size3 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
-                    
-                    if(currentProduct.discount > 0){
+
+                    if (currentProduct.discount > 0) {
                         amount3 = (currentProduct.price * quantity3) - currentProduct.discount
 
-                    }else{
-                    amount3 = currentProduct.price * quantity3
+                    } else {
+                        amount3 = currentProduct.price * quantity3
                     }
-                  
+
 
                 }
-                // return amount;
-                
-                // console.log("Amount is" + amount);
+
 
             }
 
-            })
-            return amount3;
-            // console.log("Amount  154 is" + amount);
+        })
+        return amount3;
 
-        // }
-        
+
 
     }
 
@@ -205,142 +195,175 @@ export class CreateOrder extends Component {
 
         console.log(item2)
 
-        // const item1 = this.state.item1;
-        // const quantity1 = this.state.quantity1;
-        // const item2 = this.state.item2;
-        // const quantity2 = this.state.quantity2;
-        // const item3 = this.state.item3;
-        // const quantity3 = this.state.quantity3;
+
         let amount2 = 0;
         let i = 1;
 
-       
 
-        // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
 
-                if(item2 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+        this.state.products.map((currentProduct) => {
 
-                }else{
-                
-                // let quantity = quantity[i];
+            if (item2 == currentProduct.productName && currentProduct.availability == "No") {
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item2 is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
+
+            } else {
+
+
 
                 if (item2 == currentProduct.productName && size2 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
-                    if(currentProduct.discount > 0){
+                    if (currentProduct.discount > 0) {
                         amount2 = (currentProduct.price * quantity2) - currentProduct.discount
 
-                    }else{
+                    } else {
 
-                    amount2 = currentProduct.price * quantity2
+                        amount2 = currentProduct.price * quantity2
 
                     }
 
                 }
-                // return amount;
-                
-                // console.log("Amount is" + amount);
+
 
             }
 
-            })
-            return amount2;
-            // console.log("Amount  154 is" + amount);
+        })
+        return amount2;
 
-        // }
-        
+
 
     }
 
-    getPrice1(item1, size1,quantity1) {
+    getAvailability1(item1,size1){
+
+        let availability1 = ""
+
+        this.state.products.map((currentProduct) => {
+
+            if (item1 == currentProduct.productName ) {
+                  
+               availability1 = currentProduct.availability
+
+            } 
+
+        })
+        return availability1;
+
+    }
+    getAvailability2(item2,size2){
+
+        let availability2 = ""
+
+        this.state.products.map((currentProduct) => {
+
+            if (item2 == currentProduct.productName ) {
+                  
+               availability2 = currentProduct.availability
+
+            } 
+
+        })
+        return availability2;
+
+    }
+    getAvailability3(item3,size3){
+
+        let availability3 = ""
+
+        this.state.products.map((currentProduct) => {
+
+            if (item3 == currentProduct.productName ) {
+                  
+               availability3 = currentProduct.availability
+
+            } 
+
+        })
+        return availability3;
+
+    }
+
+    getPrice1(item1, size1, quantity1) {
 
         console.log(item1)
 
-        // const item1 = this.state.item1;
-        // const quantity1 = this.state.quantity1;
-        // const item2 = this.state.item2;
-        // const quantity2 = this.state.quantity2;
-        // const item3 = this.state.item3;
-        // const quantity3 = this.state.quantity3;
+
         let amount1 = 0;
         let i = 1;
+       
 
 
-        // for (let i = 1; i <= 3; i++) {
-            this.state.products.map((currentProduct) => {
 
-                if(item1 == currentProduct.productName && currentProduct.availability == "No"){
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Error',
-                        text: 'Item is not available!!',
-                        background: '#fff',
-                        confirmButtonColor: '#333533',
-                        iconColor: '#60e004'
-                    })
+        this.state.products.map((currentProduct) => {
 
-                }else{
-                // let quantity = quantity[i];
+            if (item1 == currentProduct.productName && currentProduct.availability == "No") {
+                
+                
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Error',
+                    text: 'Item1 is not available!!',
+                    background: '#fff',
+                    confirmButtonColor: '#333533',
+                    iconColor: '#60e004'
+                })
+
+            } else {
+
 
                 if (item1 == currentProduct.productName && size1 == currentProduct.productSize) {
                     console.log("Product Name inside getproduct is " + currentProduct.productName)
 
 
-                    if(currentProduct.discount > 0){
+                    if (currentProduct.discount > 0) {
                         amount1 = (currentProduct.price * quantity1) - currentProduct.discount
 
-                    }else{
+                    } else {
                         amount1 = currentProduct.price * quantity1
                     }
 
-                    
 
-                    
 
-                  
+
+
+
 
                 }
             }
-                // return amount;
-                
-                // console.log("Amount is" + amount);
 
 
 
-            })
-            return amount1;
-            // console.log("Amount  154 is" + amount);
 
-        // }
-        
+        })
+        return amount1;
+
+
 
     }
 
     gotoPayment = (id) => {
         this.setState({
             id: id,
-           
+
             show: true
 
         })
-        console.log("LIst id is :" +id);
+        console.log("LIst id is :" + id);
     }
 
     closeModalBox = () => {
         this.setState({ show: false })
-       
+
     }
 
-    
+
 
 
     onSubmit(e) {
@@ -355,17 +378,26 @@ export class CreateOrder extends Component {
         const size3 = this.state.size3;
         const quantity3 = this.state.quantity3;
 
-        let price1 = this.getPrice1(item1,size1,quantity1);
-        console.log("Price 1 is"+price1);
+        let av1 = this.getAvailability1(item1,size1);
+        console.log("Availability1 is"+av1);
 
-        let price2 = this.getPrice2(item2,size2,quantity2);
-        console.log("Price 2 is"+price2);
+        let av2 = this.getAvailability2(item2,size2);
+        console.log("Availability2 is"+av2);
 
-        let price3 = this.getPrice2(item3,size3,quantity3);
-        console.log("Price 3 is"+price3);
+        let av3 = this.getAvailability3(item3,size3);
+        console.log("Availability3 is"+av3);
+
+        let price1 = this.getPrice1(item1, size1, quantity1);
+        console.log("Price 1 is" + price1);
+
+        let price2 = this.getPrice2(item2, size2, quantity2);
+        console.log("Price 2 is" + price2);
+
+        let price3 = this.getPrice3(item3, size3, quantity3);
+        console.log("Price 3 is" + price3);
 
         let amount = price1 + price2 + price3;
-        console.log("Amount is"+amount);
+        console.log("Amount is" + amount);
 
         e.preventDefault();
 
@@ -374,7 +406,7 @@ export class CreateOrder extends Component {
 
 
         const order = {
-            orderId:shortid.generate(),
+            orderId: shortid.generate(),
             customer: this.state.customer,
             item1: this.state.item1,
             size1: this.state.size1,
@@ -402,10 +434,13 @@ export class CreateOrder extends Component {
         }
         else if (this.state.quantity1 <= 0) {
             this.setState({ quantity1Error: "Invalid Quantity." })
-        } else if (this.state.orderFor.length < 5) {
-            this.setState({ orderForError: "Order For is too short." })
-        }
+        } 
+        
+        // else if (this.state.orderFor.length < 5) {
+        //     this.setState({ orderForError: "Order For is too short." })
+        // }
         else {
+            
             axios.post('http://localhost:5000/order/', order)
 
                 .then(res => {
@@ -440,7 +475,7 @@ export class CreateOrder extends Component {
                 })
 
 
-               
+
 
         }
 
@@ -450,13 +485,13 @@ export class CreateOrder extends Component {
         this.setState({
             customer: '',
             item1: '',
-            size1:'',
+            size1: '',
             quantity1: '',
             item2: '',
-            size2:'',
+            size2: '',
             quantity2: '',
             item3: '',
-            size3:'',
+            size3: '',
             quantity3: '',
             orderFor: '',
             deliveryAddress: '',
@@ -541,10 +576,10 @@ export class CreateOrder extends Component {
                                                 </div>
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >
-                                                    Size 2
+                                                        Size 2
                                                     </label>
                                                     <input type="text"
-                                                        
+
                                                         className="form-control"
                                                         value={this.state.size2}
                                                         onChange={this.onChangesize2}
@@ -579,7 +614,7 @@ export class CreateOrder extends Component {
                                                         Size 3
                                                     </label>
                                                     <input type="text"
-                                                        
+
                                                         className="form-control"
                                                         value={this.state.size3}
                                                         onChange={this.onChangesize3}
@@ -611,8 +646,8 @@ export class CreateOrder extends Component {
                                                     <option>Dine In</option>
                                                     <option>Take Away</option>
                                                     <option>Delivery</option>
-                                                    
-                                                    </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
+
+                                                </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.orderForError}</p>
                                             </div>
                                             <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
@@ -625,6 +660,8 @@ export class CreateOrder extends Component {
                                                     onChange={this.onChangedeliveryAddress}
                                                 /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.deliveryAddressError}</p>
                                             </div>
+                                            
+                                                
                                             {/* <div className="form-group">
                                                 <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>
                                                     Amount
@@ -645,21 +682,21 @@ export class CreateOrder extends Component {
                                 </div>
 
                                 <div class="">
-                                <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
-                                    <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
-                                        <div class="">
-                                            <Modal.Title className='items-center' >
-                                                <p className='font-semibold text-black uppercase '>
-                                                    Add Payment Details
-                                                </p>
-                                            </Modal.Title>
-                                        </div>
-                                    </Modal.Header >
-                                    <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
-                                        <CreatePayment payId={this.state.id} key={this.state.id} close={this.closeModalBox} />
-                                    </Modal.Body>
-                                </Modal>
-                            </div>
+                                    <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
+                                        <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
+                                            <div class="">
+                                                <Modal.Title className='items-center' >
+                                                    <p className='font-semibold text-black uppercase '>
+                                                        Add Payment Details
+                                                    </p>
+                                                </Modal.Title>
+                                            </div>
+                                        </Modal.Header >
+                                        <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
+                                            <CreatePayment payId={this.state.id} key={this.state.id} close={this.closeModalBox} />
+                                        </Modal.Body>
+                                    </Modal>
+                                </div>
                             </div>
                         </div>
                     </div>
